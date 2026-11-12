@@ -65,7 +65,9 @@
 
 ## الخطوة الجاية
 
-Phase 0 خلص. الخطوة الجاية:
+Phase 0 خلص والـ CI أخضر (`BUILD SUCCEEDED` على macos-26 / Xcode 26.6).
 
-1. **شوف نتيجة الـ CI** على الـ push — أول build على `macos-26`. لو أخطاء، ابعتهالي وأنا أصلّحها.
-2. **قول «ابدا phase 1»** — الـ Design System: الثيم (`MrasemColors` Light/Dark) · الخطوط · الأيقونات · كل المكوّنات المشتركة، مع `#Preview` للوضعين.
+1. **Phase 1 — Design System** هيبدأ بالثيم والخطوط والأيقونات والمكوّنات المشتركة، وكل مكوّن له `#Preview` للـ Light والـ Dark.
+2. **قبل Phase 2:** محتاج test target — إما من Xcode على جهازك (File › New › Target › Unit Testing Bundle، وسمّه `WantProcurationTests`)، أو من Mac في السحابة. من غيره مش هنعرف نعمل `xcodebuild test` على الـ CI.
+
+قول «ابدا phase 1» ونمشي.

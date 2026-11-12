@@ -46,7 +46,8 @@
 
 **القبول:** CI أخضر، التطبيق يفتح على placeholder، صفر references للكود المحذوف (`grep`).
 
-**الحالة (2026-11-12): الكود اتنفذ على Windows، مستني أول تشغيل للـ CI.**
+**الحالة (2026-11-12): خلص، والـ CI أخضر.**
+- **الـ CI اشتغل فعليًا:** `macos-26` · Xcode 26.6 · `** BUILD SUCCEEDED **` · صفر errors. أول build وقع بسبب `%s` في الـ catalog (شوف Decision log) واتصلّح في commit تاني.
 - **اتحذف (٦٨ ملف Swift):** `AI/` · `Features/` (Assistant + Booking + FAQ) · `Intents/` · `Models/` · `Preview/` · `Views/Home/` · `Views/OfficeListView/` · `Views/Reservation/` · `Views/OtherServices/OtherServicesView.swift` · `Views/VersionCheck/` · `Views/Settings/` · `Managers/VersionManager.swift` · `Components/IDScanner/` · `_to_delete/`.
 - **اتحفظ (زي ما هو):** `Networking/APIClient` · `Extensions/*` · `Components/FormComponents` · `AlertComponents` · `NavigationComponents` · `CircleButtonView` · `DataModel/*` · `AppManager` · `LocationManager` · `Logger` · `WebViewScreen` · خطوط Cairo · المكتبات الثلاث.
 - **نقل (مش حذف):** أنواع الـ pickers (`TransactionCategory` · `TransactionType` · `ReservationDate` · `ReservePeriod` · `ReservationTime`) اتنقلت لـ `Components/FormComponents/ReservationPickerModels.swift` — لأن `DynamicFormField` لسه بيحتاجها، وبكده ما بقى فيه مجلد `Views/Reservation/` خالص.
