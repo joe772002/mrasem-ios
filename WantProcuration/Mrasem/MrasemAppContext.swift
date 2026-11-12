@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import Combine
 
-final class MrasemAppContext: ObservableObject {
+nonisolated final class MrasemAppContext: ObservableObject {
     let container: MrasemContainer
     let toastBus: MrasemToastBus
     let shell: MrasemSessionViewModel

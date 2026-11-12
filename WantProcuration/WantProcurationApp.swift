@@ -68,7 +68,7 @@ struct WantProcurationApp: App {
 }
 
 /// حالة العملية — بتعرف لو التطبيق شغال كـ host لاختبارات الوحدة.
-enum MrasemEnvironment {
+nonisolated enum MrasemEnvironment {
     /// `XCTestConfigurationFilePath` بيتحط في بيئة العملية لما XCTest يشغّل اختبارات
     /// داخل التطبيق (test host).
     static var isRunningUnitTests: Bool {

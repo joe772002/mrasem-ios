@@ -12,7 +12,7 @@ import Combine
 private let toastDuration: Duration = .milliseconds(3800)
 
 /// حالة التوست: اسـتدعِ `show()` من أي مكان. كل استدعاء يعيد المؤقّت.
-final class MrasemToastState: ObservableObject {
+nonisolated final class MrasemToastState: ObservableObject {
     @Published private(set) var strong: String = ""
     @Published private(set) var rest: String = ""
     @Published private(set) var visible: Bool = false

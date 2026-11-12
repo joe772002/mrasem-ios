@@ -10,7 +10,7 @@
 
 import Foundation
 
-enum MrasemDemoData {
+nonisolated enum MrasemDemoData {
 
     private static let coordinatorPhone = "+974 5555 0456"
 

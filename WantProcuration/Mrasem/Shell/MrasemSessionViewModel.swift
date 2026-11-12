@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 /// حالة الـ Shell: الوضع، الدور، التاب الحالي. التنبيهات بتجيبها كل شاشة من الـ ViewModel بتاعها.
-final class MrasemSessionViewModel: ObservableObject {
+nonisolated final class MrasemSessionViewModel: ObservableObject {
     @Published private(set) var uiState: ShellUiState
 
     private let session: MrasemSessionStrategy

@@ -20,7 +20,7 @@ enum PlateStyle: String, CaseIterable, Hashable {
 }
 
 /// تاريخ بدون وقت — زي `LocalDate` في Kotlin (قاعدة C6).
-struct MrasemDate: Equatable, Hashable, Comparable {
+nonisolated struct MrasemDate: Equatable, Hashable, Comparable {
     let year: Int
     let month: Int
     let day: Int
