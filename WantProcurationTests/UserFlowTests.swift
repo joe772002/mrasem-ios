@@ -134,7 +134,7 @@ final class UserFlowTests: XCTestCase {
 
     func testShellStateForEachRole() {
         let env = StoreRepoEnv(user: .member("m1"))
-        var shell = RoleShellState.make(env.db, nav: env.repo.nav, soon: nil)
+        var shell = RoleShellState.make(env.db, nav: env.repo.nav, chosen: nil)
         XCTAssertEqual(shell.role, .member)
         XCTAssertEqual(shell.selected, .screen(.mission))
         XCTAssertEqual(shell.tabs.count, 6)
@@ -143,21 +143,21 @@ final class UserFlowTests: XCTestCase {
         XCTAssertEqual(shell.unread, 1)
 
         env.act(as: .team("u2"))
-        shell = RoleShellState.make(env.db, nav: env.repo.nav, soon: nil)
+        shell = RoleShellState.make(env.db, nav: env.repo.nav, chosen: nil)
         XCTAssertEqual(shell.role, .coordinator)
         XCTAssertEqual(shell.selected, .screen(.teamVisit))
         XCTAssertEqual(shell.delegations.map(\.id), ["d1", "d2"])
         XCTAssertEqual(shell.selectedDelegationId, "d1")
 
         env.act(as: .team("u1"))
-        shell = RoleShellState.make(env.db, nav: env.repo.nav, soon: .adminPlaces)
+        shell = RoleShellState.make(env.db, nav: env.repo.nav, chosen: .soon(.adminPlaces))
         XCTAssertEqual(shell.role, .admin)
         XCTAssertEqual(shell.selected, .soon(.adminPlaces))
         XCTAssertEqual(shell.tabIndex, 3)
         XCTAssertFalse(shell.needsDelegation)
 
         env.act(as: .driver("r1"))
-        shell = RoleShellState.make(env.db, nav: env.repo.nav, soon: .adminPlaces)
+        shell = RoleShellState.make(env.db, nav: env.repo.nav, chosen: .soon(.adminPlaces))
         XCTAssertEqual(shell.selected, .soon(.driverTrips))
     }
 
@@ -184,7 +184,7 @@ final class UserFlowTests: XCTestCase {
         }
         env.act(as: .team("x"))
 
-        let shell = RoleShellState.make(env.db, nav: env.repo.nav, soon: nil)
+        let shell = RoleShellState.make(env.db, nav: env.repo.nav, chosen: nil)
         XCTAssertTrue(shell.needsDelegation)
         XCTAssertFalse(shell.hasDelegation)
         XCTAssertTrue(shell.delegations.isEmpty)

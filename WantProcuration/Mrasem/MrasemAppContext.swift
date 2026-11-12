@@ -15,6 +15,7 @@ nonisolated final class MrasemAppContext: ObservableObject {
     let toastBus: MrasemToastBus
     let flow: MrasemAppFlow
     let roleShell: RoleShellModel
+    let adminNav = AdminNavigator()
 
     /// `confirmed: true` للـ Previews عشان تفتح على الـ Shell مباشرة بالمستخدم الحالي.
     init(

@@ -29,11 +29,11 @@ struct RoleShellState: Equatable {
     var tabIndex: Int { tabs.firstIndex(of: selected) ?? 0 }
 
     static let empty = RoleShellState(
-        userName: "", role: .member, unread: 0, tabs: [], selected: .soon(.adminHome),
+        userName: "", role: .member, unread: 0, tabs: [], selected: .admin(.home),
         delegations: [], selectedDelegationId: nil, needsDelegation: false, hasDelegation: false
     )
 
-    static func make(_ db: MrasemDatabase, nav: RepoNav, soon: SoonTab?) -> RoleShellState {
+    static func make(_ db: MrasemDatabase, nav: RepoNav, chosen: RoleTab?) -> RoleShellState {
         guard let user = db.currentUser, db.exists(user) else { return .empty }
 
         let role = ShellRole.of(user, in: db)
@@ -46,8 +46,7 @@ struct RoleShellState: Equatable {
         case .member: selected = .screen(MrasemDestination.of(nav.guestTab))
         case .coordinator: selected = .screen(MrasemDestination.of(nav.teamTab))
         case .admin, .escort, .driver:
-            let wanted = soon.map { RoleTab.soon($0) }
-            selected = wanted.flatMap { tabs.contains($0) ? $0 : nil } ?? tabs[0]
+            selected = chosen.flatMap { tabs.contains($0) ? $0 : nil } ?? tabs[0]
         }
 
         return RoleShellState(
@@ -56,7 +55,7 @@ struct RoleShellState: Equatable {
             unread: db.unreadCount(for: user),
             tabs: tabs,
             selected: selected,
-            delegations: role == .member ? [] : choices,
+            delegations: role == .member || role == .admin ? [] : choices,
             selectedDelegationId: scope.delegationId,
             needsDelegation: role == .member || role == .coordinator,
             hasDelegation: scope.delegationId != nil
@@ -69,7 +68,7 @@ final class RoleShellModel: ObservableObject {
 
     private let backend: MrasemBackend
     private let session: MrasemSessionStrategy
-    private var soon: SoonTab?
+    private var chosen: RoleTab?
     private var cancellables = Set<AnyCancellable>()
 
     init(backend: MrasemBackend, session: MrasemSessionStrategy) {
@@ -99,8 +98,8 @@ final class RoleShellModel: ObservableObject {
             } else if let team = destination.teamTab {
                 session.selectTeamTab(team)
             }
-        case let .soon(value):
-            soon = value
+        case .admin, .soon:
+            chosen = tab
             rebuild(backend.database, backend.repository.nav)
         }
     }
@@ -110,7 +109,7 @@ final class RoleShellModel: ObservableObject {
     }
 
     private func rebuild(_ database: MrasemDatabase, _ nav: RepoNav) {
-        let next = RoleShellState.make(database, nav: nav, soon: soon)
+        let next = RoleShellState.make(database, nav: nav, chosen: chosen)
         if next != uiState { uiState = next }
     }
 }

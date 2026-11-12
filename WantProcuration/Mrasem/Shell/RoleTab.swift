@@ -10,8 +10,6 @@ import Foundation
 
 /// تاب لسه شاشته ما اتبنتش.
 enum SoonTab: CaseIterable, Hashable {
-    case adminHome
-    case adminDelegations
     case adminResources
     case adminPlaces
     case adminRequests
@@ -22,8 +20,6 @@ enum SoonTab: CaseIterable, Hashable {
 
     var labelKey: String {
         switch self {
-        case .adminHome: return "mrasem_tab_admin_home"
-        case .adminDelegations: return "mrasem_tab_admin_delegations"
         case .adminResources: return "mrasem_tab_admin_resources"
         case .adminPlaces: return "mrasem_tab_admin_places"
         case .adminRequests: return "mrasem_tab_admin_requests"
@@ -37,7 +33,6 @@ enum SoonTab: CaseIterable, Hashable {
     /// المرحلة اللي هتتبني فيها الشاشة (Phase 14/15/16).
     var phase: Int {
         switch self {
-        case .adminHome, .adminDelegations: return 14
         case .adminResources, .adminPlaces, .adminRequests: return 15
         case .driverTrips, .driverSchedule, .escortDelegation, .escortNotices: return 16
         }
@@ -48,8 +43,7 @@ enum SoonTab: CaseIterable, Hashable {
 extension SoonTab {
     var icon: MrasemIcon {
         switch self {
-        case .adminHome: return MrasemIcons.dash
-        case .adminDelegations, .driverTrips, .escortDelegation: return MrasemIcons.mission
+        case .driverTrips, .escortDelegation: return MrasemIcons.mission
         case .adminResources: return MrasemIcons.services
         case .adminPlaces: return MrasemIcons.explore
         case .adminRequests, .escortNotices: return MrasemIcons.inbox
@@ -58,13 +52,38 @@ extension SoonTab {
     }
 }
 
+/// تابات الأدمن اللي شاشاتها اتبنت (Phase 14). الباقي «قريباً» لحد Phase 15.
+enum AdminTab: CaseIterable, Hashable {
+    case home
+    case delegations
+
+    var labelKey: String {
+        switch self {
+        case .home: return "mrasem_tab_admin_home"
+        case .delegations: return "mrasem_tab_admin_delegations"
+        }
+    }
+}
+
+@MainActor
+extension AdminTab {
+    var icon: MrasemIcon {
+        switch self {
+        case .home: return MrasemIcons.dash
+        case .delegations: return MrasemIcons.mission
+        }
+    }
+}
+
 enum RoleTab: Hashable {
     case screen(MrasemDestination)
+    case admin(AdminTab)
     case soon(SoonTab)
 
     var labelKey: String {
         switch self {
         case let .screen(destination): return destination.labelKey
+        case let .admin(tab): return tab.labelKey
         case let .soon(tab): return tab.labelKey
         }
     }
@@ -72,7 +91,7 @@ enum RoleTab: Hashable {
     static func tabs(for role: ShellRole) -> [RoleTab] {
         switch role {
         case .admin:
-            return [.soon(.adminHome), .soon(.adminDelegations), .soon(.adminResources), .soon(.adminPlaces), .soon(.adminRequests)]
+            return [.admin(.home), .admin(.delegations), .soon(.adminResources), .soon(.adminPlaces), .soon(.adminRequests)]
         case .coordinator:
             return MrasemDestination.team.map { .screen($0) }
         case .member:
@@ -90,6 +109,7 @@ extension RoleTab {
     var icon: MrasemIcon {
         switch self {
         case let .screen(destination): return destination.icon
+        case let .admin(tab): return tab.icon
         case let .soon(tab): return tab.icon
         }
     }

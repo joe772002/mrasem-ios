@@ -18,6 +18,8 @@ nonisolated final class MrasemBackend {
     let trips: DriverTripService
     let guest: GuestService
     let repository: StoreMissionRepository
+    /// تاريخ اليوم (بيتحقن في الاختبارات).
+    let today: () -> MrasemDate
 
     init(
         storage: MrasemStorage = FileMrasemStorage(),
@@ -30,6 +32,7 @@ nonisolated final class MrasemBackend {
         let trips = DriverTripService(store: store, now: now)
 
         self.store = store
+        self.today = today
         self.program = program
         self.requests = requests
         self.trips = trips

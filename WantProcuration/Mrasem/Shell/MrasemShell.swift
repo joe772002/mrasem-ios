@@ -76,6 +76,8 @@ struct MrasemShell: View {
             switch state.selected {
             case let .screen(destination):
                 MrasemDestinationContent(destination: destination, context: context)
+            case let .admin(tab):
+                AdminTabContent(tab: tab, context: context)
             case let .soon(tab):
                 MrasemPlaceholderScreen(titleKey: tab.labelKey, phase: tab.phase)
             }
@@ -110,6 +112,21 @@ private struct MrasemDestinationContent: View {
             TeamRequestsScreen(context: context)
         case .teamArchive:
             TeamArchiveScreen(context: context)
+        }
+    }
+}
+
+/// تابات الأدمن اللي اتبنت (Phase 14).
+private struct AdminTabContent: View {
+    let tab: AdminTab
+    let context: MrasemAppContext
+
+    var body: some View {
+        switch tab {
+        case .home:
+            AdminHomeScreen(context: context)
+        case .delegations:
+            AdminDelegationsScreen(context: context)
         }
     }
 }
