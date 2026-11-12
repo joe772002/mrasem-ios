@@ -41,9 +41,7 @@ enum MrasemFonts {
         let baseDescriptor = CTFontCopyFontDescriptor(base)
         let variation: [String: Any] = ["wght": weight]
         let attributes = [kCTFontVariationAttribute: variation as NSDictionary] as CFDictionary
-        guard let descriptor = CTFontDescriptorCreateCopyWithAttributes(baseDescriptor, attributes) else {
-            return .custom(displayName, size: size)
-        }
+        let descriptor = CTFontDescriptorCreateCopyWithAttributes(baseDescriptor, attributes)
         return Font(CTFontCreateWithFontDescriptor(descriptor, size, nil))
     }
 
@@ -166,7 +164,7 @@ extension MrasemTypography {
 extension View {
     /// يطبّق نمط نص مراسم (خط + ارتفاع سطر + تباعد حروف).
     func mrasemText(_ style: MrasemTextStyle, tabular: Bool = false) -> some View {
-        MrasemTextModifier(style: style, tabular: tabular)
+        modifier(MrasemTextModifier(style: style, tabular: tabular))
     }
 }
 
