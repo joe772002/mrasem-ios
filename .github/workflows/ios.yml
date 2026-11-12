@@ -146,13 +146,39 @@ jobs:
       - name: Collect crash reports
         if: failure()
         run: |
-          echo "==== simulator crash reports ===="
-          for f in ~/Library/Logs/DiagnosticReports/*.ips; do
-            [ -e "$f" ] || continue
-            echo "=== $f ==="
-            head -c 20000 "$f"
-            echo
-          done
+          cat > .build/crash_frames.py <<'PY'
+          import glob
+          import json
+          import sys
+
+          for path in glob.glob(sys.argv[1] + "/Library/Logs/DiagnosticReports/*.ips"):
+              print("=== " + path + " ===")
+              try:
+                  with open(path, "r", errors="replace") as handle:
+                      header = handle.readline()
+                      payload = json.load(handle)
+              except Exception as exc:  # noqa: BLE001
+                  print("  could not parse:", exc)
+                  continue
+
+              meta = json.loads(header) if header.strip() else {}
+              print("  bundle:", meta.get("bundleID"), "version:", meta.get("app_version"))
+              exception = payload.get("exception", {})
+              print("  exception:", exception.get("type"), exception.get("signal"),
+                    payload.get("termination", {}).get("indicator"))
+              print("  reason:", payload.get("asi", {}).get("assertion", "")[:200])
+
+              images = payload.get("usedImages", [])
+              for thread in payload.get("threads", []):
+                  if not thread.get("triggered"):
+                      continue
+                  print("  --- faulting thread ---")
+                  for frame in thread.get("frames", [])[:45]:
+                      index = frame.get("imageIndex", 0)
+                      name = images[index].get("name", "?") if index < len(images) else "?"
+                      print("   ", name, frame.get("symbol", ""), frame.get("imageOffset", ""))
+          PY
+          python3 .build/crash_frames.py "$HOME" || true
           echo "==== end ===="
 
   smoke:
