@@ -1,0 +1,70 @@
+name: iOS
+
+# Mrasem iOS — build gate.
+#
+# There is no macOS machine in the authoring environment, so this workflow is
+# the only way to know the project still compiles. Every phase must leave CI green.
+#
+# The `test` job is added in Phase 2, when the WantProcurationTests target exists.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build (simulator)
+    # The project targets iOS 26.0, so the runner needs Xcode 26.
+    runs-on: macos-26
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show toolchain
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Cache Swift Package Manager
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Caches/org.swift.swiftpm
+            .build
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Resolve packages
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -project WantProcuration.xcodeproj \
+            -scheme WantProcuration
+
+      - name: Build
+        run: |
+          set -o pipefail
+          mkdir -p .build
+          xcodebuild build \
+            -project WantProcuration.xcodeproj \
+            -scheme WantProcuration \
+            -destination 'generic/platform=iOS Simulator' \
+            -derivedDataPath .build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            2>&1 | tee .build/build.log
+          status=${PIPESTATUS[0]}
+          if [ $status -ne 0 ]; then
+            echo "---- compiler diagnostics ----"
+            grep -E "(error|warning):" .build/build.log | head -100 || true
+          fi
+          exit $status

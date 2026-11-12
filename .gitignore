@@ -135,3 +135,7 @@ iOSInjectionProject/
 # local secrets / generated audio
 tts_key.txt
 Config/Secrets.xcconfig
+
+# IDE (local, machine specific)
+.idea/
+*.xcuserstate

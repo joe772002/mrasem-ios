@@ -1,11 +1,11 @@
 // App.xcconfig — base build settings for the WantProcuration target (committed).
 //
-// APP_SIGNING_SECRET signs every POST /chat to the AI Gateway (IOS_PORT_GUIDE.md §4.10).
-// Do NOT put the real secret here. Put it in Config/Secrets.xcconfig (ignored by git):
-//     APP_SIGNING_SECRET = the-secret-from-the-gateway-team
-// Without it the app still works, but the gateway gives this device fewer smart replies per day.
-// Note: in .xcconfig files "//" starts a comment, so the secret must not contain "//".
-
-APP_SIGNING_SECRET =
+// Phase 0 (Mrasem): the proxy app's AI Gateway signing secret was removed together
+// with the gateway code. Mrasem talks to no backend in this phase, so nothing secret
+// is needed here.
+//
+// Rule D5: never commit real secrets. If a future phase needs one, put it in
+// Config/Secrets.xcconfig (ignored by git) and pull it in with #include? below.
+// Note: in .xcconfig files "//" starts a comment, so a secret must not contain "//".
 
 #include? "Secrets.xcconfig"

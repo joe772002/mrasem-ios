@@ -23,19 +23,21 @@
 - ريبو iOS: https://github.com/joe772002/mrasem-ios.git
 - للرجوع عند الشك فقط: الديزاين الأصلي https://claude.ai/artifact/Gg4iccc4Y1qqbwAV7d2d52 وكانفس التحسين https://claude.ai/artifact/PNNaXBfzvj6p29SZwE6dHg
 
-## حالة المشروع الحالي (اتفحص 2026-11-12)
+## حالة المشروع الحالي (آخر تحديث 2026-11-12 — بعد Phase 0)
 
-- SwiftUI، 102 ملف Swift، target واحد اسمه `WantProcuration`، **من غير test target**.
+- SwiftUI، **36 ملف Swift** (كانوا 102)، target واحد اسمه `WantProcuration`، **من غير test target** (بيتضاف في Phase 2).
 - النمط: `View` + `ViewModel: ObservableObject` (MVVM)، و`AppManager` كـ `@StateObject` للغة والثيم.
 - التنقل: مكتبة `SwiftfulRouting` (`RouterView`).
 - المكتبات (SPM): `SwiftfulRouting`، `SwiftfulUI`، `IQKeyboardManager`.
-- الشبكة: `Networking/APIClient.swift` (async/await فوق URLSession).
+- الشبكة: `Networking/APIClient.swift` (async/await فوق URLSession) — موجود بس مش مستخدم في مراسم.
 - المشروع `objectVersion = 77` بـ **File System Synchronized Groups**: أي ملف يتضاف أو يتمسح من فولدر `WantProcuration/` بيظهر في Xcode لوحده، من غير تعديل `project.pbxproj`. ده اللي بيخلّي الشغل من Windows ممكن.
 - `IPHONEOS_DEPLOYMENT_TARGET = 26.0`، Swift 5.
-- Bundle ID: `com.informatiqueComp.reserveProcuration2` · الاسم: «أرغب في عمل توكيل» · الإصدار 1.07.
-- الخطوط: Cairo (6 أوزان). الألوان: Asset Catalog + `Color.theme`.
-- النصوص: `Localizable.xcstrings` (اللغة المصدر `en`).
-- الفولدر **مش git repo** لسه.
+- Bundle ID: `com.informatiqueComp.reserveProcuration2` · **اسم العرض: «مراسم»** · الإصدار 1.07.
+- الخطوط: Cairo (6 أوزان) — Reem Kufi و IBM Plex Sans Arabic هيتبعتوا في Phase 1.
+- النصوص: `Localizable.xcstrings` — **276 مفتاح** (13 بتوع الكود القديم اللي فضل + 263 `mrasem_*` منقولة حرفياً من Android)، `sourceLanguage = ar`.
+- الـ Folder **repo على GitHub**: `https://github.com/joe772002/mrasem-ios.git`.
+- **CI شغال**: `.github/workflows/ios.yml` بيبني على runner `macos-26`.
+- كود مراسم كله تحت `WantProcuration/Mrasem/` (قاعدة A9) — دلوقتي فيه `Theme/MrasemBrand.swift` (مؤقت) و`Shell/MrasemSplash.swift` و`Shell/MrasemPlaceholderScreen.swift`.
 
 ## قيد مهم: مفيش Mac
 
@@ -48,9 +50,11 @@
 
 ## القرارات المفتوحة (الافتراضي بين قوسين)
 
+> القرار #1 اتاخد: **الـ Bundle ID سيب زي ما هو**، واسم العرض بقى «مراسم». باقي القرارات ماشي على الافتراضي.
+
 | # | القرار | الافتراضي |
 |---|---|---|
-| 1 | الـ Bundle ID واسم الـ target | **يفضلوا زي ما هم** (زي ما الـ package فضل في Android)، واسم العرض يبقى «مراسم». تحذير: لو اترفع على نفس حساب Apple بنفس الـ Bundle ID هيبقى تحديث لتطبيق التوكيل، مش تطبيق جديد |
+| 1 | الـ Bundle ID واسم الـ target | ✅ **اتحسم** — Bundle ID زي ما هو (`com.informatiqueComp.reserveProcuration2`)، واسم العرض «مراسم». تحذير: لو اترفع على نفس حساب Apple بنفس الـ Bundle ID هيبقى تحديث لتطبيق التوكيل، مش تطبيق جديد |
 | 2 | كود التوثيق | يتحذف **الخاص بالتوثيق بس**، والأركيتكتشر تفضل (الشبكة، الـ Extensions، مكوّنات الفورم، `AppManager`، `LocationManager`، المكتبات) — نفس قرار Android النهائي |
 | 3 | البيانات | محلية ورا Repository، منقولة حرفياً من `04-DEMO-DATA.md` |
 | 4 | اللغة | عربي RTL فقط |
@@ -61,4 +65,7 @@
 
 ## الخطوة الجاية
 
-اعمل الريبو على GitHub وابعتلي الرابط، وبعدها «ابدا phase 0».
+Phase 0 خلص. الخطوة الجاية:
+
+1. **شوف نتيجة الـ CI** على الـ push — أول build على `macos-26`. لو أخطاء، ابعتهالي وأنا أصلّحها.
+2. **قول «ابدا phase 1»** — الـ Design System: الثيم (`MrasemColors` Light/Dark) · الخطوط · الأيقونات · كل المكوّنات المشتركة، مع `#Preview` للوضعين.

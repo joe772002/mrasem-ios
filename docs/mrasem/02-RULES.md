@@ -81,12 +81,14 @@ Mrasem/
 
 ## F. ملاحظات على المشروع الحالي
 
-- مفيش git ولا test target.
-- `WantProcurationApp` بيعمل force-unwrap لخط Cairo في الـ `init` (`UIFont(name:)!`) — لو الخط اتشال التطبيق هيقع.
+> آخر تحديث: 2026-11-12 — بعد Phase 0.
+
+- **اتحل في Phase 0:** مفيش git → بقى repo على `joe772002/mrasem-ios`. الـ force-unwrap للخط → بقى `if let`. مفاتيح الـ AI Gateway واسم Siri البديل → اتشالت.
+- مفيش **test target** لسه — بيتضاف في Phase 2 (خطوة على Xcode أو Mac في السحابة).
 - `AppManager.isDarkMode` افتراضيه `true` وبيتقرا من `UserDefaults` — هيتوصّل بخيار الثيم (فاتح/داكن/النظام).
-- `Info.plist` فيه مفاتيح الـ AI Gateway واسم Siri البديل «توكيل» — خاصين بالتوثيق.
 - `DEVELOPMENT_TEAM = 25N3SF9UHQ` ثابت في المشروع — للمراجعة لو الحساب هيتغير.
 - رؤوس الملفات فيها أسماء مشاريع قديمة (MTCIT, mojEgypt) — تجميلي.
+- **الـ Bundle ID** لسه `com.informatiqueComp.reserveProcuration2` (بتاع تطبيق التوكيل). لو اترفع بنفس الحساب، هيبقى **تحديث** للتطبيق القديم مش تطبيق جديد.
 
 ## سجل القرارات
 
@@ -97,3 +99,11 @@ Mrasem/
 | 2026-11-12 | ألوان مراسم في الكود مش في Asset Catalog (B4) | مطابقة Android، ومراجعة من غير Xcode |
 | 2026-11-12 | مصدر الديزاين كود Android (`enhance`) مباشرة، مش الويب (B1) | طلب صاحب المشروع |
 | 2026-11-12 | الريبو: `joe772002/mrasem-ios`؛ أول commit هو حالة مشروع التوثيق قبل أي حذف | نقطة رجوع |
+| 2026-11-12 | **Bundle ID سيب زي ما هو**، واسم العرض «مراسم» بس | قرار صاحب المشروع. التحذير: نفس الـ ID على نفس حساب Apple = تحديث للتطبيق القديم |
+| 2026-11-12 | `Views/Reservation/Model/` اتشال، وأنواع الـ pickers اتنقلت لـ `Components/FormComponents/ReservationPickerModels.swift` | `DynamicFormField` لسه بيحتاجها (D2: مكوّنات الفورم تفضل)، بس شاشات الحجز بتاعت التوثيق اتحذفت |
+| 2026-11-12 | `DeviceIdentity` اتحذف مع `Features/Assistant/`، ومعاه `ReservationRequest` | `DeviceIdentity` كان مربوط بالـ Gateway secret اللي اتشال؛ `ReservationRequest` كان بيستخدمه ومكانش هيتحتاج |
+| 2026-11-12 | `Localizable.xcstrings`: `sourceLanguage` = `ar` | Android-xml بيحط العربي في `values/` و`values-ar/` مع بعض، والتطبيق عربي بس (قرار #4) |
+| 2026-11-12 | `NSCameraUsageDescription` · `NSMicrophoneUsageDescription` · `NSSpeechRecognitionUsageDescription` · `NSPhotoLibraryUsageDescription` اتشالت | ميزاتها (ID Scanner + Voice Input) اتحذفت مع كود التوثيق؛ مفاتيح الموقع اتفضلت لأن `LocationManager` محفوظ (D2) |
+| 2026-11-12 | `Config/Secrets.example.xcconfig` اتحذف و`App.xcconfig` اتمسح منه الـ secret | مراسم مش بيبعت لـ Backend في أي phase؛ القاعدة D5 بتفضل: أي سر جاي يبقى في `Secrets.xcconfig` المتجاهَل |
+| 2026-11-12 | الـ CI على runner `macos-26` | `IPHONEOS_DEPLOYMENT_TARGET = 26.0` محتاج Xcode 26 |
+| 2026-11-12 | الـ splash جوه التطبيق (مش System Launch Screen) | نفس Android: splash عنّابي ١.٥ ثانية جوّه `MrasemRootView`. الـ launch screen بتاع النظام يفضل لحد Phase 9 |

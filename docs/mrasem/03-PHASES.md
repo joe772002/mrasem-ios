@@ -46,6 +46,18 @@
 
 **القبول:** CI أخضر، التطبيق يفتح على placeholder، صفر references للكود المحذوف (`grep`).
 
+**الحالة (2026-11-12): الكود اتنفذ على Windows، مستني أول تشغيل للـ CI.**
+- **اتحذف (٦٨ ملف Swift):** `AI/` · `Features/` (Assistant + Booking + FAQ) · `Intents/` · `Models/` · `Preview/` · `Views/Home/` · `Views/OfficeListView/` · `Views/Reservation/` · `Views/OtherServices/OtherServicesView.swift` · `Views/VersionCheck/` · `Views/Settings/` · `Managers/VersionManager.swift` · `Components/IDScanner/` · `_to_delete/`.
+- **اتحفظ (زي ما هو):** `Networking/APIClient` · `Extensions/*` · `Components/FormComponents` · `AlertComponents` · `NavigationComponents` · `CircleButtonView` · `DataModel/*` · `AppManager` · `LocationManager` · `Logger` · `WebViewScreen` · خطوط Cairo · المكتبات الثلاث.
+- **نقل (مش حذف):** أنواع الـ pickers (`TransactionCategory` · `TransactionType` · `ReservationDate` · `ReservePeriod` · `ReservationTime`) اتنقلت لـ `Components/FormComponents/ReservationPickerModels.swift` — لأن `DynamicFormField` لسه بيحتاجها، وبكده ما بقى فيه مجلد `Views/Reservation/` خالص.
+- **اتكتب جديد:** `WantProcuration/Mrasem/Theme/MrasemBrand.swift` (مؤقت، يتشال في Phase 1) · `Mrasem/Shell/MrasemSplash.swift` · `Mrasem/Shell/MrasemPlaceholderScreen.swift`.
+- **`WantProcurationApp.swift` اتكتب من جديد:** اتشال `IntentRoutingModifier` و`HomeScreenView`، والـ force-unwrap للخط بقى `if let`، والاتجاه واللغة ثابتين (`ar` + RTL)، والـ splash بيعرض ١.٥ ثانية وبعدها الـ placeholder.
+- **`Info.plist`:** اتشال `AppSigningSecret` · `AIGatewayURL` · `AIGatewayToken` · `INAlternativeAppNames`.
+- **`project.pbxproj`:** `INFOPLIST_KEY_CFBundleDisplayName` بقى «مراسم» (موضعين)، واتشال `NSCameraUsageDescription` · `NSMicrophoneUsageDescription` · `NSSpeechRecognitionUsageDescription` · `NSPhotoLibraryUsageDescription` (ميزاتها اتحذفت). مكان `INFOPLIST_FILE` والباقي ما اتغيّرش.
+- **`Config/`:** `App.xcconfig` اتمسح منه الـ secret، و`Secrets.example.xcconfig` اتحذف (مفيش أسرار دلوقتي).
+- **`Localizable.xcstrings`:** اتقص من ٢٥٩ لـ ٢٧٦ مفتاح — ١٣ مفتاح لسه مستخدم في الكود اللي فضل + ٢٦٣ مفتاح `mrasem_*` منقولة حرفياً من Android. `sourceLanguage` بقى `ar` (أندرويد بيحط العربي في `values/` و`values-ar/` مع بعض).
+- **CI:** `.github/workflows/ios.yml` — runner `macos-26`، `xcodebuild build` على simulator من غير signing. مفيش test job لسه (Phase 2).
+
 ---
 
 ## Phase 1 — Design System
