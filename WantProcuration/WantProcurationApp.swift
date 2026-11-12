@@ -20,6 +20,10 @@ struct WantProcurationApp: App {
     @StateObject private var appManager = AppManager()
 
     init() {
+        // The keyboard manager swizzles UIKit and touches the key window, which
+        // is not available (and not stable) inside a unit-test host.
+        guard !MrasemEnvironment.isRunningUnitTests else { return }
+
         IQKeyboardManager.shared.isEnabled = true
         IQKeyboardManager.shared.resignOnTouchOutside = true
         IQKeyboardToolbarManager.shared.isEnabled = true

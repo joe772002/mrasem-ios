@@ -141,6 +141,20 @@ jobs:
           fi
           exit $status
 
+      # A crash inside the test host leaves an .ips report on the runner.
+      # Without it a crash is just "pointer being freed was not allocated".
+      - name: Collect crash reports
+        if: failure()
+        run: |
+          echo "==== simulator crash reports ===="
+          for f in ~/Library/Logs/DiagnosticReports/*.ips; do
+            [ -e "$f" ] || continue
+            echo "=== $f ==="
+            head -c 20000 "$f"
+            echo
+          done
+          echo "==== end ===="
+
   smoke:
     name: Launch the app
     runs-on: macos-26
