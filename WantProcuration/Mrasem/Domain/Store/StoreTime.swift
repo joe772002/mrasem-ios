@@ -17,6 +17,8 @@ enum StoreValidationError: Error, Equatable {
     case notFound
     /// آخر أدمن ما ينفعش يتحذف أو يتغيّر دوره.
     case lastAdmin
+    /// تعديل أيام الوفد هيسيب فقرات برّه الفترة.
+    case programOutsideRange
 }
 
 nonisolated enum StoreTime {
@@ -95,4 +97,17 @@ nonisolated enum StoreTime {
 extension String {
     /// النص بعد شيل المسافات من الأطراف.
     var storeTrimmed: String { trimmingCharacters(in: .whitespacesAndNewlines) }
+
+    /// الأرقام العربية (٠–٩) والفارسية (۰–۹) والفاصلة العشرية العربية ← لاتيني، بعد شيل المسافات.
+    /// الكيبورد العربي بيكتب «١٠:٣٠» والقاعدة بتخزّن «10:30» (التواريخ والأوقات والأرقام).
+    var storeLatinDigits: String {
+        String(storeTrimmed.unicodeScalars.map { scalar -> Character in
+            switch scalar.value {
+            case 0x0660...0x0669: return Character(String(scalar.value - 0x0660))
+            case 0x06F0...0x06F9: return Character(String(scalar.value - 0x06F0))
+            case 0x066B: return "."
+            default: return Character(scalar)
+            }
+        })
+    }
 }

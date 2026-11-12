@@ -185,7 +185,7 @@ nonisolated final class InMemoryMissionRepository: MissionRepository {
 
     private func updateMission(_ mode: MissionMode, transform: (Mission) -> Mission) {
         update { state in
-            state.missions[mode] = transform(state.missions[mode]!)
+            state.missions[mode] = transform(state.missions[mode] ?? MissionStateBuilder.emptyMission(mode))
         }
     }
 }

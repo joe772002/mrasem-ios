@@ -30,6 +30,12 @@ nonisolated final class DelegationService {
     @discardableResult
     func save(_ record: DelegationRecord) -> Result<DelegationRecord, StoreValidationError> {
         if let error = validate(record) { return .failure(error) }
+        // تقليص أيام وفد موجود: فقرة برّه الفترة الجديدة هتبقى يتيمة (G3)، فلازم تتنقل أو تتحذف الأول.
+        if store.database.program.contains(where: {
+            $0.delegationId == record.id && ($0.date < record.start || $0.date > record.end)
+        }) {
+            return .failure(.programOutsideRange)
+        }
 
         var saved = record
         saved.name = record.name.storeTrimmed
@@ -73,6 +79,9 @@ nonisolated final class DelegationService {
     func validate(_ member: MemberRecord, in db: MrasemDatabase) -> StoreValidationError? {
         if member.name.storeTrimmed.isEmpty { return .emptyName }
         if db.delegation(member.delegationId) == nil { return .notFound }
+        // مراجع لسجلات اتحذفت (مثلاً نموذج اتفتح قبل الحذف) = خطأ بدل ما تتحفظ يتيمة.
+        if let carId = member.carId, db.car(carId) == nil { return .notFound }
+        if let escortId = member.escortId, db.escort(escortId) == nil { return .notFound }
         return nil
     }
 

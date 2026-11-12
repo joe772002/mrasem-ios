@@ -625,6 +625,17 @@
         }
       }
     },
+    "mrasem_admin_error_program_outside" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فيه فقرات في البرنامج برّه الأيام الجديدة. انقلها أو احذفها الأول."
+          }
+        }
+      }
+    },
     "mrasem_admin_error_range" : {
       "extractionState" : "manual",
       "localizations" : {

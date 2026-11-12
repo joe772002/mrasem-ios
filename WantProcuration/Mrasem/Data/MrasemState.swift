@@ -162,7 +162,8 @@ struct MrasemState: Equatable {
         self.missions = missions
     }
 
-    var mission: Mission { missions[mode]! }
+    /// الوضع الحالي دايماً موجود من `MissionStateBuilder`؛ ولو لأي سبب مش موجود نرجّع مهمة فاضية بدل crash (G5).
+    var mission: Mission { missions[mode] ?? MissionStateBuilder.emptyMission(mode) }
 
     func arrived(for mode: MissionMode? = nil) -> Int {
         arrived[mode ?? self.mode] ?? 0

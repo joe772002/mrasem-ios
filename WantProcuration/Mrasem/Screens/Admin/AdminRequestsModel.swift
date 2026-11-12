@@ -70,7 +70,7 @@ final class AdminRequestsModel: ObservableObject {
     }
 
     func addToProgram(_ draft: RequestProgramDraft) -> String? {
-        switch backend.requests.addToProgram(draft.requestId, date: draft.date, time: draft.time.storeTrimmed, carId: draft.carId) {
+        switch backend.requests.addToProgram(draft.requestId, date: draft.date, time: draft.time.storeLatinDigits, carId: draft.carId) {
         case let .failure(error):
             return error.messageKey
         case .success:

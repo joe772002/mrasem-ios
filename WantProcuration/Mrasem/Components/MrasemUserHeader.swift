@@ -117,8 +117,8 @@ struct MrasemUserHeader: View {
 
     @ViewBuilder
     private var delegationRow: some View {
-        let selected = delegations.first { $0.id == selectedDelegationId } ?? delegations[0]
-        let label = mrasemString("mrasem_header_delegation_label", [selected.name])
+        let selected = delegations.first { $0.id == selectedDelegationId } ?? delegations.first
+        let label = mrasemString("mrasem_header_delegation_label", [selected?.name ?? ""])
 
         if delegations.count > 1 {
             Menu {

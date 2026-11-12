@@ -18,6 +18,7 @@ extension StoreValidationError {
         case .dateOutsideDelegation: return "mrasem_admin_error_outside"
         case .notFound: return "mrasem_admin_error_missing"
         case .lastAdmin: return "mrasem_admin_error_last_admin"
+        case .programOutsideRange: return "mrasem_admin_error_program_outside"
         }
     }
 }
@@ -100,8 +101,8 @@ struct DelegationDraft: Equatable {
         record.mode = mode
         record.host = host.storeTrimmed
         record.countryLabel = countryLabel.storeTrimmed
-        record.start = start.storeTrimmed
-        record.end = end.storeTrimmed
+        record.start = start.storeLatinDigits
+        record.end = end.storeLatinDigits
         record.hotelId = hotelId
         record.venueId = venueId
         record.dress = dress
@@ -193,8 +194,8 @@ struct ProgramDraft: Equatable {
 
     func record() -> ProgramItemRecord {
         ProgramItemRecord(
-            id: id, delegationId: delegationId, date: date, time: time.storeTrimmed,
-            endTime: kind == .free ? endTime.storeTrimmed : nil, title: title, kind: kind,
+            id: id, delegationId: delegationId, date: date, time: time.storeLatinDigits,
+            endTime: kind == .free ? endTime.storeLatinDigits : nil, title: title, kind: kind,
             placeId: placeId, note: note, carId: carId, isKey: isKey, isChanged: base?.isChanged ?? false
         )
     }

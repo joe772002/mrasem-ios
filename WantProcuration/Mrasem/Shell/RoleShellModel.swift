@@ -46,7 +46,7 @@ struct RoleShellState: Equatable {
         case .member: selected = .screen(MrasemDestination.of(nav.guestTab))
         case .coordinator: selected = .screen(MrasemDestination.of(nav.teamTab))
         case .admin, .escort, .driver:
-            selected = chosen.flatMap { tabs.contains($0) ? $0 : nil } ?? tabs[0]
+            selected = chosen.flatMap { tabs.contains($0) ? $0 : nil } ?? tabs.first ?? .admin(.home)
         }
 
         return RoleShellState(

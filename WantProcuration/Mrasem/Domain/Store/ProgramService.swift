@@ -31,6 +31,8 @@ nonisolated final class ProgramService {
             if to <= from { return .endBeforeStart }
         }
         if item.date < delegation.start || item.date > delegation.end { return .dateOutsideDelegation }
+        if let carId = item.carId, db.car(carId) == nil { return .notFound }
+        if let placeId = item.placeId, db.place(placeId) == nil { return .notFound }
         return nil
     }
 

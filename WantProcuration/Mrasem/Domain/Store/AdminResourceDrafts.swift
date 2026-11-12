@@ -162,12 +162,12 @@ struct PlaceDraft: Equatable {
     }
 
     private static func int(_ text: String) -> Int {
-        let value = text.storeTrimmed
+        let value = text.storeLatinDigits
         return value.isEmpty ? 0 : (Int(value) ?? -1)
     }
 
     private static func double(_ text: String) -> Double {
-        let value = text.storeTrimmed
+        let value = text.storeLatinDigits
         return value.isEmpty ? 0 : (Double(value) ?? -1)
     }
 
