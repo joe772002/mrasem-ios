@@ -1,0 +1,11 @@
+// App.xcconfig — base build settings for the WantProcuration target (committed).
+//
+// APP_SIGNING_SECRET signs every POST /chat to the AI Gateway (IOS_PORT_GUIDE.md §4.10).
+// Do NOT put the real secret here. Put it in Config/Secrets.xcconfig (ignored by git):
+//     APP_SIGNING_SECRET = the-secret-from-the-gateway-team
+// Without it the app still works, but the gateway gives this device fewer smart replies per day.
+// Note: in .xcconfig files "//" starts a comment, so the secret must not contain "//".
+
+APP_SIGNING_SECRET =
+
+#include? "Secrets.xcconfig"

@@ -1,0 +1,79 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "Book at the nearest office in ${applicationName}" : {
+      "localizations" : {
+        "ar" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "احجزلي في أقرب مكتب في ${applicationName}",
+              "احجز لي موعد في أقرب مكتب في ${applicationName}",
+              "أقرب مكتب توثيق في ${applicationName}"
+            ]
+          }
+        },
+        "en" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "Book at the nearest office in ${applicationName}",
+              "Book an appointment at the nearest office with ${applicationName}",
+              "Find the nearest office in ${applicationName}"
+            ]
+          }
+        }
+      }
+    },
+    "I want to make a power of attorney in ${applicationName}" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "ar" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "عايز أعمل توكيل في ${applicationName}",
+              "أنا عايزة أعمل توكيل في ${applicationName}",
+              "أريد عمل توكيل في ${applicationName}"
+            ]
+          }
+        },
+        "en" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "I want to make a power of attorney in ${applicationName}",
+              "Which power of attorney do I need in ${applicationName}",
+              "Find my transaction type in ${applicationName}"
+            ]
+          }
+        }
+      }
+    },
+    "When is my reservation in ${applicationName}" : {
+      "localizations" : {
+        "ar" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "إيه ميعاد حجزي في ${applicationName}",
+              "ما هو موعد حجزي في ${applicationName}",
+              "استعلم عن حجزي في ${applicationName}"
+            ]
+          }
+        },
+        "en" : {
+          "stringSet" : {
+            "state" : "translated",
+            "values" : [
+              "When is my reservation in ${applicationName}",
+              "What is my appointment in ${applicationName}",
+              "Check my reservation in ${applicationName}"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

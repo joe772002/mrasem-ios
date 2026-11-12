@@ -1,0 +1,449 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		858D32472E9CD9EC00E5A18D /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 858D32462E9CD9EC00E5A18D /* IQKeyboardManagerSwift */; };
+		85D0A39B2E924F5800B43378 /* SwiftfulRouting in Frameworks */ = {isa = PBXBuildFile; productRef = 85D0A39A2E924F5800B43378 /* SwiftfulRouting */; };
+		85D7C6B32E93853F008F71F6 /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 85D7C6B22E93853F008F71F6 /* SwiftfulUI */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		854425D82E8CF2AA00E577E7 /* WantProcuration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WantProcuration.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		85F1A0012F00000000C0FFEE /* Config/App.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config/App.xcconfig; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		856BC8B12E96574E006FD2ED /* Exceptions for "WantProcuration" folder in "WantProcuration" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 854425D72E8CF2AA00E577E7 /* WantProcuration */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		854425DA2E8CF2AA00E577E7 /* WantProcuration */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				856BC8B12E96574E006FD2ED /* Exceptions for "WantProcuration" folder in "WantProcuration" target */,
+			);
+			path = WantProcuration;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		854425D52E8CF2AA00E577E7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				85D7C6B32E93853F008F71F6 /* SwiftfulUI in Frameworks */,
+				85D0A39B2E924F5800B43378 /* SwiftfulRouting in Frameworks */,
+				858D32472E9CD9EC00E5A18D /* IQKeyboardManagerSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		854425CF2E8CF2AA00E577E7 = {
+			isa = PBXGroup;
+			children = (
+				85F1A0012F00000000C0FFEE /* Config/App.xcconfig */,
+				854425DA2E8CF2AA00E577E7 /* WantProcuration */,
+				854425D92E8CF2AA00E577E7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		854425D92E8CF2AA00E577E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				854425D82E8CF2AA00E577E7 /* WantProcuration.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		854425D72E8CF2AA00E577E7 /* WantProcuration */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 854425E32E8CF2AB00E577E7 /* Build configuration list for PBXNativeTarget "WantProcuration" */;
+			buildPhases = (
+				854425D42E8CF2AA00E577E7 /* Sources */,
+				854425D52E8CF2AA00E577E7 /* Frameworks */,
+				854425D62E8CF2AA00E577E7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				854425DA2E8CF2AA00E577E7 /* WantProcuration */,
+			);
+			name = WantProcuration;
+			packageProductDependencies = (
+				85D0A39A2E924F5800B43378 /* SwiftfulRouting */,
+				85D7C6B22E93853F008F71F6 /* SwiftfulUI */,
+				858D32462E9CD9EC00E5A18D /* IQKeyboardManagerSwift */,
+			);
+			productName = MTCIT;
+			productReference = 854425D82E8CF2AA00E577E7 /* WantProcuration.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		854425D02E8CF2AA00E577E7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2600;
+				LastUpgradeCheck = 2600;
+				TargetAttributes = {
+					854425D72E8CF2AA00E577E7 = {
+						CreatedOnToolsVersion = 26.0.1;
+					};
+				};
+			};
+			buildConfigurationList = 854425D32E8CF2AA00E577E7 /* Build configuration list for PBXProject "WantProcuration" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ar,
+			);
+			mainGroup = 854425CF2E8CF2AA00E577E7;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				85D0A3992E924F5800B43378 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */,
+				85D7C6B12E93853F008F71F6 /* XCRemoteSwiftPackageReference "SwiftfulUI" */,
+				858D32452E9CD9EC00E5A18D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 854425D92E8CF2AA00E577E7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				854425D72E8CF2AA00E577E7 /* WantProcuration */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		854425D62E8CF2AA00E577E7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		854425D42E8CF2AA00E577E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		854425E12E8CF2AB00E577E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 25N3SF9UHQ;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		854425E22E8CF2AB00E577E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 25N3SF9UHQ;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		854425E42E8CF2AB00E577E7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85F1A0012F00000000C0FFEE /* Config/App.xcconfig */;
+			buildSettings = {
+				AI_GATEWAY_TOKEN = "";
+				AI_GATEWAY_URL = "https://closure-related-society-twin.trycloudflare.com";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.07;
+				DEVELOPMENT_TEAM = 25N3SF9UHQ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WantProcuration/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "أرغب في عمل توكيل";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby offices";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show nearby offices";
+				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to show nearby offices";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby offices";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "يستخدم التطبيق الميكروفون لكتابة طلبك بالصوت في مساعد التوثيق.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "يحوّل التطبيق كلامك إلى نص لإرساله إلى مساعد التوثيق.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.07;
+				PRODUCT_BUNDLE_IDENTIFIER = com.informatiqueComp.reserveProcuration2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		854425E52E8CF2AB00E577E7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 85F1A0012F00000000C0FFEE /* Config/App.xcconfig */;
+			buildSettings = {
+				AI_GATEWAY_TOKEN = "";
+				AI_GATEWAY_URL = "https://closure-related-society-twin.trycloudflare.com";
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.07;
+				DEVELOPMENT_TEAM = 25N3SF9UHQ;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WantProcuration/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "أرغب في عمل توكيل";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to take photos";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to show nearby offices";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show nearby offices";
+				INFOPLIST_KEY_NSLocationUsageDescription = "We need your location to show nearby offices";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show nearby offices";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "يستخدم التطبيق الميكروفون لكتابة طلبك بالصوت في مساعد التوثيق.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We need access to your photos";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "يحوّل التطبيق كلامك إلى نص لإرساله إلى مساعد التوثيق.";
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.07;
+				PRODUCT_BUNDLE_IDENTIFIER = com.informatiqueComp.reserveProcuration2;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		854425D32E8CF2AA00E577E7 /* Build configuration list for PBXProject "WantProcuration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				854425E12E8CF2AB00E577E7 /* Debug */,
+				854425E22E8CF2AB00E577E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		854425E32E8CF2AB00E577E7 /* Build configuration list for PBXNativeTarget "WantProcuration" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				854425E42E8CF2AB00E577E7 /* Debug */,
+				854425E52E8CF2AB00E577E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		858D32452E9CD9EC00E5A18D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.1;
+			};
+		};
+		85D0A3992E924F5800B43378 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulRouting.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.1.6;
+			};
+		};
+		85D7C6B12E93853F008F71F6 /* XCRemoteSwiftPackageReference "SwiftfulUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftfulThinking/SwiftfulUI";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		858D32462E9CD9EC00E5A18D /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 858D32452E9CD9EC00E5A18D /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		85D0A39A2E924F5800B43378 /* SwiftfulRouting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85D0A3992E924F5800B43378 /* XCRemoteSwiftPackageReference "SwiftfulRouting" */;
+			productName = SwiftfulRouting;
+		};
+		85D7C6B22E93853F008F71F6 /* SwiftfulUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 85D7C6B12E93853F008F71F6 /* XCRemoteSwiftPackageReference "SwiftfulUI" */;
+			productName = SwiftfulUI;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 854425D02E8CF2AA00E577E7 /* Project object */;
+}
