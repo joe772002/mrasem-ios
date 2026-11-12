@@ -12,9 +12,12 @@ struct MrasemPlaceholderScreen: View {
     @Environment(\.mrasem) private var theme
 
     let titleKey: String
+    /// المرحلة اللي هتتبني فيها الشاشة (لو معروفة).
+    let phase: Int?
 
-    init(titleKey: String = "mrasem_brand_title") {
+    init(titleKey: String = "mrasem_brand_title", phase: Int? = nil) {
         self.titleKey = titleKey
+        self.phase = phase
     }
 
     var body: some View {
@@ -27,6 +30,12 @@ struct MrasemPlaceholderScreen: View {
                 .mrasemText(theme.type.bodySm)
                 .foregroundColor(theme.colors.ink)
                 .multilineTextAlignment(.center)
+
+            if let phase {
+                Text(mrasemString("mrasem_placeholder_phase", [phase.toArabicDigits()]))
+                    .mrasemText(theme.type.label)
+                    .foregroundColor(theme.colors.muted)
+            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(24)

@@ -25,6 +25,24 @@ nonisolated func mrasemNoticeText(_ content: NoticeContent) -> String {
         return text
     case let .requestResolved(place):
         return mrasemString("mrasem_notice_request_resolved", [place ?? mrasemString("mrasem_notice_question_answered")])
+    case let .programChanged(title):
+        return mrasemString("mrasem_notice_program_changed", [title])
+    case let .tripStatus(status, driver):
+        return mrasemString(mrasemTripNoticeKey(status), [driver])
+    case let .requestCreated(text):
+        return mrasemString("mrasem_notice_request_created", [text])
+    case .assignmentChanged:
+        return mrasemString("mrasem_notice_assignment_changed")
+    }
+}
+
+/// مفتاح نص حالة الرحلة.
+nonisolated func mrasemTripNoticeKey(_ status: TripStatus) -> String {
+    switch status {
+    case .scheduled, .onTheWay: return "mrasem_notice_trip_on_the_way"
+    case .arrived: return "mrasem_notice_trip_arrived"
+    case .pickedUp: return "mrasem_notice_trip_picked_up"
+    case .completed: return "mrasem_notice_trip_completed"
     }
 }
 

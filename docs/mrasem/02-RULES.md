@@ -30,7 +30,7 @@ Mrasem/
   Shell/        MrasemShell · MrasemDestination · MrasemSessionViewModel · MrasemToastBus · UiText
   Screens/      Mission · Plan · Services · Explore · Protocol · Assistant · Team (+ Gallery)
   Util/         ArabicDigits · ContactLinks · ExternalLinks · MrasemStrings
-  Domain/Store/ منطق التطبيق الواحد (Phase 12+): StoreTime · PortalInsights · *Service · GuestMissionAdapter
+  Domain/Store/ منطق التطبيق الواحد (Phase 12+): StoreTime · PortalInsights · *Service · GuestMissionAdapter · MissionStateBuilder · ViewScope · UserDirectory
   Store/        قاعدة البيانات المحلية (Phase 11+): الكيانات · MrasemDatabase · MrasemStore · MrasemStorage · MrasemSeed
 ```
 
@@ -87,7 +87,7 @@ Mrasem/
 
 ## F. ملاحظات على المشروع الحالي
 
-> آخر تحديث: 2026-11-12 — بعد Phase 12 (منطق الأعمال المشترك، بانتظار CI).
+> آخر تحديث: 2026-11-12 — بعد Phase 13 (المستخدمين والتبديل، بانتظار CI).
 
 - **اتحل في Phase 0:** مفيش git → بقى repo على `joe772002/mrasem-ios`. الـ force-unwrap للخط → بقى `if let`. مفاتيح الـ AI Gateway واسم Siri البديل → اتشالت.
 - `AppManager.isDarkMode` افتراضيه `true` وبيتقرا من `UserDefaults` — هيتوصّل بخيار الثيم (فاتح/داكن/النظام).
@@ -173,3 +173,10 @@ Mrasem/
 | 2026-11-12 | Phase 12: مرحلة الوصول عند الضيف (٠…٤) من حالة رحلة **أول فقرة** في برنامج الوفد | بدل الزرار اليدوي القديم؛ السائق هو اللي بيحرّكها في Phase 16 |
 | 2026-11-12 | Phase 12: «٨ دقائق إلى الوزارة» بتتبني من دقائق الفندق + `mapLabel` الملتقى بمفتاحين (٣–١٠ «دقائق»، غير كده «دقيقة») | قاعدة C1 + مطابقة بيانات مراسم في الوضعين |
 | 2026-11-12 | Phase 12: ردود المساعد بتتحسب من البيانات الحالية وقت العرض (المحفوظ السؤال بس) | أي تعديل من الفريق بيبان في المحادثة؛ ومن غير ترميز `AssistantReply` |
+| 2026-11-12 | Phase 13: ربط الشاشات بـ`StoreMissionRepository` (نفس بروتوكول `MissionRepository`) بدل إعادة كتابة الـ strategies | الشاشات والاختبارات القديمة تفضل شغالة، والتغيير في طبقة واحدة؛ مفيش compiler عندنا |
+| 2026-11-12 | Phase 13: الوضع (داخل قطر / خارجها) والدور بيتحددوا من وفد المستخدم، ومفتاحَا الهيدر القديمان اتشالوا من الـ Shell | القرار #2 في الخطة: الوضع صفة للوفد |
+| 2026-11-12 | Phase 13: «اختر المستخدم» بيظهر في كل تشغيل، وسؤال البداية مرة واحدة | الخطة §1؛ مسح كل البيانات بيرجّع سؤال البداية |
+| 2026-11-12 | Phase 13: تنبيهات المستخدم بتتعلّم مقروءة لما نبدّل عنه (الصندوق الكامل في Phase 16) | الـ badge يتصفّر من غير شاشة صندوق لسه |
+| 2026-11-12 | Phase 13: علامات «محدَّث» للأقسام (المرافق/السيارة/القاعة) مؤقتة في الذاكرة لكل وفد، وعلامة الفقرة محفوظة (`isChanged`) | زي الأصل؛ الأقسام مالهاش حقل في القاعدة |
+| 2026-11-12 | Phase 13: تعديل نموذج الزيارة بيعدّل سجل المرافق/السيارة/السائق نفسه (مش بيبدّل الشخص) | النموذج نصوص حرة؛ تبديل التعيين من إدارة الموارد (Phase 15) |
+| 2026-11-12 | Phase 13: المرافق والسائق تاباتهم «قريباً» لحد Phase 16، والأدمن لحد 14/15 | الخطة §5 |

@@ -36,27 +36,26 @@ nonisolated final class ProtocolStrategy {
         let state = state ?? repository.state
         let checked = state.checks(for: state.mode)
 
-        let checklist = MrasemDemoData.checklist.enumerated().map { index, label in
+        let checklist = state.reference.checklist.enumerated().map { index, label in
             ChecklistItem(index: index, label: label, checked: checked.contains(index))
         }
 
         return ProtocolContent(
             nextMeeting: state.mission.nextMeeting,
             dressCode: state.dress,
-            dress: MrasemDemoData.dressSets[state.dress]!,
+            dress: state.reference.dressSet(state.dress),
             checklist: checklist,
             readyCount: checklist.count { $0.checked },
             customs: state.mission.customs,
             isInbound: state.mode == .inbound,
-            guides: MrasemDemoData.guides
+            guides: state.reference.guides
         )
     }
 
     /// يقلب عنصر في «قبل الخروج من الفندق» — محفوظ لكل وضع.
     func toggleCheck(_ index: Int) {
-        guard MrasemDemoData.checklist.indices.contains(index) else { return }
-
         let state = repository.state
+        guard state.reference.checklist.indices.contains(index) else { return }
         let checked = state.checks(for: state.mode)
         repository.setCheck(mode: state.mode, index: index, checked: !checked.contains(index))
     }

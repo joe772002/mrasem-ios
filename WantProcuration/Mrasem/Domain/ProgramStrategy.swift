@@ -88,13 +88,18 @@ nonisolated final class ProgramStrategy {
             .map { $0 }
     }
 
+    /// الفقرة الرئيسية: بتدوّر في كل الأيام (اليوم الثاني أولاً زي الأصل).
     static func keyItem(_ mission: Mission) -> KeyItemRef? {
-        guard let day = mission.days.indices.contains(changesDayIndex) ? mission.days[changesDayIndex] : nil else {
-            return nil
+        let indices = Array(mission.days.indices)
+        let order = (indices.contains(changesDayIndex) ? [changesDayIndex] : []) + indices.filter { $0 != changesDayIndex }
+
+        for dayIndex in order {
+            let day = mission.days[dayIndex]
+            if let index = day.items.firstIndex(where: { $0.official?.isKey == true }), let item = day.items[index].official {
+                return KeyItemRef(dayIndex: dayIndex, itemIndex: index, dayLabel: day.label, item: item)
+            }
         }
-        guard let index = day.items.firstIndex(where: { $0.official?.isKey == true }) else { return nil }
-        guard let item = day.items[index].official else { return nil }
-        return KeyItemRef(dayIndex: changesDayIndex, itemIndex: index, dayLabel: day.label, item: item)
+        return nil
     }
 
     /// "HH:mm" + دقائق، مع الالتفاف بعد منتصف الليل.

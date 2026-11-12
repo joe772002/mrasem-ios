@@ -80,7 +80,7 @@ nonisolated enum MrasemEnvironment {
     }
 }
 
-/// Root of the Mrasem app: splash first, then the start destination.
+/// Root of the Mrasem app: splash first, then the app flow (start choice, user picker, shell).
 private struct MrasemRootView: View {
     @Environment(\.mrasem) private var theme
     @State private var isContentVisible = false
@@ -94,7 +94,7 @@ private struct MrasemRootView: View {
                 .ignoresSafeArea()
 
             if isContentVisible {
-                MrasemShell(context: context)
+                MrasemFlowRoot(context: context)
                     .transition(.opacity)
             } else {
                 MrasemSplash()

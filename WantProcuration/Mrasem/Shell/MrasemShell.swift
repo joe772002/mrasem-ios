@@ -7,52 +7,59 @@
 
 import SwiftUI
 
-/// الـ Shell: هيدر ثابت + محتوى التاب الحالي + bottom bar + التوست.
-/// التاب جزء من الحالة (مش back stack).
+/// الـ Shell: هيدر المستخدم + محتوى التاب الحالي + bottom bar + التوست.
+/// التابات حسب دور المستخدم الحالي (Phase 13).
 struct MrasemShell: View {
     @Environment(\.mrasem) private var theme
     @StateObject private var toast = MrasemToastState()
 
     private let context: MrasemAppContext
-    @ObservedObject private var model: MrasemSessionViewModel
+    @ObservedObject private var model: RoleShellModel
 
     init(context: MrasemAppContext) {
         self.context = context
-        self._model = ObservedObject(wrappedValue: context.shell)
+        self._model = ObservedObject(wrappedValue: context.roleShell)
+    }
+
+    /// مفتاح المحتوى: تغيير التاب أو الوفد يبني الشاشة من جديد فيرجع الـ scroll لفوق.
+    private struct ContentKey: Hashable {
+        let tab: RoleTab
+        let delegation: String?
     }
 
     var body: some View {
         let state = model.uiState
-        let tabs = state.tabs
 
         ZStack {
             theme.colors.bg.ignoresSafeArea()
 
             VStack(spacing: 0) {
-                MrasemHeader(
+                MrasemUserHeader(
                     title: mrasemString("mrasem_brand_title"),
                     subtitle: mrasemString("mrasem_brand_subtitle"),
-                    roleOptions: [mrasemString("mrasem_role_guest"), mrasemString("mrasem_role_team")],
-                    roleIndex: Binding(get: { state.roleIndex }, set: { model.onRoleSelected($0) }),
-                    modeOptions: [mrasemString("mrasem_mode_inbound"), mrasemString("mrasem_mode_outbound")],
-                    modeIndex: Binding(get: { state.modeIndex }, set: { model.onModeSelected($0) })
+                    userName: state.userName,
+                    roleLabel: mrasemString(state.role.labelKey),
+                    unread: state.unread,
+                    delegations: state.delegations,
+                    selectedDelegationId: state.selectedDelegationId,
+                    onSwitchUser: { context.flow.openPicker() },
+                    onSelectDelegation: { model.select(delegation: $0) }
                 )
 
-                // مفتاح المحتوى = الوجهة: تغيير الدور أو التاب يبني المحتوى من جديد فيرجع الـ scroll لفوق.
-                MrasemDestinationContent(destination: state.destination, context: context)
-                    .id(state.destination)
+                content(state)
+                    .id(ContentKey(tab: state.selected, delegation: state.selectedDelegationId))
                     .transition(.opacity)
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
 
                 MrasemBottomBar(
-                    items: tabs.map { MrasemBottomBarItem(label: mrasemString($0.labelKey), icon: $0.icon) },
+                    items: state.tabs.map { MrasemBottomBarItem(label: mrasemString($0.labelKey), icon: $0.icon) },
                     selectedIndex: Binding(
                         get: { state.tabIndex },
-                        set: { model.onTabSelected(tabs[$0]) }
+                        set: { if state.tabs.indices.contains($0) { model.select(state.tabs[$0]) } }
                     )
                 )
             }
-            .animation(.easeInOut(duration: 0.2), value: state.destination)
+            .animation(.easeInOut(duration: 0.2), value: state.selected)
 
             MrasemToastHost(state: toast)
         }
@@ -60,10 +67,23 @@ struct MrasemShell: View {
             toast.show(strong: message.strong.resolve(), rest: message.rest?.resolve() ?? "")
         }
     }
+
+    @ViewBuilder
+    private func content(_ state: RoleShellState) -> some View {
+        if state.needsDelegation && !state.hasDelegation {
+            MrasemEmptyScopeScreen()
+        } else {
+            switch state.selected {
+            case let .screen(destination):
+                MrasemDestinationContent(destination: destination, context: context)
+            case let .soon(tab):
+                MrasemPlaceholderScreen(titleKey: tab.labelKey, phase: tab.phase)
+            }
+        }
+    }
 }
 
 /// محتوى الوجهة: الشاشات العشرة (٦ للضيف + ٤ للفريق). كل شاشة بتاخد `context` وتبني منه الـ ViewModel بتاعها.
-/// 
 private struct MrasemDestinationContent: View {
     let destination: MrasemDestination
     let context: MrasemAppContext
@@ -94,20 +114,41 @@ private struct MrasemDestinationContent: View {
     }
 }
 
-#Preview("Shell - Light") {
-    MrasemShell(context: MrasemAppContext(container: MrasemContainer(preferences: MrasemShellPreviewPreferences())))
+/// المستخدم ملوش وفد (أو اتحذف وفده): رسالة بدل شاشة فاضية (G5).
+struct MrasemEmptyScopeScreen: View {
+    @Environment(\.mrasem) private var theme
+
+    var body: some View {
+        VStack(spacing: 8) {
+            Text("mrasem_empty_scope_title")
+                .mrasemText(theme.type.cardTitle)
+                .foregroundColor(theme.colors.maroon)
+                .accessibilityAddTraits(.isHeader)
+            Text("mrasem_empty_scope_message")
+                .mrasemText(theme.type.bodySm)
+                .foregroundColor(theme.colors.ink)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(24)
+        .background(theme.colors.bg)
+    }
+}
+
+#Preview("Shell - Member - Light") {
+    MrasemShell(context: .preview(user: .member("m1")))
         .mrasemTheme(.light)
         .environment(\.layoutDirection, .rightToLeft)
 }
 
-#Preview("Shell - Dark") {
-    MrasemShell(context: MrasemAppContext(container: MrasemContainer(preferences: MrasemShellPreviewPreferences())))
+#Preview("Shell - Coordinator - Dark") {
+    MrasemShell(context: .preview(user: .team("u2")))
         .mrasemTheme(.dark)
         .environment(\.layoutDirection, .rightToLeft)
 }
 
-/// تفضيلات في الذاكرة للـ Previews (ما تلمسش UserDefaults).
-private final class MrasemShellPreviewPreferences: MrasemPreferences {
-    var lastGuestTab: GuestTab?
-    func saveGuestTab(_ tab: GuestTab) { lastGuestTab = tab }
+#Preview("Shell - Admin - Light") {
+    MrasemShell(context: .preview(user: .team("u1")))
+        .mrasemTheme(.light)
+        .environment(\.layoutDirection, .rightToLeft)
 }

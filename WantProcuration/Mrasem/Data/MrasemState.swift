@@ -78,6 +78,14 @@ enum NoticeContent: Equatable, Hashable {
     case broadcast(String)
     /// `place` = nil يعني الطلب كان سؤالاً.
     case requestResolved(place: String?)
+    /// تعديل في فقرة من البرنامج.
+    case programChanged(title: String)
+    /// حالة رحلة السائق (`driver` = اسمه).
+    case tripStatus(TripStatus, driver: String)
+    /// طلب جديد وصل للمنسق (نص الطلب).
+    case requestCreated(text: String)
+    /// تعيين السيارة أو المرافق أو الغرفة اتغيّر.
+    case assignmentChanged
 }
 
 struct Notice: Identifiable, Equatable, Hashable {
@@ -147,6 +155,8 @@ struct MrasemState: Equatable {
     /// فهارس عناصر «قبل الخروج من الفندق» المعلَّمة لكل وضع.
     var checks: [MissionMode: Set<Int>] = [:]
     var chat: [ChatMessage] = []
+    /// المحتوى المرجعي للوجهة (Phase 13). الافتراضي بيانات العرض للـ Previews والاختبارات.
+    var reference: ReferenceContent = .demo
 
     init(missions: [MissionMode: Mission]) {
         self.missions = missions
