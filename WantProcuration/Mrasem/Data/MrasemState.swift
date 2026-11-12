@@ -17,7 +17,7 @@ enum GuestTab: String, CaseIterable, Hashable {
     case plan
     case services
     case explore
-    case protocol
+    case `protocol`
     case assistant
 }
 

@@ -64,7 +64,7 @@ final class MrasemSessionStrategy {
 
     /// chip بطاقة الـ ٣٠ ثانية ← البروتوكول.
     func openProtocol() {
-        repository.setGuestTab(.protocol)
+        repository.setGuestTab(.`protocol`)
     }
 
     /// يرجّع آخر تاب اتحفظ (لو فيه).

@@ -57,22 +57,22 @@ final class TeamAndProtocolStrategyTests: XCTestCase {
 
     func testChecklistIsPerMode() {
         let repo = newRepository()
-        let protocol = ProtocolStrategy(repository: repo)
+        let protocolStrategy = ProtocolStrategy(repository: repo)
 
-        protocol.toggleCheck(0)
-        protocol.toggleCheck(3)
-        protocol.toggleCheck(99)
-        XCTAssertEqual(protocol.content().readyCount, 2)
+        protocolStrategy.toggleCheck(0)
+        protocolStrategy.toggleCheck(3)
+        protocolStrategy.toggleCheck(99)
+        XCTAssertEqual(protocolStrategy.content().readyCount, 2)
 
-        protocol.toggleCheck(3)
-        XCTAssertEqual(protocol.content().readyCount, 1)
+        protocolStrategy.toggleCheck(3)
+        XCTAssertEqual(protocolStrategy.content().readyCount, 1)
 
         session(repo).changeMode(.outbound)
-        XCTAssertEqual(protocol.content().readyCount, 0)
-        XCTAssertFalse(protocol.content().isInbound)
+        XCTAssertEqual(protocolStrategy.content().readyCount, 0)
+        XCTAssertFalse(protocolStrategy.content().isInbound)
 
         session(repo).changeMode(.inbound)
-        XCTAssertTrue(protocol.content().checklist[0].checked)
+        XCTAssertTrue(protocolStrategy.content().checklist[0].checked)
     }
 
     func testSessionNavigation() {
@@ -90,9 +90,9 @@ final class TeamAndProtocolStrategyTests: XCTestCase {
 
     func testProtocolContentCarriesDressAndGuides() {
         let repo = newRepository()
-        let protocol = ProtocolStrategy(repository: repo)
+        let protocolStrategy = ProtocolStrategy(repository: repo)
 
-        let content = protocol.content()
+        let content = protocolStrategy.content()
         XCTAssertEqual(content.dressCode, .formal)
         XCTAssertEqual(content.dress.title, "بدلة رسمية داكنة")
         XCTAssertEqual(content.guides.count, 8)
@@ -100,7 +100,7 @@ final class TeamAndProtocolStrategyTests: XCTestCase {
         XCTAssertEqual(content.customs.count, 4)
 
         repo.setDress(.bisht)
-        let bisht = protocol.content()
+        let bisht = protocolStrategy.content()
         XCTAssertEqual(bisht.dressCode, .bisht)
         XCTAssertEqual(bisht.dress.title, "الزي الوطني مع البشت")
         XCTAssertEqual(bisht.dress.men.count, 3)

@@ -39,7 +39,7 @@ final class TeamGuestLinkingTests: XCTestCase {
         let visit = VisitUpdateStrategy(repository: repo)
         let program = ProgramStrategy(repository: repo)
         let explore = ExploreStrategy(repository: repo)
-        let protocol = ProtocolStrategy(repository: repo)
+        let protocolStrategy = ProtocolStrategy(repository: repo)
         let summary = MissionSummaryStrategy(repository: repo, now: { dateAt("2026-01-01") })
 
         var mode: MissionMode { repo.state.mode }
@@ -112,7 +112,7 @@ final class TeamGuestLinkingTests: XCTestCase {
     func testDressChangeReachesProtocol() {
         forEachMode { env in
             env.visit.save(VisitForm(data: self.blank, dress: .bisht))
-            XCTAssertEqual(env.protocol.content().dressCode, .bisht)
+            XCTAssertEqual(env.protocolStrategy.content().dressCode, .bisht)
             XCTAssertEqual(env.repo.state.recentNotices().first?.content, .dressApproved(.bisht))
         }
     }
