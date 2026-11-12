@@ -85,7 +85,7 @@ Mrasem/
 
 ## F. ملاحظات على المشروع الحالي
 
-> آخر تحديث: 2026-11-12 — بعد Phase 6 (مكتوب، بانتظار CI).
+> آخر تحديث: 2026-11-12 — بعد Phase 7 (مكتوب، بانتظار CI).
 
 - **اتحل في Phase 0:** مفيش git → بقى repo على `joe772002/mrasem-ios`. الـ force-unwrap للخط → بقى `if let`. مفاتيح الـ AI Gateway واسم Siri البديل → اتشالت.
 - `AppManager.isDarkMode` افتراضيه `true` وبيتقرا من `UserDefaults` — هيتوصّل بخيار الثيم (فاتح/داكن/النظام).
@@ -136,3 +136,5 @@ Mrasem/
 | 2026-11-12 | Phase 6: `MrasemScreenContent` أخد باراميتر اختياري `scrollToEndTrigger` | بديل `scrollState.animateScrollTo(maxValue)` في Android؛ بيستخدم `ScrollViewReader` وعنصر مرساة في آخر المحتوى. الشاشات التانية ما اتأثرتش |
 | 2026-11-12 | Phase 6: `ProtocolContent` (الـ model) و`ProtocolContentView` (الـ View) | الاسم `ProtocolContent` متاخد من الـ Domain، فالـ View اتسمّى `…View` عشان ما يحصلش تعارض |
 | 2026-11-12 | Phase 6: نصوص ردود المساعد في `Components/MrasemAssistantText.swift` | زي `mrasemNoticeText`: دالة نقية `nonisolated` بتتختبر من غير View |
+| 2026-11-12 | Phase 7: مسودة نموذج الزيارة `@State` بتتعاد من `state.form` عبر `onChange` | بديل `remember(state.form)` في Android؛ الحفظ أو تغيير الوضع بيصفّر الحقول |
+| 2026-11-12 | Phase 7: إخفاء الكيبورد بعد التنبيه العام بـ `resignFirstResponder` | بديل `keyboardController.hide()` |

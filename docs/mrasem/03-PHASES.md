@@ -174,6 +174,8 @@
 
 **القبول:** السيناريوهات الخمسة ناجحة؛ النصوص مطابقة.
 
+**الحالة: ✅ مكتوب (بانتظار CI أخضر).** `Screens/Team/`: `TeamHeader` (+ `TeamHeaderUi`) و`TeamVisit`/`TeamChanges`/`TeamRequests`/`TeamArchive` (ViewModel + Screen لكل واحدة) و`TeamPreviewData`، متوصلين بالـ Shell. نموذج الزيارة: 7 حقول + زي اليوم في عمودين، الهاتف واللوحة LTR، والمسودة بتتصفّر لما حالة المصدر تتغير. التأجيل والتنبيه العام والترتيب بنفس توستات Android. سيناريوهات الربط الخمسة كانت موجودة في `TeamGuestLinkingTests` (الوضعين) وبقى معاها `TeamStateTests` (٥).
+
 ---
 
 ## Phase 8 — المراجعة والتنظيف
