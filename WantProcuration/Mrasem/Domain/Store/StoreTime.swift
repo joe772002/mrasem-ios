@@ -43,7 +43,15 @@ nonisolated enum StoreTime {
         minutes(time).map { format($0 + delta) }
     }
 
-    static func isValidDate(_ iso: String) -> Bool { MrasemDate(iso: iso)?.iso == iso }
+    /// تاريخ حقيقي بصيغة `yyyy-MM-dd` (بيرفض ٣٠ فبراير وشهر ١٣).
+    static func isValidDate(_ iso: String) -> Bool {
+        guard let d = MrasemDate(iso: iso), d.iso == iso else { return false }
+        var calendar = Calendar(identifier: .gregorian)
+        calendar.timeZone = TimeZone(identifier: "UTC") ?? TimeZone(secondsFromGMT: 0)!
+        guard let date = calendar.date(from: DateComponents(year: d.year, month: d.month, day: d.day)) else { return false }
+        let c = calendar.dateComponents([.year, .month, .day], from: date)
+        return c.year == d.year && c.month == d.month && c.day == d.day
+    }
 
     /// كل الأيام من `start` لـ `end` (فاضية لو التواريخ غلط أو مقلوبة).
     static func days(from start: String, to end: String) -> [String] {
