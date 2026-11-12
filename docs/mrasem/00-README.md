@@ -34,7 +34,7 @@
 - الشبكة: `Networking/APIClient.swift` (async/await فوق URLSession) — موجود بس مش مستخدم في مراسم.
 - المشروع `objectVersion = 77` بـ **File System Synchronized Groups**: أي ملف يتضاف أو يتمسح من فولدر `WantProcuration/` بيظهر في Xcode لوحده، من غير تعديل `project.pbxproj`. ده اللي بيخلّي الشغل من Windows ممكن.
 - `IPHONEOS_DEPLOYMENT_TARGET = 26.0`، Swift 5.
-- Bundle ID: `com.informatiqueComp.reserveProcuration2` · **اسم العرض: «مراسم»** · الإصدار 1.07.
+- Bundle ID: `com.informatiqueComp.mrasem` (اتغيّر في Phase 9 — كان بتاع التوكيل) · **اسم العرض: «مراسم»** · الإصدار 1.07.
 - الخطوط: Cairo (6 أوزان، قديمين) + **Reem Kufi** + **IBM Plex Sans Arabic** (4 أوزان) — كلهم مسجّلين في `UIAppFonts`.
 - النصوص: `Localizable.xcstrings` — **204 مفتاح** (13 بتوع الكود القديم اللي فضل + 190 `mrasem_*` منقولة حرفياً من Android `main` + `mrasem_placeholder_message` المؤقت)، `sourceLanguage = ar`.
 - الـ Folder **repo على GitHub**: `https://github.com/joe772002/mrasem-ios.git`.
@@ -54,11 +54,11 @@
 
 ## القرارات المفتوحة (الافتراضي بين قوسين)
 
-> القرار #1 اتاخد: **الـ Bundle ID سيب زي ما هو**، واسم العرض بقى «مراسم». باقي القرارات ماشي على الافتراضي.
+> القرار #1 اتاخد: **Bundle ID جديد `com.informatiqueComp.mrasem`** (Phase 9)، واسم العرض «مراسم». باقي القرارات ماشي على الافتراضي.
 
 | # | القرار | الافتراضي |
 |---|---|---|
-| 1 | الـ Bundle ID واسم الـ target | ✅ **اتحسم** — Bundle ID زي ما هو (`com.informatiqueComp.reserveProcuration2`)، واسم العرض «مراسم». تحذير: لو اترفع على نفس حساب Apple بنفس الـ Bundle ID هيبقى تحديث لتطبيق التوكيل، مش تطبيق جديد |
+| 1 | الـ Bundle ID واسم الـ target | ✅ **اتحسم** — Bundle ID جديد `com.informatiqueComp.mrasem` (تطبيق مستقل عن التوكيل، Tests: `com.informatiqueComp.mrasemTests`)، واسم العرض «مراسم». اسم الـ target `WantProcuration` زي ما هو |
 | 2 | كود التوثيق | يتحذف **الخاص بالتوثيق بس**، والأركيتكتشر تفضل (الشبكة، الـ Extensions، مكوّنات الفورم، `AppManager`، `LocationManager`، المكتبات) — نفس قرار Android النهائي |
 | 3 | البيانات | محلية ورا Repository، منقولة حرفياً من `04-DEMO-DATA.md` |
 | 4 | اللغة | عربي RTL فقط |
@@ -69,9 +69,9 @@
 
 ## الخطوة الجاية
 
-Phase 0 و 1 و 2 خلصوا والـ CI أخضر. **Phase 3 إلى 7 (الهيكل، المهمة + البرنامج، الاستكشاف + الخدمات، البروتوكول + المساعد، فريق المراسم) مكتوبين** وبانتظار run أخضر للـ CI. **Phase 8 و 9** اتعمل منهم الأيقونة وLaunch Screen ومطابقة النصوص وVoiceOver وRelease build وworkflow الإصدار (`release.yml`). الباقي: قرار الـ Bundle ID والـ secrets والمراجعة اليدوية — كله في `07-RELEASE.md`.
+Phase 0 و 1 و 2 خلصوا والـ CI أخضر. **Phase 3 إلى 7 (الهيكل، المهمة + البرنامج، الاستكشاف + الخدمات، البروتوكول + المساعد، فريق المراسم) مكتوبين** وبانتظار run أخضر للـ CI. **Phase 8 و 9** اتعمل منهم الأيقونة وLaunch Screen ومطابقة النصوص وVoiceOver وRelease build وworkflow الإصدار (`release.yml`). الباقي: تسجيل الـ Bundle ID الجديد والـ secrets والمراجعة اليدوية — كله في `07-RELEASE.md`.
 
 1. ابعت الـ commits (`git push`) وشوف الـ CI: `Build` + `Unit tests` + `Launch the app`. لو فيه أخطاء compile، صلّحها قبل Phase 8 (الـ `error:` بتظهر في Annotations).
-2. **المتبقي:** قرار الـ Bundle ID ← الـ secrets ← `Release (TestFlight)` بـ `upload=false` ثم `true`، والـ checklist اليدوي في `07-RELEASE.md`، وتقسيم الملفات >300 سطر بعد CI أخضر.
+2. **المتبقي:** تسجيل `com.informatiqueComp.mrasem` في Apple Developer + App Store Connect ← الـ secrets ← `Release (TestFlight)` بـ `upload=false` ثم `true`، والـ checklist اليدوي في `07-RELEASE.md`، وتقسيم الملفات >300 سطر بعد CI أخضر.
 
 قول «ابدا phase 7» ونمشي.

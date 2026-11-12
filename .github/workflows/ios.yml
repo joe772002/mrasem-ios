@@ -284,7 +284,7 @@ jobs:
           xcrun simctl install "$SIMULATOR_UDID" \
             .build/DerivedData/Build/Products/Debug-iphonesimulator/WantProcuration.app
           timeout 30 xcrun simctl launch --console-pty "$SIMULATOR_UDID" \
-            com.informatiqueComp.reserveProcuration2 2>&1 | tee .build/launch.log
+            com.informatiqueComp.mrasem 2>&1 | tee .build/launch.log
           echo "---- launcher output above ----"
           if grep -qE "(malloc: \*\*\*|Fatal error|Crashed|Terminating app)" .build/launch.log; then
             echo "::error::the app crashed on launch"

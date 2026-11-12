@@ -2,17 +2,15 @@
 
 > Phase 9. كل اللي هنا محتاج **حساب Apple Developer** أو **Mac/Simulator** — الكود نفسه جاهز.
 
-## ⚠️ قرار لازم يتاخد قبل أول رفع: الـ Bundle ID
+## الـ Bundle ID
 
-المشروع لسه بـ `com.informatiqueComp.reserveProcuration2` (تطبيق التوكيل). لو اترفع على نفس الحساب
-**هيبقى تحديث لتطبيق التوكيل** على المتجر، مش تطبيق جديد اسمه «مراسم».
+✅ **`com.informatiqueComp.mrasem`** — تطبيق مستقل (القرار اتاخد في Phase 9). قبل أول رفع:
 
-| الخيار | المطلوب |
-|---|---|
-| (أ) تطبيق جديد (المقترح) | Bundle ID جديد (مثلاً `com.informatiqueComp.mrasem`) في App Store Connect + تعديل `PRODUCT_BUNDLE_IDENTIFIER` في الـ project (سطرين) |
-| (ب) تحديث التوكيل | زي ما هو — بس التطبيق القديم بيختفي وبيتبدل بمراسم عند كل المستخدمين |
+1. developer.apple.com → Identifiers → **+** → App IDs → Bundle ID صريح `com.informatiqueComp.mrasem` (نفس الـ Team `25N3SF9UHQ`).
+2. Profiles → **+** → App Store Connect → اختار الـ ID ده وشهادة الـ Distribution.
+3. App Store Connect → Apps → **+** → New App: الاسم «مراسم»، اللغة الأساسية العربية، نفس الـ Bundle ID.
 
-الـ workflow بيقارن الـ Bundle ID بتاع الـ profile بالـ project وبيوقف لو مختلفين، فمفيش رفع غلط بالصدفة.
+الـ workflow بيقارن Bundle ID الـ profile بالـ project وبيوقف لو مختلفين.
 
 ## الـ Secrets المطلوبة (GitHub → Settings → Secrets and variables → Actions)
 
@@ -33,7 +31,6 @@ GitHub → Actions → **Release (TestFlight)** → Run workflow:
 - `upload = false`: يعمل archive موقّع ويحفظ الـ `.ipa` كـ artifact (اختبار التوقيع).
 - `upload = true`: يرفع على TestFlight. رقم الـ build = رقم الـ run؛ الإصدار من `MARKETING_VERSION`.
 
-قبل أول رفع: اعمل التطبيق في App Store Connect (الاسم «مراسم»، اللغة الأساسية العربية) بنفس الـ Bundle ID.
 
 ## Checklist المراجعة اليدوية (على Simulator أو جهاز)
 

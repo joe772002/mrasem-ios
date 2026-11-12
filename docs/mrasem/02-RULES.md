@@ -91,7 +91,7 @@ Mrasem/
 - `AppManager.isDarkMode` افتراضيه `true` وبيتقرا من `UserDefaults` — هيتوصّل بخيار الثيم (فاتح/داكن/النظام).
 - `DEVELOPMENT_TEAM = 25N3SF9UHQ` ثابت في المشروع — للمراجعة لو الحساب هيتغير.
 - رؤوس الملفات فيها أسماء مشاريع قديمة (MTCIT, mojEgypt) — تجميلي.
-- **الـ Bundle ID** لسه `com.informatiqueComp.reserveProcuration2` (بتاع تطبيق التوكيل). لو اترفع بنفس الحساب، هيبقى **تحديث** للتطبيق القديم مش تطبيق جديد.
+- ✅ **اتحل في Phase 9:** الـ Bundle ID بقى `com.informatiqueComp.mrasem` (كان `com.informatiqueComp.reserveProcuration2` بتاع التوكيل).
 
 ## سجل القرارات
 
@@ -144,3 +144,4 @@ Mrasem/
 | 2026-11-12 | Phase 9: إعلان التوست لـ VoiceOver بـ `UIAccessibility.post(.announcement)` | بديل `liveRegion` في Android؛ التوست مش بياخد focus |
 | 2026-11-12 | Phase 9: الإصدار عبر GitHub Actions (`release.yml`) بتوقيع يدوي من الـ secrets | مفيش Mac؛ نفس runner الـ CI. الـ project ما اتعدّلش: التوقيع بيتمرر كـ build settings |
 | 2026-11-12 | Phase 9: الـ workflow بيوقف لو Bundle ID الـ profile ≠ الـ project | حماية من رفع مراسم كتحديث لتطبيق التوكيل بالغلط |
+| 2026-11-12 | Phase 9: **Bundle ID جديد `com.informatiqueComp.mrasem`** (Tests: `…mrasemTests`) | قرار صاحب المشروع: مراسم تطبيق مستقل مش تحديث للتوكيل. اتعدّل في `project.pbxproj` (٤ مواضع) و job الـ smoke في `ios.yml`. بيلغي قرار «سيب زي ما هو» السابق |
