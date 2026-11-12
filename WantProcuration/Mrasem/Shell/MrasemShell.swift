@@ -63,13 +63,20 @@ struct MrasemShell: View {
 }
 
 /// محتوى الوجهة: الشاشات العشرة (٦ للضيف + ٤ للفريق). كل شاشة بتاخد `context` وتبني منه الـ ViewModel بتاعها.
-/// لحد ما الشاشات الحقيقية تتبني (Phases 4–7) كل وجهة بتعرض placeholder.
+/// الشاشات اللي لسه ما اتبنتش (Phases 5–7) بتعرض placeholder.
 private struct MrasemDestinationContent: View {
     let destination: MrasemDestination
     let context: MrasemAppContext
 
     var body: some View {
-        MrasemPlaceholderScreen(titleKey: destination.labelKey)
+        switch destination {
+        case .mission:
+            MissionScreen(context: context)
+        case .plan:
+            PlanScreen(context: context)
+        default:
+            MrasemPlaceholderScreen(titleKey: destination.labelKey)
+        }
     }
 }
 

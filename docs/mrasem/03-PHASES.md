@@ -140,6 +140,8 @@
 
 **القبول:** مطابقة الوضعين؛ دورة الوصول كاملة؛ الروابط بتفتح.
 
+**الحالة: ✅ مكتوب (بانتظار CI أخضر).** `Screens/Mission/{MissionViewModel,MissionScreen,MissionCards}.swift` و`Screens/Plan/{PlanViewModel,PlanScreen}.swift`، متوصلين بالـ Shell. الاختبارات: `MissionPlanStateTests` (toasts الوصول الأربعة، `MissionUiState`/`PlanUiState` مع الـ repository، توجيه chips البرنامج، وجود كل مفاتيح النصوص). `ContactLinks`/`ExternalLinks` اتنقلوا في Phase 2 وبيتنادوا من الشاشات.
+
 ---
 
 ## Phase 5 — استكشف + الخدمات

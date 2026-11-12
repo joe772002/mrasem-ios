@@ -85,7 +85,7 @@ Mrasem/
 
 ## F. ملاحظات على المشروع الحالي
 
-> آخر تحديث: 2026-11-12 — بعد Phase 3 (مكتوب، بانتظار CI).
+> آخر تحديث: 2026-11-12 — بعد Phase 4 (مكتوب، بانتظار CI).
 
 - **اتحل في Phase 0:** مفيش git → بقى repo على `joe772002/mrasem-ios`. الـ force-unwrap للخط → بقى `if let`. مفاتيح الـ AI Gateway واسم Siri البديل → اتشالت.
 - `AppManager.isDarkMode` افتراضيه `true` وبيتقرا من `UserDefaults` — هيتوصّل بخيار الثيم (فاتح/داكن/النظام).
@@ -128,3 +128,6 @@ Mrasem/
 | 2026-11-12 | Phase 3: **`MrasemAppContext`** بيمرّر الـ container والـ toast bus للشاشات | بديل `hiltViewModel()`. الـ container بيتبني في `@StateObject` جوه الـ root فمش بيتبني في الـ unit-test host |
 | 2026-11-12 | Phase 3: مفاتيح `mrasem_*` اللي مش في Android `main` اتشالت من الـ catalog (٧٣ مفتاح) | كانت جاية من فرع `enhance`؛ مصدر التصميم بقى `main` |
 | 2026-11-12 | Phase 3: **الاختبارات تغطي الأجزاء الصافية للـ Shell بس** (وجهات، `ShellUiState`، `UiText`، نصوص التنبيهات، toast bus) | الـ ViewModel نفسه `MainActor` — تفكيكه من الـ test thread هو نفس سبب كراش الـ test host. المنطق اللي جواه رفيع (ربط بين `statePublisher` والـ strategy) |
+| 2026-11-12 | Phase 3 (تصحيح): **اتشال `SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`** من الـ app target (commit `86a2031`) | البناء كان بيفشل على الـ CI. الـ Views بتفضل MainActor عن طريق `View`، والباقي بقى nonisolated زي الـ test target. ده بيلغي سبب قرار «Domain nonisolated» لكن القرار نفسه لسه سليم |
+| 2026-11-12 | Phase 4: **الـ ViewModels بقت `ObservableObject` عادية من غير `@MainActor`** (استثناء لـ A2) | بعد شيل الـ default isolation، `MrasemSessionViewModel` اشتغل كده فمشينا على نفس الشكل. التحديثات بتيجي من `statePublisher` على الـ main thread |
+| 2026-11-12 | Phase 4: الاختبارات بقت بتعمل instance للـ ViewModels (`MissionPlanStateTests`) | قرار «الـ ViewModel MainActor فمش بنختبره» من Phase 3 اتلغى بنفس سبب القرار اللي فوق |
