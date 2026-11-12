@@ -47,6 +47,8 @@ struct MrasemHeader: View {
                         .mrasemText(theme.type.brandSub)
                         .foregroundColor(c.onHeader.opacity(0.8))
                 }
+                .accessibilityElement(children: .combine)
+                .accessibilityAddTraits(.isHeader)
 
                 Spacer(minLength: 8)
 

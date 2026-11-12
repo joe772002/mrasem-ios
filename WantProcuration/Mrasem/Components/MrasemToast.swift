@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 import Combine
 
 /// مدة التوست بالثواني.
@@ -64,6 +65,9 @@ struct MrasemToastHost: View {
         .padding(.top, 12)
         .task(id: state.tick) {
             guard state.tick > 0 else { return }
+            // VoiceOver: التوست مش بياخد focus، فبنعلنه (زي liveRegion في Android).
+            let spoken = [state.strong, state.rest].filter { !$0.isEmpty }.joined(separator: " ")
+            UIAccessibility.post(notification: .announcement, argument: spoken)
             try? await Task.sleep(for: toastDuration)
             guard !Task.isCancelled else { return }
             state.hide()

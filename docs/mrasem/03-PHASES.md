@@ -18,6 +18,7 @@
 | 6 | البروتوكول + المساعد | شاشتين |
 | 7 | فريق المراسم | 4 تابات + الربط مع عرض الضيف |
 | 8 | المراجعة والتنظيف | مطابقة شاشة بشاشة + Accessibility + حذف القديم + release build |
+| 9 | المراجعة والإصدار | مراجعة شاملة مع Android + VoiceOver + الأيقونة + signing/TestFlight |
 
 ---
 
@@ -199,9 +200,26 @@
 
 ---
 
+## Phase 9 — المراجعة والإصدار
+
+- مراجعة شاملة مع Android (نصوص + عناصر).
+- VoiceOver.
+- الأيقونة والـ signing (Archive → TestFlight).
+
+**القبول:** release build شغال على CI؛ مطابقة النصوص كاملة؛ workflow إصدار موقّع جاهز.
+
+**الحالة: 🟡 الكود جاهز (بانتظار CI + حساب Apple).**
+- ✅ **مطابقة النصوص آلياً:** كل مفتاح `R.string.mrasem_*` مستخدم في Android مستخدم في iOS، وكل مفتاح بيتنادى في iOS موجود في الـ catalog (صفر ناقص). ٣ مفاتيح مش مستخدمة في الاتنين (`mrasem_explore_title`/`_minutes_to_venue`/`_toast_sent`) — فاضلين زي المصدر.
+- ✅ **VoiceOver:** التوست بيتعلن (`UIAccessibility.post(.announcement)` بديل `liveRegion`)، عنوان الهيدر trait Header، صف الخدمة عنصر واحد بـ trait Button ولوجو الحروف مخفي، الـ KPI عنصر واحد (Phase 8).
+- ✅ **Release build:** step `Build (Release)` اتضاف لـ job الـ Build في `ios.yml`.
+- ✅ **الإصدار:** `.github/workflows/release.yml` (يدوي): شهادة + profile من الـ secrets، archive موقّع، export أو رفع TestFlight بـ App Store Connect API key، ورقم الـ build = رقم الـ run. الدليل في `07-RELEASE.md`.
+- ⏳ **عليك:** قرار الـ Bundle ID، الـ secrets، checklist المراجعة اليدوية في `07-RELEASE.md`.
+
+---
+
 ## الاعتماديات
 
 ```
-ريبو + CI → 0 → 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
+ريبو + CI → 0 → 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9
                (1 و 2 ممكن يتبدلوا؛ 4–7 ترتيبهم مرن بعد 3؛ 7 قبل اختبار الربط)
 ```

@@ -85,7 +85,7 @@ Mrasem/
 
 ## F. ملاحظات على المشروع الحالي
 
-> آخر تحديث: 2026-11-12 — بعد Phase 8 (الجزء الممكن من Windows، بانتظار CI).
+> آخر تحديث: 2026-11-12 — بعد Phase 9 (الكود جاهز، بانتظار CI + حساب Apple).
 
 - **اتحل في Phase 0:** مفيش git → بقى repo على `joe772002/mrasem-ios`. الـ force-unwrap للخط → بقى `if let`. مفاتيح الـ AI Gateway واسم Siri البديل → اتشالت.
 - `AppManager.isDarkMode` افتراضيه `true` وبيتقرا من `UserDefaults` — هيتوصّل بخيار الثيم (فاتح/داكن/النظام).
@@ -141,3 +141,6 @@ Mrasem/
 | 2026-11-12 | Phase 8: الأيقونة مولّدة من أيقونة Android (crop الـ safe-zone ثم تكبير) كـ RGB | مفيش مصدر 1024 أصلي؛ App Store بيرفض الـ alpha |
 | 2026-11-12 | Phase 8: Launch Screen بلون عنّابي عبر `UILaunchScreen.UIColorName` | بديل الشاشة البيضا المولّدة؛ من غير storyboard |
 | 2026-11-12 | Phase 8: تقسيم الملفات >300 سطر مؤجّل لبعد CI أخضر | مفيش compiler، والتقسيم بيمس تعريفات مشتركة |
+| 2026-11-12 | Phase 9: إعلان التوست لـ VoiceOver بـ `UIAccessibility.post(.announcement)` | بديل `liveRegion` في Android؛ التوست مش بياخد focus |
+| 2026-11-12 | Phase 9: الإصدار عبر GitHub Actions (`release.yml`) بتوقيع يدوي من الـ secrets | مفيش Mac؛ نفس runner الـ CI. الـ project ما اتعدّلش: التوقيع بيتمرر كـ build settings |
+| 2026-11-12 | Phase 9: الـ workflow بيوقف لو Bundle ID الـ profile ≠ الـ project | حماية من رفع مراسم كتحديث لتطبيق التوكيل بالغلط |

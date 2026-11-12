@@ -242,6 +242,7 @@ struct MrasemServiceRow: View {
                 .foregroundColor(c.onMaroon)
                 .frame(width: theme.dimens.serviceLogo, height: theme.dimens.serviceLogo)
                 .background(logoColor, in: RoundedRectangle(cornerRadius: theme.shapes.serviceLogo))
+                .accessibilityHidden(true)
 
             VStack(alignment: .leading, spacing: 2) {
                 // اسم عربي (Bold) + اسم إنجليزي (Label) في سطر واحد.
@@ -254,6 +255,8 @@ struct MrasemServiceRow: View {
             .frame(maxWidth: .infinity, minHeight: theme.dimens.minTouch, alignment: .leading)
             .contentShape(Rectangle())
             .onTapGesture { onClick() }
+            .accessibilityElement(children: .combine)
+            .accessibilityAddTraits(.isButton)
 
             if let actionLabel {
                 MrasemButton(actionLabel, variant: .outline, action: onClick)
