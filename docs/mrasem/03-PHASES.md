@@ -232,7 +232,7 @@
 | 15 | الأدمن (٢): الموارد والأماكن والطلبات والإعدادات | ✅ مكتوب (بانتظار CI) |
 | 16 | السائق والمرافق والأحداث الحية | ✅ مكتوب (بانتظار CI) |
 | 17 | السيناريوهات الكاملة والحالات الفاضية | ✅ مكتوب (بانتظار CI) |
-| 18 | المراجعة والإصدار | ⏳ |
+| 18 | المراجعة والإصدار | ✅ مكتوب (بانتظار CI + TestFlight) |
 
 **Phase 10 ✅:** الخطة اتعتمدت بالقرارات الافتراضية؛ قواعد G في `02-RULES.md`؛ `09-DATA-MODEL.md` (الكيانات والعلاقات، الحذف المتسلسل، مين يشوف إيه، خريطة الشاشات).
 
@@ -294,6 +294,15 @@
 - **تحقق جديد:** تقليص أيام وفد عليه فقرات برّه الفترة ← `programOutsideRange` (G3)؛ عضو أو فقرة بيشيروا لسيارة / مرافق / مكان اتحذف ← `notFound`؛ الأرقام العربية في التواريخ والأوقات والأرقام بتتحوّل لاتيني (`storeLatinDigits`) لأن الكيبورد العربي بيكتب «١٠:٣٠».
 - **G5:** شيل آخر force-unwrap على البيانات (`MrasemState.mission` و`MissionRepository` بيرجعوا مهمة فاضية، و`tabs[0]` / `delegations[0]` بقوا `first`).
 - تأكيدات الحذف: كل حذف من النماذج (`AdminFormSheet`) ومن «إدارة البيانات» بيعدّي على alert (اتراجع في 14–15، مفيش مسار حذف من غير تأكيد).
+
+**Phase 18 ✅ (بانتظار CI و TestFlight):** المراجعة والتنظيف:
+- **تقسيم الملفات الكبيرة (B8)** — نقل بالسطر من غير تعديل منطق: `MrasemListItems` ← `+ MrasemListItemsMore`، `MrasemCards` ← `+ MrasemKeyValueList`، `MrasemDrawings` ← `+ MrasemIllustrations`، `MrasemPreviews` ← `+ MrasemPreviewsMore`، `SVGPath` ← `+ SVGPathScanner` (كان `private struct Scanner`)، `MrasemDemoData` ← `+Outbound` و`+Reference` (`coordinatorPhone` بقى internal). فاضل `SVGPath` ٣٢٣ سطر (enum واحد) وملفات `Components/FormComponents` و`Networking` القديمة (مش من مراسم).
+- **شيل الكود القديم:** `MrasemSessionViewModel` و`MrasemPlaceholderScreen` (مالهمش استخدام)، و`ShellUiState` و`MrasemDestination.phase` واختباراتهم. `MrasemHeader` فاضل لأن المعرض والـ Previews بيستخدموه، و`InMemoryMissionRepository` للاختبارات والـ Previews.
+- **الأداء:** `PortalInsights.conflicts` بقى بيجمّع الفقرات حسب (اليوم، السائق) ويقف عند فرق ساعة بدل مقارنة كل زوج؛ نفس النتيجة ونفس الترتيب (`Phase18Tests` بيقارنه بالطريقة القديمة على ١٦٠٠ فقرة).
+- **«تنبيه عند تعارض السائقين» اتوصّل:** حفظ فقرة بتدخل في تعارض جديد ← تنبيه `driverConflict` للأدمن ومنسقي الوفد (لو المفتاح شغال). المفاتيح اللي مالهاش تنفيذ (الملخص اليومي، موافقة النشر، إشعارات الجهاز) اتشالت من شاشة الإعدادات عشان ما تضلّلش، وفاضلة في `PreferencesRecord`.
+- **VoiceOver:** صفوف الموارد بقت أزرار مقروءة، وصف السائق (فيه زر الحالة) بقى ليه إجراء «تعديل».
+- **الإصدار:** checklist الأدوار وحالة الإصدار في `07-RELEASE.md`. إشعارات iOS المحلية متأجلة (اختيارية في الخطة).
+- الاختبارات: `Phase18Tests` (٤).
 
 ---
 

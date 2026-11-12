@@ -33,6 +33,8 @@ nonisolated func mrasemNoticeText(_ content: NoticeContent) -> String {
         return mrasemString("mrasem_notice_request_created", [text])
     case .assignmentChanged:
         return mrasemString("mrasem_notice_assignment_changed")
+    case let .driverConflict(driver, title):
+        return mrasemString("mrasem_notice_driver_conflict", [driver, title])
     }
 }
 

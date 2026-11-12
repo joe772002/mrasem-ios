@@ -8,7 +8,6 @@
 import Foundation
 
 /// الوجهات العشرة داخل الـ Shell (٦ للضيف + ٤ للفريق).
-/// `phase` = المرحلة اللي هتتبني فيها الشاشة الحقيقية (للـ placeholder).
 nonisolated enum MrasemDestination: CaseIterable, Hashable {
     case mission
     case plan
@@ -34,15 +33,6 @@ nonisolated enum MrasemDestination: CaseIterable, Hashable {
         case .teamChanges: return "mrasem_tab_team_changes"
         case .teamRequests: return "mrasem_tab_team_requests"
         case .teamArchive: return "mrasem_tab_team_archive"
-        }
-    }
-
-    var phase: Int {
-        switch self {
-        case .mission, .plan: return 4
-        case .services, .explore: return 5
-        case .`protocol`, .assistant: return 6
-        case .teamVisit, .teamChanges, .teamRequests, .teamArchive: return 7
         }
     }
 
@@ -89,25 +79,5 @@ extension MrasemDestination {
         case .teamRequests: return MrasemIcons.inbox
         case .teamArchive: return MrasemIcons.dash
         }
-    }
-}
-
-/// حالة الـ Shell المشتقة من `MrasemState`: الوضع، الدور، الوجهة الحالية.
-nonisolated struct ShellUiState: Equatable {
-    let mode: MissionMode
-    let role: UserRole
-    let destination: MrasemDestination
-
-    var tabs: [MrasemDestination] { MrasemDestination.tabs(for: role) }
-    var tabIndex: Int { tabs.firstIndex(of: destination) ?? 0 }
-    var roleIndex: Int { UserRole.allCases.firstIndex(of: role)! }
-    var modeIndex: Int { MissionMode.allCases.firstIndex(of: mode)! }
-
-    static func from(_ state: MrasemState) -> ShellUiState {
-        ShellUiState(
-            mode: state.mode,
-            role: state.role,
-            destination: .current(role: state.role, guestTab: state.guestTab, teamTab: state.teamTab)
-        )
     }
 }

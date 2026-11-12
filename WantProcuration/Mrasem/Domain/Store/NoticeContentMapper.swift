@@ -33,6 +33,8 @@ nonisolated enum NoticeContentMapper {
             return .tripStatus(status, driver: driverName(ofItem: itemId, db))
         case .assignmentChanged:
             return .assignmentChanged
+        case let .driverConflict(itemId):
+            return .driverConflict(driver: driverName(ofItem: itemId, db), title: db.programItem(itemId)?.title ?? "")
         }
     }
 
@@ -42,7 +44,7 @@ nonisolated enum NoticeContentMapper {
         case .broadcast, .dressApproved, .visitDataUpdated, .postponed, .programChanged,
              .requestResolved, .requestReplied:
             return true
-        case .requestCreated, .tripStatus, .assignmentChanged:
+        case .requestCreated, .tripStatus, .assignmentChanged, .driverConflict:
             return false
         }
     }

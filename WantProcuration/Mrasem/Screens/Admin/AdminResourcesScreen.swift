@@ -143,6 +143,8 @@ struct AdminResourcesContent: View {
             }
             .contentShape(Rectangle())
             .onTapGesture { onEditDriver(row.id) }
+            // الصف فيه زر الحالة، فالتعديل بيبقى «إجراء» لـ VoiceOver بدل ما الصف كله يبقى زر.
+            .accessibilityAction(named: Text(mrasemString("mrasem_admin_detail_edit"))) { onEditDriver(row.id) }
         }
     }
 
@@ -163,6 +165,8 @@ struct AdminResourcesContent: View {
             }
             .contentShape(Rectangle())
             .onTapGesture { onEditCar(row.id) }
+            .accessibilityElement(children: .combine)
+            .accessibilityAddTraits(.isButton)
         }
     }
 
@@ -181,6 +185,8 @@ struct AdminResourcesContent: View {
             }
             .contentShape(Rectangle())
             .onTapGesture { onEditEscort(row.id) }
+            .accessibilityElement(children: .combine)
+            .accessibilityAddTraits(.isButton)
         }
     }
 
@@ -204,6 +210,7 @@ struct AdminResourcesContent: View {
                     MrasemPill(mrasemString("mrasem_admin_conflict_pill"), kind: .warn)
                 }
             }
+            .accessibilityElement(children: .combine)
         }
     }
 

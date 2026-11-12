@@ -145,7 +145,7 @@ nonisolated final class StoreMissionRepository: MissionRepository {
             post(.visitDataUpdated, delegationId: delegationId, withDrivers: false, at: date)
         case let .postponed(title, newTime):
             post(.postponed(title: title, newTime: newTime), delegationId: delegationId, withDrivers: true, at: date)
-        case .requestResolved, .programChanged, .tripStatus, .requestCreated, .assignmentChanged:
+        case .requestResolved, .programChanged, .tripStatus, .requestCreated, .assignmentChanged, .driverConflict:
             break
         }
         return notice

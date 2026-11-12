@@ -86,6 +86,8 @@ enum NoticeContent: Equatable, Hashable {
     case requestCreated(text: String)
     /// تعيين السيارة أو المرافق أو الغرفة اتغيّر.
     case assignmentChanged
+    /// نفس السائق مطلوب في فقرتين متقاربتين (`title` = الفقرة اللي اتعدّلت).
+    case driverConflict(driver: String, title: String)
 }
 
 struct Notice: Identifiable, Equatable, Hashable {

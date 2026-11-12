@@ -4541,6 +4541,17 @@
         }
       }
     },
+    "mrasem_notice_driver_conflict" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعارض: السائق %1$@ مطلوب في فقرة «%2$@» ومعاها فقرة تانية في أقل من ساعة."
+          }
+        }
+      }
+    },
     "mrasem_notice_postponed" : {
       "extractionState" : "manual",
       "localizations" : {

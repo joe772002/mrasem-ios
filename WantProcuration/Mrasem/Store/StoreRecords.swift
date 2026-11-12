@@ -98,6 +98,8 @@ enum NoticeBody: Codable, Hashable {
     case requestReplied(requestId: String)
     case tripStatus(itemId: String, status: TripStatus)
     case assignmentChanged(memberId: String)
+    /// فقرة دخلت في تعارض سائق (Phase 18).
+    case driverConflict(itemId: String)
 }
 
 // MARK: - الكيانات

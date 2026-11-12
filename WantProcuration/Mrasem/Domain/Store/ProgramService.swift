@@ -49,6 +49,7 @@ nonisolated final class ProgramService {
 
         store.update { db in
             let shouldNotify = notify ?? db.preferences.autoNotifyGuests
+            let conflictsBefore = PortalInsights.conflictItemIds(db)
             if saved.isKey {
                 for i in db.program.indices where db.program[i].delegationId == saved.delegationId {
                     db.program[i].isKey = false
@@ -65,6 +66,13 @@ nonisolated final class ProgramService {
                 oldCarId = old.carId
                 saved.isChanged = old.isChanged || Self.contentChanged(old, saved)
                 db.program[index] = saved
+            }
+
+            // «تنبيه عند تعارض السائقين»: الفقرة دخلت في تعارض جديد ← الأدمن ومنسقو الوفد.
+            if db.preferences.notifyConflict, !conflictsBefore.contains(saved.id),
+               PortalInsights.conflictItemIds(db).contains(saved.id) {
+                db.post(.driverConflict(itemId: saved.id), delegationId: saved.delegationId,
+                        to: db.adminRefs() + db.coordinatorRefs(of: saved.delegationId), at: date)
             }
 
             if shouldNotify {

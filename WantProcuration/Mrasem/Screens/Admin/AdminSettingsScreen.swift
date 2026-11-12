@@ -65,15 +65,14 @@ struct AdminSettingsContent: View {
                     .accessibilityAddTraits(.isHeader)
 
                 teamCard
+                // المفاتيح الموصّلة فعلاً بس (Phase 18). الملخص اليومي وموافقة النشر وإشعارات الجهاز
+                // موجودين في `PreferencesRecord` بس من غير تنفيذ، فمش ظاهرين عشان ما يضلّلوش.
                 toggles("mrasem_admin_settings_notifications", [
                     ("mrasem_admin_pref_new_request", \.notifyNewRequest),
-                    ("mrasem_admin_pref_conflict", \.notifyConflict),
-                    ("mrasem_admin_pref_daily", \.notifyDaily),
-                    ("mrasem_admin_pref_local", \.localNotifications)
+                    ("mrasem_admin_pref_conflict", \.notifyConflict)
                 ])
                 toggles("mrasem_admin_settings_publishing", [
-                    ("mrasem_admin_pref_auto_notify", \.autoNotifyGuests),
-                    ("mrasem_admin_pref_approval", \.requireApproval)
+                    ("mrasem_admin_pref_auto_notify", \.autoNotifyGuests)
                 ])
                 appearanceCard
                 destinationsCard

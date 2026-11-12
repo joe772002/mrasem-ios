@@ -39,40 +39,6 @@ final class ShellStateTests: XCTestCase {
         XCTAssertEqual(MrasemDestination.tabs(for: .team).count, 4)
     }
 
-    func testPlaceholderPhasesCoverEveryDestination() {
-        XCTAssertEqual(MrasemDestination.mission.phase, 4)
-        XCTAssertEqual(MrasemDestination.explore.phase, 5)
-        XCTAssertEqual(MrasemDestination.assistant.phase, 6)
-        XCTAssertEqual(MrasemDestination.teamArchive.phase, 7)
-    }
-
-    func testShellStateFollowsTheRepository() {
-        let repo = newRepository()
-        let strategy = session(repo)
-        var state = ShellUiState.from(repo.state)
-        XCTAssertEqual(state.role, .guest)
-        XCTAssertEqual(state.mode, .inbound)
-        XCTAssertEqual(state.destination, .mission)
-        XCTAssertEqual(state.tabIndex, 0)
-        XCTAssertEqual(state.roleIndex, 0)
-        XCTAssertEqual(state.modeIndex, 0)
-
-        strategy.selectGuestTab(.explore)
-        XCTAssertEqual(ShellUiState.from(repo.state).destination, .explore)
-        XCTAssertEqual(ShellUiState.from(repo.state).tabIndex, 3)
-
-        strategy.changeRole(.team)
-        strategy.selectTeamTab(.requests)
-        state = ShellUiState.from(repo.state)
-        XCTAssertEqual(state.destination, .teamRequests)
-        XCTAssertEqual(state.tabs.count, 4)
-        XCTAssertEqual(state.tabIndex, 2)
-        XCTAssertEqual(state.roleIndex, 1)
-
-        strategy.changeMode(.outbound)
-        XCTAssertEqual(ShellUiState.from(repo.state).modeIndex, 1)
-    }
-
     func testEveryShellStringKeyResolves() {
         var keys = MrasemDestination.allCases.map(\.labelKey)
         keys += ["mrasem_brand_title", "mrasem_brand_subtitle", "mrasem_role_guest", "mrasem_role_team",

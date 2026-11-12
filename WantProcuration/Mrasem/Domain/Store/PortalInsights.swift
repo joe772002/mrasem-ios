@@ -48,19 +48,39 @@ nonisolated enum PortalInsights {
         db.driver(db.car(item.carId)?.driverId)
     }
 
+    /// الفقرات بتتجمّع حسب (اليوم، السائق) فالمقارنة جوّه المجموعة بس، وبتقف أول ما الفرق يوصل ساعة
+    /// (الفقرات مترتبة بالوقت). نفس ترتيب النتيجة القديم (i ثم j)، بس من غير O(n²) على كل البرنامج (Phase 18).
     static func conflicts(_ db: MrasemDatabase) -> [DriverConflict] {
-        let items = db.program.filter { $0.carId != nil }.sorted { StoreTime.sortKey($0) < StoreTime.sortKey($1) }
-        var out: [DriverConflict] = []
+        let drivers = Dictionary(db.drivers.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+        let cars = Dictionary(db.cars.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
 
-        for i in items.indices {
-            for j in items.indices where j > i {
-                let a = items[i], b = items[j]
-                guard a.date == b.date, a.delegationId != b.delegationId,
-                      let da = driver(of: a, in: db), let dbr = driver(of: b, in: db), da.id == dbr.id,
-                      let ta = StoreTime.minutes(a.time), let tb = StoreTime.minutes(b.time),
-                      abs(ta - tb) < conflictWindowMinutes
-                else { continue }
-                out.append(DriverConflict(first: a, second: b, driver: da))
+        struct Entry {
+            let item: ProgramItemRecord
+            let driver: DriverRecord
+            let minutes: Int
+        }
+        let entries: [Entry] = db.program
+            .filter { $0.carId != nil }
+            .sorted { StoreTime.sortKey($0) < StoreTime.sortKey($1) }
+            .compactMap { item in
+                guard let carId = item.carId, let driverId = cars[carId]?.driverId, let driver = drivers[driverId],
+                      let minutes = StoreTime.minutes(item.time) else { return nil }
+                return Entry(item: item, driver: driver, minutes: minutes)
+            }
+
+        var buckets: [String: [Int]] = [:]
+        for (index, entry) in entries.enumerated() {
+            buckets[entry.item.date + "|" + entry.driver.id, default: []].append(index)
+        }
+
+        var out: [DriverConflict] = []
+        for (i, a) in entries.enumerated() {
+            let bucket = buckets[a.item.date + "|" + a.driver.id] ?? []
+            for j in bucket where j > i {
+                let b = entries[j]
+                guard b.minutes - a.minutes < conflictWindowMinutes else { break }
+                guard a.item.delegationId != b.item.delegationId else { continue }
+                out.append(DriverConflict(first: a.item, second: b.item, driver: a.driver))
             }
         }
         return out
