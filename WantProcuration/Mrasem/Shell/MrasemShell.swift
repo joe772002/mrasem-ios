@@ -12,6 +12,7 @@ import SwiftUI
 struct MrasemShell: View {
     @Environment(\.mrasem) private var theme
     @StateObject private var toast = MrasemToastState()
+    @State private var showSettings = false
 
     private let context: MrasemAppContext
     @ObservedObject private var model: RoleShellModel
@@ -43,7 +44,8 @@ struct MrasemShell: View {
                     delegations: state.delegations,
                     selectedDelegationId: state.selectedDelegationId,
                     onSwitchUser: { context.flow.openPicker() },
-                    onSelectDelegation: { model.select(delegation: $0) }
+                    onSelectDelegation: { model.select(delegation: $0) },
+                    onSettings: state.role == .admin ? { showSettings = true } : nil
                 )
 
                 content(state)
@@ -62,6 +64,9 @@ struct MrasemShell: View {
             .animation(.easeInOut(duration: 0.2), value: state.selected)
 
             MrasemToastHost(state: toast)
+        }
+        .sheet(isPresented: $showSettings) {
+            AdminSettingsScreen(context: context)
         }
         .onReceive(context.toastBus.events) { message in
             toast.show(strong: message.strong.resolve(), rest: message.rest?.resolve() ?? "")
@@ -116,7 +121,7 @@ private struct MrasemDestinationContent: View {
     }
 }
 
-/// تابات الأدمن اللي اتبنت (Phase 14).
+/// تابات الأدمن (Phase 14–15).
 private struct AdminTabContent: View {
     let tab: AdminTab
     let context: MrasemAppContext
@@ -127,6 +132,12 @@ private struct AdminTabContent: View {
             AdminHomeScreen(context: context)
         case .delegations:
             AdminDelegationsScreen(context: context)
+        case .resources:
+            AdminResourcesScreen(context: context)
+        case .places:
+            AdminPlacesScreen(context: context)
+        case .requests:
+            AdminRequestsScreen(context: context)
         }
     }
 }

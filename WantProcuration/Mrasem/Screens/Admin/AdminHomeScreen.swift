@@ -27,9 +27,9 @@ struct AdminHomeScreen: View {
             context.adminNav.open(id)
             context.roleShell.select(.admin(.delegations))
         case .requests:
-            context.roleShell.select(.soon(.adminRequests))
+            context.roleShell.select(.admin(.requests))
         case .conflicts:
-            context.roleShell.select(.soon(.adminResources))
+            context.roleShell.select(.admin(.resources))
         }
     }
 }

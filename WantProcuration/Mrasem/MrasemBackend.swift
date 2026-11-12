@@ -62,4 +62,20 @@ nonisolated final class MrasemBackend {
         }
         repository.resetForNewUser()
     }
+
+    /// «إعادة تحميل بيانات العرض»: يستبدل كل البيانات ببيانات العرض ويفضل المستخدم الحالي لو لسه موجود.
+    func reloadDemo() {
+        let user = store.database.currentUser
+        store.loadDemo()
+        store.update { db in
+            db.currentUser = user.flatMap { db.exists($0) ? $0 : nil }
+        }
+        repository.resetForNewUser()
+    }
+
+    /// «مسح كل البيانات»: يرجّع التطبيق لأول تشغيل (سؤال البداية).
+    func wipeAll() {
+        store.wipeAll()
+        repository.resetForNewUser()
+    }
 }

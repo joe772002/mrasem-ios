@@ -196,6 +196,50 @@
         }
       }
     },
+    "mrasem_admin_audience_all" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كل الوفد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_audience_custom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مستلمون محددون"
+          }
+        }
+      }
+    },
+    "mrasem_admin_audience_drivers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السائقون"
+          }
+        }
+      }
+    },
+    "mrasem_admin_audience_escorts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المرافقون"
+          }
+        }
+      }
+    },
     "mrasem_admin_back" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -203,6 +247,182 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "رجوع إلى الوفود"
+          }
+        }
+      }
+    },
+    "mrasem_admin_conflict_change" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "غيّر سيارة فقرة %1$@ — %2$@"
+          }
+        }
+      }
+    },
+    "mrasem_admin_conflict_no_alternative" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفيش سيارة بديلة فاضية في الوقت ده."
+          }
+        }
+      }
+    },
+    "mrasem_admin_conflict_pill" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعارض"
+          }
+        }
+      }
+    },
+    "mrasem_admin_conflict_resolve_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اختر سيارة بديلة لـ«%1$@»"
+          }
+        }
+      }
+    },
+    "mrasem_admin_conflict_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السائق %1$@ مطلوب في %3$@ الساعة %2$@ وفي %5$@ الساعة %4$@"
+          }
+        }
+      }
+    },
+    "mrasem_admin_conflicts_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعارضات السائقين"
+          }
+        }
+      }
+    },
+    "mrasem_admin_data_confirm" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تأكيد المسح"
+          }
+        }
+      }
+    },
+    "mrasem_admin_data_counts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ وفد · %2$@ عضو · %3$@ مكان · %4$@ طلب"
+          }
+        }
+      }
+    },
+    "mrasem_admin_data_delegation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الوفد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_data_delete_delegation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مسح بيانات وفد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_data_delete_delegation_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الوفد وأعضاؤه وبرنامجه وطلباته وتنبيهاته هتتمسح، ومش هينفع تتراجع."
+          }
+        }
+      }
+    },
+    "mrasem_admin_data_reload_demo" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إعادة تحميل بيانات العرض"
+          }
+        }
+      }
+    },
+    "mrasem_admin_data_reload_demo_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كل البيانات الحالية هتتستبدل ببيانات العرض، ومش هينفع تتراجع."
+          }
+        }
+      }
+    },
+    "mrasem_admin_data_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إدارة البيانات"
+          }
+        }
+      }
+    },
+    "mrasem_admin_data_wipe_all" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مسح كل البيانات"
+          }
+        }
+      }
+    },
+    "mrasem_admin_data_wipe_all_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "كل البيانات هتتمسح والتطبيق هيرجع لأول تشغيل، ومش هينفع تتراجع."
           }
         }
       }
@@ -251,6 +471,28 @@
         }
       }
     },
+    "mrasem_admin_dest_add" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_dest_empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفيش وجهات لسه."
+          }
+        }
+      }
+    },
     "mrasem_admin_detail_activate" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -291,6 +533,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "استعادة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_driver_available" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "متاح"
+          }
+        }
+      }
+    },
+    "mrasem_admin_driver_onLeave" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "في إجازة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_error_broadcast" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اكتب نص التنبيه، ولازم يكون فيه مستلمين في الجمهور ده."
           }
         }
       }
@@ -361,6 +636,17 @@
         }
       }
     },
+    "mrasem_admin_error_reply" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اكتب الرد الأول."
+          }
+        }
+      }
+    },
     "mrasem_admin_error_time" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -383,6 +669,61 @@
         }
       }
     },
+    "mrasem_admin_field_area" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المنطقة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_audience" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الجمهور"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_breakfast" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مواعيد الفطور"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_broadcast_text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نص التنبيه"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_building" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المبنى"
+          }
+        }
+      }
+    },
     "mrasem_admin_field_car" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -390,6 +731,28 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "السيارة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_car_type" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نوع السيارة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_checklist" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "قائمة قبل الخروج (سطر لكل بند)"
           }
         }
       }
@@ -405,6 +768,28 @@
         }
       }
     },
+    "mrasem_admin_field_currency" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "العملة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_customs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "العادات والبروتوكول (سطر لكل بند)"
+          }
+        }
+      }
+    },
     "mrasem_admin_field_day" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -412,6 +797,72 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "اليوم"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_delegation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الوفد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الوصف"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السائق"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_duration" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مدة الزيارة (ساعات)"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "البريد الإلكتروني"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_emergency" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أرقام الطوارئ (سطر لكل رقم، «العنوان: الرقم»)"
           }
         }
       }
@@ -438,6 +889,17 @@
         }
       }
     },
+    "mrasem_admin_field_entrance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المدخل"
+          }
+        }
+      }
+    },
     "mrasem_admin_field_escort" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -445,6 +907,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "المرافق"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_floor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الدور"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_guides" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أدلة إرشادية (سطر لكل بند)"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_hall" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "القاعة"
           }
         }
       }
@@ -515,6 +1010,39 @@
         }
       }
     },
+    "mrasem_admin_field_map_label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اسم الموقع على الخريطة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_meeting_spot" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مكان الاستقبال"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_minutes" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "زمن الوصول بالسيارة (دقائق)"
+          }
+        }
+      }
+    },
     "mrasem_admin_field_mode" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -559,6 +1087,39 @@
         }
       }
     },
+    "mrasem_admin_field_official" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الشخصية الرسمية"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_parking" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الانتظار"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_phone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رقم الهاتف"
+          }
+        }
+      }
+    },
     "mrasem_admin_field_place" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -566,6 +1127,72 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "المكان"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_place_kind" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نوع المكان"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_plate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رقم اللوحة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_plate_style" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "شكل اللوحة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_quick_info" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معلومات سريعة (سطر لكل معلومة، «العنوان: القيمة»)"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_reply" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "نص الرد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_role" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الدور"
           }
         }
       }
@@ -603,6 +1230,17 @@
         }
       }
     },
+    "mrasem_admin_field_tag" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وسم"
+          }
+        }
+      }
+    },
     "mrasem_admin_field_time" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -610,6 +1248,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "الوقت (HH:mm)"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_timezone" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المنطقة الزمنية"
           }
         }
       }
@@ -632,6 +1281,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "الملتقى"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_weather" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الطقس"
           }
         }
       }
@@ -691,6 +1351,17 @@
         }
       }
     },
+    "mrasem_admin_form_broadcast" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تنبيه جديد"
+          }
+        }
+      }
+    },
     "mrasem_admin_form_cancel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -698,6 +1369,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "إلغاء"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_car_delete_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأعضاء والفقرات اللي على السيارة دي هيبقوا من غير سيارة، ومش هينفع تتراجع."
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_car_delete_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف السيارة؟"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_car_edit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعديل السيارة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_car_new" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سيارة جديدة"
           }
         }
       }
@@ -753,6 +1468,138 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "حذف"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_dest_delete_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الوفود المرتبطة بالوجهة دي هتبقى من غير وجهة، ومش هينفع تتراجع."
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_dest_delete_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف الوجهة؟"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_dest_edit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعديل الوجهة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_dest_new" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وجهة جديدة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_driver_delete_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السائق هيتشال من أي سيارة معيّن عليها، ومش هينفع تتراجع."
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_driver_delete_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف السائق؟"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_driver_edit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعديل السائق"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_driver_new" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سائق جديد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_escort_delete_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأعضاء المسؤول عنهم هيبقوا من غير مرافق، ومش هينفع تتراجع."
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_escort_delete_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف المرافق؟"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_escort_edit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعديل المرافق"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_escort_new" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مرافق جديد"
           }
         }
       }
@@ -845,6 +1692,61 @@
         }
       }
     },
+    "mrasem_admin_form_place_delete_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المكان هيتشال من الوفود والفقرات والطلبات المرتبطة بيه، ومش هينفع تتراجع."
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_place_delete_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف المكان؟"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_place_edit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعديل المكان"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_place_new" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مكان جديد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_reply" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الرد على الطلب"
+          }
+        }
+      }
+    },
     "mrasem_admin_form_save" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -852,6 +1754,94 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "حفظ"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_team_delete_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "هيتشال من الوفود اللي بينسقها. آخر أدمن ما ينفعش يتحذف."
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_team_delete_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حذف عضو الفريق؟"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_team_edit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعديل عضو الفريق"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_team_new" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "عضو فريق جديد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_form_to_program" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة للبرنامج"
+          }
+        }
+      }
+    },
+    "mrasem_admin_history_empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لسه ما اتبعتش أي تنبيه."
+          }
+        }
+      }
+    },
+    "mrasem_admin_history_meta" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@ · قرأه %3$@ من %4$@"
+          }
+        }
+      }
+    },
+    "mrasem_admin_history_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سجل التنبيهات"
           }
         }
       }
@@ -1307,6 +2297,116 @@
         }
       }
     },
+    "mrasem_admin_place_all" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الكل"
+          }
+        }
+      }
+    },
+    "mrasem_admin_place_attraction" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مزارات"
+          }
+        }
+      }
+    },
+    "mrasem_admin_place_entity" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جهات"
+          }
+        }
+      }
+    },
+    "mrasem_admin_place_hotel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فنادق"
+          }
+        }
+      }
+    },
+    "mrasem_admin_place_restaurant" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مطاعم"
+          }
+        }
+      }
+    },
+    "mrasem_admin_places_add" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة مكان"
+          }
+        }
+      }
+    },
+    "mrasem_admin_places_empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفيش أماكن في القسم ده."
+          }
+        }
+      }
+    },
+    "mrasem_admin_places_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأماكن والجهات"
+          }
+        }
+      }
+    },
+    "mrasem_admin_plate_qatar" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لوحة قطر"
+          }
+        }
+      }
+    },
+    "mrasem_admin_plate_uk" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "لوحة بريطانيا"
+          }
+        }
+      }
+    },
     "mrasem_admin_postpone" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1314,6 +2414,94 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تأجيل ٣٠ دقيقة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_pref_approval" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "طلب موافقة قبل نشر التعديلات"
+          }
+        }
+      }
+    },
+    "mrasem_admin_pref_auto_notify" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إبلاغ الضيوف تلقائياً بالتغييرات"
+          }
+        }
+      }
+    },
+    "mrasem_admin_pref_conflict" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تنبيه عند تعارض السائقين"
+          }
+        }
+      }
+    },
+    "mrasem_admin_pref_daily" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ملخص يومي"
+          }
+        }
+      }
+    },
+    "mrasem_admin_pref_default_mode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "النوع الافتراضي للوفود"
+          }
+        }
+      }
+    },
+    "mrasem_admin_pref_local" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إشعارات على الجهاز"
+          }
+        }
+      }
+    },
+    "mrasem_admin_pref_new_request" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تنبيه عند طلب جديد من وفد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_pref_theme" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المظهر"
           }
         }
       }
@@ -1358,6 +2546,138 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "الجاهزية %1$@٪"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_filter_all" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الكل"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_filter_done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_filter_new" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جديد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_kind_question" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "سؤال"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_kind_visit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "طلب زيارة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_meta" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@ · %3$@"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_reply" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الرد: %1$@"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_reply_action" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_resolve" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم الترتيب"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_status_done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_status_new" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جديد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_req_to_program" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة للبرنامج"
           }
         }
       }
@@ -1417,6 +2737,17 @@
         }
       }
     },
+    "mrasem_admin_requests_broadcast" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إرسال تنبيه"
+          }
+        }
+      }
+    },
     "mrasem_admin_requests_empty" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1435,6 +2766,325 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "طلبات الوفد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_add_car" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة سيارة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_add_driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة سائق"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_add_escort" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة مرافق"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_assign_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@ · %3$@"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_assign_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ — %2$@ · %3$@"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_car_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اللوحة %1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_driver_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@ · رحلات اليوم: %3$@"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفيش حاجة هنا لسه."
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_escort_count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ وفد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_escort_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_no_car" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "من غير سيارة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_no_driver" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "من غير سائق"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_schedule_empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفيش فقرات عليها سيارات من النهارده."
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_section_cars" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السيارات"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_section_drivers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السائقون"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_section_escorts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المرافقون"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_section_schedule" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "جدول التعيينات"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الموارد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_res_trips" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ رحلة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_role_admin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أدمن"
+          }
+        }
+      }
+    },
+    "mrasem_admin_role_coordinator" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "منسق"
+          }
+        }
+      }
+    },
+    "mrasem_admin_role_viewer" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مشاهد"
+          }
+        }
+      }
+    },
+    "mrasem_admin_settings_appearance" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المظهر"
+          }
+        }
+      }
+    },
+    "mrasem_admin_settings_close" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إغلاق"
+          }
+        }
+      }
+    },
+    "mrasem_admin_settings_destinations" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "محتوى الوجهة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_settings_notifications" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الإشعارات"
+          }
+        }
+      }
+    },
+    "mrasem_admin_settings_publishing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "النشر"
+          }
+        }
+      }
+    },
+    "mrasem_admin_settings_team" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الفريق والصلاحيات"
+          }
+        }
+      }
+    },
+    "mrasem_admin_settings_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الإعدادات"
           }
         }
       }
@@ -1505,6 +3155,72 @@
         }
       }
     },
+    "mrasem_admin_team_add" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إضافة"
+          }
+        }
+      }
+    },
+    "mrasem_admin_team_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@"
+          }
+        }
+      }
+    },
+    "mrasem_admin_theme_dark" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "داكن"
+          }
+        }
+      }
+    },
+    "mrasem_admin_theme_light" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "فاتح"
+          }
+        }
+      }
+    },
+    "mrasem_admin_theme_system" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "حسب النظام"
+          }
+        }
+      }
+    },
+    "mrasem_admin_toast_broadcast_sent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اتبعت التنبيه"
+          }
+        }
+      }
+    },
     "mrasem_admin_toast_deleted_rest" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1527,6 +3243,17 @@
         }
       }
     },
+    "mrasem_admin_toast_error_strong" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مش متاح"
+          }
+        }
+      }
+    },
     "mrasem_admin_toast_postponed_rest" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1545,6 +3272,39 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم تأجيل الفقرة."
+          }
+        }
+      }
+    },
+    "mrasem_admin_toast_request_added" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اتضاف الطلب للبرنامج"
+          }
+        }
+      }
+    },
+    "mrasem_admin_toast_request_done" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الطلب اتحدّد «تم الترتيب»"
+          }
+        }
+      }
+    },
+    "mrasem_admin_toast_request_replied" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اتبعت الرد"
           }
         }
       }
@@ -2216,6 +3976,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "الوفد: %1$@"
+          }
+        }
+      }
+    },
+    "mrasem_header_settings" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الإعدادات"
           }
         }
       }

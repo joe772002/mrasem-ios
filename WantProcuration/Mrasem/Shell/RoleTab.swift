@@ -2,17 +2,13 @@
 //  RoleTab.swift
 //  Mrasem
 //
-//  Phase 13 — تابات كل دور. الضيف والفريق عندهم شاشاتهم (Phases 4–7)، والباقي «قريباً» لحد ما تتبني
-//  شاشاتهم في Phases 14–16 (الأدمن 14/15، السائق والمرافق 16).
+//  Phase 13 — تابات كل دور. الضيف والفريق عندهم شاشاتهم (Phases 4–7) والأدمن (14–15)، والباقي «قريباً» لحد Phase 16.
 //
 
 import Foundation
 
 /// تاب لسه شاشته ما اتبنتش.
 enum SoonTab: CaseIterable, Hashable {
-    case adminResources
-    case adminPlaces
-    case adminRequests
     case driverTrips
     case driverSchedule
     case escortDelegation
@@ -20,9 +16,6 @@ enum SoonTab: CaseIterable, Hashable {
 
     var labelKey: String {
         switch self {
-        case .adminResources: return "mrasem_tab_admin_resources"
-        case .adminPlaces: return "mrasem_tab_admin_places"
-        case .adminRequests: return "mrasem_tab_admin_requests"
         case .driverTrips: return "mrasem_tab_driver_trips"
         case .driverSchedule: return "mrasem_tab_driver_schedule"
         case .escortDelegation: return "mrasem_tab_escort_delegation"
@@ -33,7 +26,6 @@ enum SoonTab: CaseIterable, Hashable {
     /// المرحلة اللي هتتبني فيها الشاشة (Phase 14/15/16).
     var phase: Int {
         switch self {
-        case .adminResources, .adminPlaces, .adminRequests: return 15
         case .driverTrips, .driverSchedule, .escortDelegation, .escortNotices: return 16
         }
     }
@@ -44,23 +36,27 @@ extension SoonTab {
     var icon: MrasemIcon {
         switch self {
         case .driverTrips, .escortDelegation: return MrasemIcons.mission
-        case .adminResources: return MrasemIcons.services
-        case .adminPlaces: return MrasemIcons.explore
-        case .adminRequests, .escortNotices: return MrasemIcons.inbox
+        case .escortNotices: return MrasemIcons.inbox
         case .driverSchedule: return MrasemIcons.plan
         }
     }
 }
 
-/// تابات الأدمن اللي شاشاتها اتبنت (Phase 14). الباقي «قريباً» لحد Phase 15.
+/// تابات الأدمن (Phase 14–15). الإعدادات من زر الهيدر.
 enum AdminTab: CaseIterable, Hashable {
     case home
     case delegations
+    case resources
+    case places
+    case requests
 
     var labelKey: String {
         switch self {
         case .home: return "mrasem_tab_admin_home"
         case .delegations: return "mrasem_tab_admin_delegations"
+        case .resources: return "mrasem_tab_admin_resources"
+        case .places: return "mrasem_tab_admin_places"
+        case .requests: return "mrasem_tab_admin_requests"
         }
     }
 }
@@ -71,6 +67,9 @@ extension AdminTab {
         switch self {
         case .home: return MrasemIcons.dash
         case .delegations: return MrasemIcons.mission
+        case .resources: return MrasemIcons.services
+        case .places: return MrasemIcons.explore
+        case .requests: return MrasemIcons.inbox
         }
     }
 }
@@ -91,7 +90,7 @@ enum RoleTab: Hashable {
     static func tabs(for role: ShellRole) -> [RoleTab] {
         switch role {
         case .admin:
-            return [.admin(.home), .admin(.delegations), .soon(.adminResources), .soon(.adminPlaces), .soon(.adminRequests)]
+            return AdminTab.allCases.map { .admin($0) }
         case .coordinator:
             return MrasemDestination.team.map { .screen($0) }
         case .member:

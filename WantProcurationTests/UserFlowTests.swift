@@ -150,14 +150,14 @@ final class UserFlowTests: XCTestCase {
         XCTAssertEqual(shell.selectedDelegationId, "d1")
 
         env.act(as: .team("u1"))
-        shell = RoleShellState.make(env.db, nav: env.repo.nav, chosen: .soon(.adminPlaces))
+        shell = RoleShellState.make(env.db, nav: env.repo.nav, chosen: .admin(.places))
         XCTAssertEqual(shell.role, .admin)
-        XCTAssertEqual(shell.selected, .soon(.adminPlaces))
+        XCTAssertEqual(shell.selected, .admin(.places))
         XCTAssertEqual(shell.tabIndex, 3)
         XCTAssertFalse(shell.needsDelegation)
 
         env.act(as: .driver("r1"))
-        shell = RoleShellState.make(env.db, nav: env.repo.nav, chosen: .soon(.adminPlaces))
+        shell = RoleShellState.make(env.db, nav: env.repo.nav, chosen: .admin(.places))
         XCTAssertEqual(shell.selected, .soon(.driverTrips))
     }
 

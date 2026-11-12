@@ -120,4 +120,11 @@ enum MrasemIcons {
     static let edit = MrasemIcon(icon(["M4 20h4L19 9l-4-4L4 16Z"]))
 
     static let inbox = MrasemIcon(icon(["M3 13h5l1.5 3h5L16 13h5M5 5h14l2 8v6H3v-6Z"]))
+
+    static let settings = MrasemIcon(
+        icon([
+            circle(12, 12, 3.2),
+            "M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1",
+        ])
+    )
 }

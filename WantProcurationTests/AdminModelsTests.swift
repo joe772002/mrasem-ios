@@ -197,8 +197,8 @@ final class AdminModelsTests: XCTestCase {
     // MARK: - الـ Shell
 
     func testAdminTabsAndShellState() {
-        XCTAssertEqual(RoleTab.tabs(for: .admin), [.admin(.home), .admin(.delegations), .soon(.adminResources),
-                                                   .soon(.adminPlaces), .soon(.adminRequests)])
+        XCTAssertEqual(RoleTab.tabs(for: .admin), [.admin(.home), .admin(.delegations), .admin(.resources),
+                                                   .admin(.places), .admin(.requests)])
 
         let env = StoreRepoEnv(user: .team("u1"))
         var shell = RoleShellState.make(env.db, nav: env.repo.nav, chosen: nil)
@@ -218,8 +218,8 @@ final class AdminModelsTests: XCTestCase {
         model.select(.admin(.delegations))
         XCTAssertEqual(model.uiState.selected, .admin(.delegations))
 
-        model.select(.soon(.adminRequests))
-        XCTAssertEqual(model.uiState.selected, .soon(.adminRequests))
+        model.select(.admin(.requests))
+        XCTAssertEqual(model.uiState.selected, .admin(.requests))
     }
 
     func testNavigatorOpenAndClose() {

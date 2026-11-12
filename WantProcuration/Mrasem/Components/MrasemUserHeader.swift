@@ -20,6 +20,8 @@ struct MrasemUserHeader: View {
     let selectedDelegationId: String?
     let onSwitchUser: () -> Void
     let onSelectDelegation: (String) -> Void
+    /// زر الإعدادات (للأدمن بس). `nil` = مش ظاهر.
+    var onSettings: (() -> Void)?
 
     var body: some View {
         let c = theme.colors
@@ -39,6 +41,10 @@ struct MrasemUserHeader: View {
 
                 Spacer(minLength: 8)
 
+                if let onSettings {
+                    settingsButton(onSettings)
+                }
+
                 switcher
             }
 
@@ -51,6 +57,17 @@ struct MrasemUserHeader: View {
         .padding(.bottom, 12)
         .frame(maxWidth: .infinity)
         .background(c.headerBg.ignoresSafeArea(edges: .top))
+    }
+
+    // MARK: - الإعدادات
+
+    private func settingsButton(_ action: @escaping () -> Void) -> some View {
+        Button(action: action) {
+            MrasemIcons.settings
+                .foregroundColor(theme.colors.onHeader)
+                .frame(minWidth: theme.dimens.minTouch, minHeight: theme.dimens.minTouch)
+        }
+        .accessibilityLabel(mrasemString("mrasem_header_settings"))
     }
 
     // MARK: - زر التبديل
