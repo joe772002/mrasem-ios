@@ -122,7 +122,7 @@
 
 **القبول:** التنقل بين تابات كل دور شغال؛ الهيدر والـ bar مطابقين Light/Dark؛ تبديل الدور بيبدّل الـ bar (٦ ↔ ٤).
 
-**الحالة (2026-11-12): الكود اتكتب ومحتاج CI أخضر (متحقق منه بالقراءة بس — مفيش compiler عندنا).**
+**الحالة (2026-11-12): الكود اتكتب و CI أخضر ✅ (متحقق منه بالقراءة بس — مفيش compiler عندنا).**
 - **`Shell/`:** `MrasemDestination` (١٠ وجهات + `ShellUiState`، كله `nonisolated` وبدون SwiftUI عشان يتختبر) · `MrasemSessionViewModel` (Combine فوق `statePublisher`؛ بيرجّع آخر تاب الأول وبعدين يسمع ويحفظ، زي `restore` ثم `drop(1)` في Android) · `MrasemToastBus` + `UiText`/`ToastMessage` · `MrasemShell` · `MrasemPlaceholderScreen` (بقى بياخد مفتاح العنوان).
 - **`MrasemAppContext`:** بديل Hilt للـ UI — بيمسك الـ container والـ toast bus والـ shell VM، والـ Shell بيمرّره لكل وجهة (كل شاشة هتبني الـ ViewModel بتاعها منه في Phases 4–7).
 - **`Components/MrasemNotices.swift`:** `MrasemNoticesSection` + `mrasemNoticeText` + `mrasemDressOptionLabel`.
