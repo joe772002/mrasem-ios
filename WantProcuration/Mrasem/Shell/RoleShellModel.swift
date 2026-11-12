@@ -98,7 +98,7 @@ final class RoleShellModel: ObservableObject {
             } else if let team = destination.teamTab {
                 session.selectTeamTab(team)
             }
-        case .admin, .soon:
+        case .admin, .driver, .escort:
             chosen = tab
             rebuild(backend.database, backend.repository.nav)
         }

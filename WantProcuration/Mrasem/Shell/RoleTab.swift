@@ -2,42 +2,53 @@
 //  RoleTab.swift
 //  Mrasem
 //
-//  Phase 13 — تابات كل دور. الضيف والفريق عندهم شاشاتهم (Phases 4–7) والأدمن (14–15)، والباقي «قريباً» لحد Phase 16.
+//  Phase 13/16 — تابات كل دور: الضيف والفريق (Phases 4–7)، الأدمن (14–15)، السائق والمرافق (16).
 //
 
 import Foundation
 
-/// تاب لسه شاشته ما اتبنتش.
-enum SoonTab: CaseIterable, Hashable {
-    case driverTrips
-    case driverSchedule
-    case escortDelegation
-    case escortNotices
+/// تابات السائق (Phase 16).
+enum DriverTab: CaseIterable, Hashable {
+    case trips
+    case schedule
 
     var labelKey: String {
         switch self {
-        case .driverTrips: return "mrasem_tab_driver_trips"
-        case .driverSchedule: return "mrasem_tab_driver_schedule"
-        case .escortDelegation: return "mrasem_tab_escort_delegation"
-        case .escortNotices: return "mrasem_tab_notices"
+        case .trips: return "mrasem_tab_driver_trips"
+        case .schedule: return "mrasem_tab_driver_schedule"
         }
     }
+}
 
-    /// المرحلة اللي هتتبني فيها الشاشة (Phase 14/15/16).
-    var phase: Int {
+/// تابات المرافق (Phase 16).
+enum EscortTab: CaseIterable, Hashable {
+    case delegation
+    case notices
+
+    var labelKey: String {
         switch self {
-        case .driverTrips, .driverSchedule, .escortDelegation, .escortNotices: return 16
+        case .delegation: return "mrasem_tab_escort_delegation"
+        case .notices: return "mrasem_tab_notices"
         }
     }
 }
 
 @MainActor
-extension SoonTab {
+extension DriverTab {
     var icon: MrasemIcon {
         switch self {
-        case .driverTrips, .escortDelegation: return MrasemIcons.mission
-        case .escortNotices: return MrasemIcons.inbox
-        case .driverSchedule: return MrasemIcons.plan
+        case .trips: return MrasemIcons.mission
+        case .schedule: return MrasemIcons.plan
+        }
+    }
+}
+
+@MainActor
+extension EscortTab {
+    var icon: MrasemIcon {
+        switch self {
+        case .delegation: return MrasemIcons.mission
+        case .notices: return MrasemIcons.inbox
         }
     }
 }
@@ -77,13 +88,15 @@ extension AdminTab {
 enum RoleTab: Hashable {
     case screen(MrasemDestination)
     case admin(AdminTab)
-    case soon(SoonTab)
+    case driver(DriverTab)
+    case escort(EscortTab)
 
     var labelKey: String {
         switch self {
         case let .screen(destination): return destination.labelKey
         case let .admin(tab): return tab.labelKey
-        case let .soon(tab): return tab.labelKey
+        case let .driver(tab): return tab.labelKey
+        case let .escort(tab): return tab.labelKey
         }
     }
 
@@ -96,9 +109,9 @@ enum RoleTab: Hashable {
         case .member:
             return MrasemDestination.guest.map { .screen($0) }
         case .escort:
-            return [.soon(.escortDelegation), .soon(.escortNotices)]
+            return EscortTab.allCases.map { .escort($0) }
         case .driver:
-            return [.soon(.driverTrips), .soon(.driverSchedule)]
+            return DriverTab.allCases.map { .driver($0) }
         }
     }
 }
@@ -109,7 +122,8 @@ extension RoleTab {
         switch self {
         case let .screen(destination): return destination.icon
         case let .admin(tab): return tab.icon
-        case let .soon(tab): return tab.icon
+        case let .driver(tab): return tab.icon
+        case let .escort(tab): return tab.icon
         }
     }
 }

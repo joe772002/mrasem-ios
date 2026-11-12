@@ -158,7 +158,7 @@ final class UserFlowTests: XCTestCase {
 
         env.act(as: .driver("r1"))
         shell = RoleShellState.make(env.db, nav: env.repo.nav, chosen: .admin(.places))
-        XCTAssertEqual(shell.selected, .soon(.driverTrips))
+        XCTAssertEqual(shell.selected, .driver(.trips))
     }
 
     func testTabSelectionChangesTheRightState() {

@@ -243,6 +243,6 @@ final class Phase15ModelsTests: XCTestCase {
     func testAdminShellHasFiveTabs() {
         XCTAssertEqual(AdminTab.allCases, [.home, .delegations, .resources, .places, .requests])
         XCTAssertEqual(RoleTab.tabs(for: .admin).count, 5)
-        XCTAssertFalse(RoleTab.tabs(for: .admin).contains { if case .soon = $0 { return true } else { return false } })
+        XCTAssertTrue(RoleTab.tabs(for: .admin).allSatisfy { if case .admin = $0 { return true } else { return false } })
     }
 }

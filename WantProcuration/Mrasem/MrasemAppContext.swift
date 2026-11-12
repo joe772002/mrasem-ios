@@ -16,6 +16,8 @@ nonisolated final class MrasemAppContext: ObservableObject {
     let flow: MrasemAppFlow
     let roleShell: RoleShellModel
     let adminNav = AdminNavigator()
+    /// توست لحظي لأي تنبيه جديد للمستخدم الحالي (Phase 16).
+    let liveNotices: LiveNoticeToaster
 
     /// `confirmed: true` للـ Previews عشان تفتح على الـ Shell مباشرة بالمستخدم الحالي.
     init(
@@ -30,5 +32,6 @@ nonisolated final class MrasemAppContext: ObservableObject {
         self.toastBus = toastBus
         self.flow = MrasemAppFlow(backend: backend, confirmed: confirmed)
         self.roleShell = RoleShellModel(backend: backend, session: container.session)
+        self.liveNotices = LiveNoticeToaster(store: backend.store, toastBus: toastBus)
     }
 }

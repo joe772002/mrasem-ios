@@ -3705,6 +3705,226 @@
         }
       }
     },
+    "mrasem_driver_action_arrived" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وصلت"
+          }
+        }
+      }
+    },
+    "mrasem_driver_action_completed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انتهت الرحلة"
+          }
+        }
+      }
+    },
+    "mrasem_driver_action_onTheWay" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "أنا في الطريق"
+          }
+        }
+      }
+    },
+    "mrasem_driver_action_pickedUp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم الاستلام"
+          }
+        }
+      }
+    },
+    "mrasem_driver_action_scheduled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بدء الرحلة"
+          }
+        }
+      }
+    },
+    "mrasem_driver_empty_schedule" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفيش رحلات متسجلة ليك."
+          }
+        }
+      }
+    },
+    "mrasem_driver_empty_today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفيش رحلات النهاردة."
+          }
+        }
+      }
+    },
+    "mrasem_driver_kv_arrival" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الوصول"
+          }
+        }
+      }
+    },
+    "mrasem_driver_kv_escorts" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "المرافقون"
+          }
+        }
+      }
+    },
+    "mrasem_driver_kv_from" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "من"
+          }
+        }
+      }
+    },
+    "mrasem_driver_kv_passengers" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الركّاب"
+          }
+        }
+      }
+    },
+    "mrasem_driver_kv_pickup" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الاستلام"
+          }
+        }
+      }
+    },
+    "mrasem_driver_kv_to" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إلى"
+          }
+        }
+      }
+    },
+    "mrasem_driver_status_arrived" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "وصلت"
+          }
+        }
+      }
+    },
+    "mrasem_driver_status_completed" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "انتهت"
+          }
+        }
+      }
+    },
+    "mrasem_driver_status_onTheWay" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "في الطريق"
+          }
+        }
+      }
+    },
+    "mrasem_driver_status_pickedUp" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تم الاستلام"
+          }
+        }
+      }
+    },
+    "mrasem_driver_status_scheduled" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مجدولة"
+          }
+        }
+      }
+    },
+    "mrasem_driver_summary" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · أنجزت %2$@ من %3$@ · %4$@"
+          }
+        }
+      }
+    },
+    "mrasem_driver_trip_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ — %2$@"
+          }
+        }
+      }
+    },
     "mrasem_emergency_coordinator" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3745,6 +3965,127 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "لا يوجد وفد لعرضه"
+          }
+        }
+      }
+    },
+    "mrasem_escort_dates" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ ← %2$@ · %3$@"
+          }
+        }
+      }
+    },
+    "mrasem_escort_empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفيش وفود مسؤول عنها دلوقتي."
+          }
+        }
+      }
+    },
+    "mrasem_escort_head" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "رئيس الوفد"
+          }
+        }
+      }
+    },
+    "mrasem_escort_item_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ · %2$@ · %3$@"
+          }
+        }
+      }
+    },
+    "mrasem_escort_item_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ — %2$@"
+          }
+        }
+      }
+    },
+    "mrasem_escort_member_subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "غرفة %1$@ · %2$@ · %3$@"
+          }
+        }
+      }
+    },
+    "mrasem_escort_members" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأعضاء"
+          }
+        }
+      }
+    },
+    "mrasem_escort_no_members" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفيش أعضاء معيّنين ليك في الوفد ده."
+          }
+        }
+      }
+    },
+    "mrasem_escort_spot" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مكان الاستقبال: %1$@"
+          }
+        }
+      }
+    },
+    "mrasem_escort_today" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "برنامج النهاردة"
+          }
+        }
+      }
+    },
+    "mrasem_escort_today_empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفيش فقرات النهاردة."
           }
         }
       }
@@ -4020,6 +4361,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ دقيقة إلى %2$@"
+          }
+        }
+      }
+    },
+    "mrasem_live_notice_strong" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تنبيه جديد"
           }
         }
       }
@@ -4306,6 +4658,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تم تحديث بيانات الاستقبال أو السيارة أو القاعة. راجع بطاقة المهمة."
+          }
+        }
+      }
+    },
+    "mrasem_notices_empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مفيش تنبيهات."
+          }
+        }
+      }
+    },
+    "mrasem_notices_mark_read" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "علّم الكل مقروء"
+          }
+        }
+      }
+    },
+    "mrasem_notices_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "التنبيهات (%1$@ غير مقروء)"
+          }
+        }
+      }
+    },
+    "mrasem_notices_unread" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "غير مقروء"
           }
         }
       }

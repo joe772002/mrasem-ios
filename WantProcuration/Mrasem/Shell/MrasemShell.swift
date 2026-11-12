@@ -83,8 +83,10 @@ struct MrasemShell: View {
                 MrasemDestinationContent(destination: destination, context: context)
             case let .admin(tab):
                 AdminTabContent(tab: tab, context: context)
-            case let .soon(tab):
-                MrasemPlaceholderScreen(titleKey: tab.labelKey, phase: tab.phase)
+            case let .driver(tab):
+                DriverTabContent(tab: tab, context: context)
+            case let .escort(tab):
+                EscortTabContent(tab: tab, context: context)
             }
         }
     }
@@ -138,6 +140,32 @@ private struct AdminTabContent: View {
             AdminPlacesScreen(context: context)
         case .requests:
             AdminRequestsScreen(context: context)
+        }
+    }
+}
+
+/// تابات السائق (Phase 16).
+private struct DriverTabContent: View {
+    let tab: DriverTab
+    let context: MrasemAppContext
+
+    var body: some View {
+        switch tab {
+        case .trips: DriverTripsScreen(context: context)
+        case .schedule: DriverScheduleScreen(context: context)
+        }
+    }
+}
+
+/// تابات المرافق (Phase 16).
+private struct EscortTabContent: View {
+    let tab: EscortTab
+    let context: MrasemAppContext
+
+    var body: some View {
+        switch tab {
+        case .delegation: EscortDelegationScreen(context: context)
+        case .notices: NoticesScreen(context: context)
         }
     }
 }

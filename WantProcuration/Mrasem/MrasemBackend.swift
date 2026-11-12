@@ -78,4 +78,12 @@ nonisolated final class MrasemBackend {
         store.wipeAll()
         repository.resetForNewUser()
     }
+
+    /// «علّم الكل مقروء» للمستخدم الحالي.
+    func markNoticesRead() {
+        store.update { db in
+            guard let user = db.currentUser else { return }
+            db.markAllRead(for: user)
+        }
+    }
 }
