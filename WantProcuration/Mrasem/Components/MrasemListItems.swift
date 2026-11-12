@@ -362,11 +362,12 @@ struct MrasemNoticeBanner: View {
     @Environment(\.mrasem) private var theme
 
     let title: String
-    let body: String
+    /// اسمها `message` مش `body` عشان ما تتعارضش مع `View.body`.
+    let message: String
 
     init(title: String, body: String) {
         self.title = title
-        self.body = body
+        self.message = body
     }
 
     var body: some View {
@@ -376,7 +377,7 @@ struct MrasemNoticeBanner: View {
             Text(title)
                 .mrasemText(theme.type.strong)
                 .foregroundColor(c.ink)
-            Text(body)
+            Text(message)
                 .mrasemText(theme.type.bodySm)
                 .foregroundColor(c.ink)
         }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Combine
 
 /// مدة التوست بالثواني.
 private let toastDuration: Duration = .milliseconds(3800)
