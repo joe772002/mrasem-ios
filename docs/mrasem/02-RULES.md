@@ -103,6 +103,7 @@ Mrasem/
 | 2026-11-12 | `Views/Reservation/Model/` اتشال، وأنواع الـ pickers اتنقلت لـ `Components/FormComponents/ReservationPickerModels.swift` | `DynamicFormField` لسه بيحتاجها (D2: مكوّنات الفورم تفضل)، بس شاشات الحجز بتاعت التوثيق اتحذفت |
 | 2026-11-12 | `DeviceIdentity` اتحذف مع `Features/Assistant/`، ومعاه `ReservationRequest` | `DeviceIdentity` كان مربوط بالـ Gateway secret اللي اتشال؛ `ReservationRequest` كان بيستخدمه ومكانش هيتحتاج |
 | 2026-11-12 | `Localizable.xcstrings`: `sourceLanguage` = `ar` | Android-xml بيحط العربي في `values/` و`values-ar/` مع بعض، والتطبيق عربي بس (قرار #4) |
+| 2026-11-12 | ** صيغ الـ format بتاعت Android اتحوّلت `%1$s` ← `%1$@`** | مُجمّع نصوص Swift ما بيقبلش `%s` — بيرمي error وقت البناء. `%@` للـ String، `%lld` للـ Int. مثال: `Text("mrasem_notice_dress_approved \(name)")` |
 | 2026-11-12 | `NSCameraUsageDescription` · `NSMicrophoneUsageDescription` · `NSSpeechRecognitionUsageDescription` · `NSPhotoLibraryUsageDescription` اتشالت | ميزاتها (ID Scanner + Voice Input) اتحذفت مع كود التوثيق؛ مفاتيح الموقع اتفضلت لأن `LocationManager` محفوظ (D2) |
 | 2026-11-12 | `Config/Secrets.example.xcconfig` اتحذف و`App.xcconfig` اتمسح منه الـ secret | مراسم مش بيبعت لـ Backend في أي phase؛ القاعدة D5 بتفضل: أي سر جاي يبقى في `Secrets.xcconfig` المتجاهَل |
 | 2026-11-12 | الـ CI على runner `macos-26` | `IPHONEOS_DEPLOYMENT_TARGET = 26.0` محتاج Xcode 26 |
