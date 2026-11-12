@@ -20,7 +20,7 @@ enum VisitSaveResult: Equatable {
     case saved(sections: Set<ChangedSection>, dressChanged: Bool)
 }
 
-final class VisitUpdateStrategy {
+nonisolated final class VisitUpdateStrategy {
     private let repository: MissionRepository
 
     init(repository: MissionRepository) {

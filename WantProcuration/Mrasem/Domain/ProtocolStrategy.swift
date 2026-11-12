@@ -25,7 +25,7 @@ struct ProtocolContent: Equatable {
     let guides: [String]
 }
 
-final class ProtocolStrategy {
+nonisolated final class ProtocolStrategy {
     private let repository: MissionRepository
 
     init(repository: MissionRepository) {

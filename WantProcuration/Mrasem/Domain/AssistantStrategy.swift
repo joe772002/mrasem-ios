@@ -8,7 +8,7 @@
 import Foundation
 
 /// المساعد التوضيحي: قواعد كلمات مفتاحية بالترتيب، أول تطابق يكسب (01-DESIGN-SPEC §7.6).
-final class AssistantStrategy {
+nonisolated final class AssistantStrategy {
     private let repository: MissionRepository
 
     init(repository: MissionRepository) {

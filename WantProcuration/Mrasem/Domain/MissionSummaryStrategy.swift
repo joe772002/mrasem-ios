@@ -38,7 +38,7 @@ struct MissionSummary: Equatable {
     var arrivalCompleted: Bool { arrivalStage >= arrivalSteps }
 }
 
-final class MissionSummaryStrategy {
+nonisolated final class MissionSummaryStrategy {
     private let repository: MissionRepository
     private let now: () -> MrasemDate
 

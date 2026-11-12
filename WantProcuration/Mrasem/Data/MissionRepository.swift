@@ -44,7 +44,7 @@ protocol MissionRepository: AnyObject {
 
 /// تنفيذ في الذاكرة فوق `MrasemDemoData` (قرار #3).
 /// بيتبدّل بـ API لاحقاً من غير ما الطبقات اللي فوقه تتغير.
-final class InMemoryMissionRepository: MissionRepository {
+nonisolated final class InMemoryMissionRepository: MissionRepository {
     private let subject: CurrentValueSubject<MrasemState, Never>
     private var nextId: Int64 = 0
 

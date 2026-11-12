@@ -14,7 +14,7 @@ protocol MrasemPreferences: AnyObject {
 }
 
 /// تنفيذ على `UserDefaults` — مفاتيح `mrasem_*` (قاعدة C7).
-final class UserDefaultsMrasemPreferences: MrasemPreferences {
+nonisolated final class UserDefaultsMrasemPreferences: MrasemPreferences {
     private enum Keys {
         static let guestTab = "mrasem_guest_tab"
         static let teamTab = "mrasem_team_tab"

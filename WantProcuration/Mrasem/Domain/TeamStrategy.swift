@@ -25,7 +25,7 @@ struct ArchiveSummary: Equatable {
 }
 
 /// لوحة فريق المراسم: المؤشرات، الطلبات، التنبيه العام، الأرشيف.
-final class TeamStrategy {
+nonisolated final class TeamStrategy {
     private let repository: MissionRepository
 
     init(repository: MissionRepository) {

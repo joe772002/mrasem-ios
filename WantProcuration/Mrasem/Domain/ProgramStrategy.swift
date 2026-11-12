@@ -30,7 +30,7 @@ struct PostponeResult: Equatable {
     let newTime: String
 }
 
-final class ProgramStrategy {
+nonisolated final class ProgramStrategy {
     private let repository: MissionRepository
 
     init(repository: MissionRepository) {

@@ -21,7 +21,7 @@ struct PlaceItem: Equatable {
     let pluralHours: Bool
 }
 
-final class ExploreStrategy {
+nonisolated final class ExploreStrategy {
     private let repository: MissionRepository
 
     init(repository: MissionRepository) {

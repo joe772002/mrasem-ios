@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 /// التنقل العام: الوضع، الدور، التابات، اليوم، الفلتر + حفظ آخر تاب للضيف.
-final class MrasemSessionStrategy {
+nonisolated final class MrasemSessionStrategy {
     private let repository: MissionRepository
     private let preferences: MrasemPreferences
 

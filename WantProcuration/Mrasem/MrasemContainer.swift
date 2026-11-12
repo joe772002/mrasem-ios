@@ -9,7 +9,7 @@
 import Foundation
 
 /// كل تبعيات مراسم في مكان واحد. الـ ViewModels بتاخدها من هنا.
-final class MrasemContainer {
+nonisolated final class MrasemContainer {
     let repository: MissionRepository
     let preferences: MrasemPreferences
 
