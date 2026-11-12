@@ -25,9 +25,9 @@
 - ريبو iOS: https://github.com/joe772002/mrasem-ios.git
 - للرجوع عند الشك فقط: الديزاين الأصلي https://claude.ai/artifact/Gg4iccc4Y1qqbwAV7d2d52 وكانفس التحسين https://claude.ai/artifact/PNNaXBfzvj6p29SZwE6dHg
 
-## حالة المشروع الحالي (آخر تحديث 2026-11-12 — بعد Phase 1)
+## حالة المشروع الحالي (آخر تحديث 2026-11-12 — بعد Phase 2)
 
-- SwiftUI، **54 ملف Swift** (كانوا 102)، target واحد اسمه `WantProcuration`، **من غير test target** (بيتضاف في Phase 2).
+- SwiftUI، **٧٠ ملف Swift** (كانوا 102)، target واحد اسمه `WantProcuration` + **test target** `WantProcurationTests`.
 - النمط: `View` + `ViewModel: ObservableObject` (MVVM)، و`AppManager` كـ `@StateObject` للغة والثيم.
 - التنقل: مكتبة `SwiftfulRouting` (`RouterView`).
 - المكتبات (SPM): `SwiftfulRouting`، `SwiftfulUI`، `IQKeyboardManager`.
@@ -38,9 +38,10 @@
 - الخطوط: Cairo (6 أوزان، قديمين) + **Reem Kufi** + **IBM Plex Sans Arabic** (4 أوزان) — كلهم مسجّلين في `UIAppFonts`.
 - النصوص: `Localizable.xcstrings` — **276 مفتاح** (13 بتوع الكود القديم اللي فضل + 263 `mrasem_*` منقولة حرفياً من Android)، `sourceLanguage = ar`.
 - الـ Folder **repo على GitHub**: `https://github.com/joe772002/mrasem-ios.git`.
-- **CI شغال**: `.github/workflows/ios.yml` بيبني على runner `macos-26` (Xcode 26.6) — آخر build: `BUILD SUCCEEDED` بصفر warnings في كود مراسم.
+- **CI شغال بـ ٣ jobs:** `Build` (simulator) · `Unit tests` (٤٧ اختبار) · `Launch the app` (smoke test). آخر run: كلهم أخضر.
 - كود مراسم كله تحت `WantProcuration/Mrasem/` (قاعدة A9):
-  `Theme/` (4 ملفات) · `Icons/` (2) · `Components/` (11) · `Shell/` (2) · `Screens/Gallery/` (1) · `Util/` (1)
+  `Theme/` (4) · `Icons/` (2) · `Components/` (11) · `Data/` (5) · `Domain/` (9) · `Shell/` (2) · `Screens/Gallery/` (1) · `Util/` (3) · `MrasemContainer.swift`
+- الاختبارات في `WantProcurationTests/` (٩ ملفات، ٤٧ اختبار).
 
 ## قيد مهم: مفيش Mac
 
@@ -68,9 +69,9 @@
 
 ## الخطوة الجاية
 
-Phase 0 و Phase 1 خلصوا، والـ CI أخضر (`BUILD SUCCEEDED` على macos-26 / Xcode 26.6).
+Phase 0 و 1 و 2 خلصوا، والـ CI أخضر بالكامل (build + ٤٧ اختبار + تشغيل التطبيق).
 
-1. **Phase 2 — البيانات والمنطق** (الـ Models + بيانات الوضعين + Repository + Strategies + tests).
-2. **قبل Phase 2:** محتاج test target — إما تعمله في Xcode على جهازك (File › New › Target › Unit Testing Bundle، وسمّه `WantProcurationTests`)، أو من Mac في السحابة. من غيره مش هنقدر نعمل `xcodebuild test` على الـ CI وننقل الـ ٥٧ اختبار بتاع Android.
+1. **Phase 3 — الهيكل والتنقل:** `MrasemContainer` + `MrasemShell` + `MrasemDestination` + `MrasemSessionViewModel` + `ToastBus` + `NoticesSection` + ١٠ وجهات placeholders.
+2. **قبل Phase 3:** محتاجين قرار واحد — هل هنبدأ بـ **سجل شاشة (Sheet)** للوجهة (زي ما Android بيعمل) ولا **NavigationStack**؟ الـ iOS plan بيقول إن التنقل بين التابات **حالة** مش push، بس الشاشة الكاملة subdestination ممكن تـ push.
 
-قول «ابدا phase 2» ونمشي.
+قول «ابدا phase 3» ونمشي.

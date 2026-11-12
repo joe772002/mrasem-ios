@@ -100,6 +100,13 @@
 
 **القبول:** كل الاختبارات ناجحة على CI؛ مطابقة البيانات بند بند مع `04-DEMO-DATA.md`.
 
+**الحالة (2026-11-12): خلص، والـ CI أخضر — ٤٧ اختبار ناجح.**
+- **الـ Data:** `MissionModels` (مع `MrasemDate` بدل `LocalDate`) · `MrasemState` (دورين + ٦/٤ تابات) · `MrasemDemoData` (الوضعين حرفياً) · `MissionRepository` + `InMemoryMissionRepository` (فوق `CurrentValueSubject`) · `MrasemPreferences` (UserDefaults).
+- **الـ Domain:** ٨ Strategies + Selectors، كلها Foundation بس. `MrasemContainer` بيجمّع الاعتماديات (بديل Hilt).
+- **الـ Tests:** ٩ ملفات منقولة من Android بنفس الأسماء والحالات — ٤٧ اختبار.
+- **test target** اتضاف للـ project والـ scheme، والـ CI بقى فيه ٣ jobs: `Build` · `Unit tests` · `Launch the app` (smoke test بيشغّل التطبيق في الـ simulator ويشوف إنه ما كرش).
+- **عطل مهم اتحل:** التطبيق بيستخدم `SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`، فطبقة الـ Domain اتسمّت `nonisolated` — تفكيك class من غير الـ main thread كان بيعمل hop للـ main actor والـ hop ده كان بيكرش الـ test host. التفاصيل في سجل القرارات.
+
 ---
 
 ## Phase 3 — الهيكل والتنقل

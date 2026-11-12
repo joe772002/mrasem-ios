@@ -117,3 +117,11 @@ Mrasem/
 | 2026-11-12 | Phase 1: خط Reem Kufi المتغيّر بنستخدمه عن طريق CoreText (`kCTFontVariationAttribute`) | SwiftUI مالهاش API لمحاور الخطوط المتغيّرة. الـ PostScript name هو `ReemKufi` ومحور `wght` من 400 لـ 700 |
 | 2026-11-12 | Phase 1: Dynamic Type بمقياس موحّد بدل `relativeTo:` | Reem Kufi خط متغيّر، و `Font.custom(..., relativeTo:)` مش بيقبل variation في نفس الوقت. مسجّل كاستثناء لقاعدة B12 |
 | 2026-11-12 | Phase 1: أيقونة `protocol` باسم backticks (`` `protocol` ``) | `protocol` كلمة محجوزة في Swift |
+| 2026-11-12 | Phase 2: تاب `GuestTab.protocol` كمان بـ backticks | نفس السبب — `protocol` محجوزة |
+| 2026-11-12 | Phase 2: `ProgramItem.Official.where` اتسمّى `place` | `where` كلمة محجوزة في Swift |
+| 2026-11-12 | Phase 2: `MrasemDate` بدل `LocalDate` | Swift مالهاش تاريخ بدون وقت. `MrasemDate` Foundation فقط، وبيدعم `days(since:)` والفرق بين يومين |
+| 2026-11-12 | Phase 2: **الـ Domain والـ Data طبقة `nonisolated`** | التطبيق بيستخدم `SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`، فأي class بيتبان main-actor-isolated. تفكيك class من غير الـ main thread بيعمل hop للـ main actor — والـ hop ده كان بيكرش الـ test host (`swift_task_deinitOnExecutorImpl` → `TaskLocal::StopLookupScope`). الـ domain منطق نقي، فمش المفروض يكون tied بـ actor |
+| 2026-11-12 | Phase 2: الـ **test target** بـ Swift عادي (من غير default MainActor) | XCTest بينادي الـ test methods من غير الـ main thread. لو الـ target كان MainActor-isolated، كل deinit بيعمل hop. الـ app target فضل زي ما هو |
+| 2026-11-12 | Phase 2: الـ **test target** اتضاف للـ `project.pbxproj` بإيد (استثناء لقاعدة A10) | محتاجين `xcodebuild test` على الـ CI. الـ تعديل اتعمل بسكربت وكل استبدال بفحص عدد تكرارات — لو مش مطابق بيكسر الملف. لو Xcode رفض المشروع: `git checkout WantProcuration.xcodeproj/project.pbxproj` |
+| 2026-11-12 | Phase 2: `ContactLinks` + `ExternalLinks` اتنقلوا هنا | اختبارات Android (`UtilTest`) بتغطيهم، فنقلناهم مع الـ tests |
+| 2026-11-12 | Phase 2: `MrasemFonts.display` بقت `Font.custom(...).weight(...)` بدل CoreText | بناء نسخة من الخط المتغيّر عبر `kCTFontVariationAttribute` كان بيفضّل الذاكرة. `Font.weight` بتاخد محور `wght` على iOS 16+ |
