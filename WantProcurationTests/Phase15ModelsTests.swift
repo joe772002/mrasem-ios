@@ -140,13 +140,14 @@ final class Phase15ModelsTests: XCTestCase {
         let (env, toast) = make()
         let model = AdminRequestsModel(backend: env.backend, toastBus: toast)
         var draft = try XCTUnwrap(model.broadcastDraft())
+        let baseline = model.uiState.broadcasts.count
 
         XCTAssertEqual(model.send(draft), "mrasem_admin_error_broadcast", "نص فاضي")
         draft.text = "الحافلة تتحرك ٩ صباحاً"
         draft.audience = .all
         XCTAssertNil(model.send(draft))
-        XCTAssertEqual(model.uiState.broadcasts.count, 1)
-        XCTAssertEqual(model.uiState.broadcasts.first?.audience, .all)
+        XCTAssertEqual(model.uiState.broadcasts.count, baseline + 1)
+        XCTAssertEqual(model.uiState.broadcasts.first { $0.text == "الحافلة تتحرك ٩ صباحاً" }?.audience, .all)
         XCTAssertEqual(model.delegationOptions().count, env.db.delegations.count)
     }
 

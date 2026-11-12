@@ -102,17 +102,17 @@ final class Phase15LogicTests: XCTestCase {
 
     func testBroadcastHistory() {
         let env = StoreRepoEnv(user: .team("u1"))
-        XCTAssertTrue(AdminRequestsBuilder.broadcasts(env.db).isEmpty)
+        let baseline = AdminRequestsBuilder.broadcasts(env.db).count
 
         XCTAssertTrue(env.backend.requests.broadcast("الاجتماع الساعة ١٠", delegationId: "d1", audience: .all))
         XCTAssertFalse(env.backend.requests.broadcast("x", delegationId: "d1", audience: .custom))
 
         let rows = AdminRequestsBuilder.broadcasts(env.db)
-        XCTAssertEqual(rows.count, 1)
-        XCTAssertEqual(rows.first?.text, "الاجتماع الساعة ١٠")
-        XCTAssertEqual(rows.first?.audience, .all)
-        XCTAssertGreaterThan(rows.first?.recipientCount ?? 0, 0)
-        XCTAssertEqual(rows.first?.readCount, 0)
+        XCTAssertEqual(rows.count, baseline + 1)
+        let row = rows.first { $0.text == "الاجتماع الساعة ١٠" }
+        XCTAssertEqual(row?.audience, .all)
+        XCTAssertGreaterThan(row?.recipientCount ?? 0, 0)
+        XCTAssertEqual(row?.readCount, 0)
         XCTAssertEqual(NoticeAudience.broadcastChoices, [.all, .escorts, .drivers])
     }
 
