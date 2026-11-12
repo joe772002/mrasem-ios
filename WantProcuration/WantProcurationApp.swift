@@ -51,6 +51,7 @@ struct WantProcurationApp: App {
                     .environment(\.locale, Locale(identifier: "ar"))
                     .environment(\.layoutDirection, .rightToLeft)
                     .environmentObject(appManager)
+                    .mrasemTheme()
             }
         }
     }
@@ -58,12 +59,13 @@ struct WantProcurationApp: App {
 
 /// Root of the Mrasem app: splash first, then the start destination.
 private struct MrasemRootView: View {
+    @Environment(\.mrasem) private var theme
     @State private var isContentVisible = false
 
     var body: some View {
         ZStack {
             // Solid background so the splash transition never flashes through.
-            MrasemBrand.maroon
+            theme.colors.headerBg
                 .ignoresSafeArea()
 
             if isContentVisible {

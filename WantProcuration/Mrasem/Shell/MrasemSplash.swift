@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-/// Phase 0 splash: maroon background with the Mrasem wordmark.
-/// Phase 1 switches it to the Reem Kufi display font from the design system.
+/// سبلاش مراسم: خلفية عنّابية مع اسم التطبيق.
 struct MrasemSplash: View {
+    @Environment(\.mrasem) private var theme
     @State private var progress: CGFloat = 0
 
     var body: some View {
         ZStack {
-            MrasemBrand.maroon
+            theme.colors.headerBg
                 .ignoresSafeArea()
 
             VStack(spacing: 6) {
                 Text("mrasem_brand_title")
-                    .font(.setFontBold(size: 34))
-                    .foregroundColor(MrasemBrand.onHeader)
+                    .mrasemText(theme.type.brandTitle)
+                    .foregroundColor(theme.colors.onHeader)
 
                 Text("mrasem_brand_subtitle")
-                    .font(.setFontRegular(size: 15))
-                    .foregroundColor(MrasemBrand.onHeader.opacity(0.8))
+                    .mrasemText(theme.type.brandSub)
+                    .foregroundColor(theme.colors.onHeader.opacity(0.8))
             }
             .opacity(progress)
             .scaleEffect(0.9 + 0.1 * progress)
@@ -37,7 +37,14 @@ struct MrasemSplash: View {
     }
 }
 
-#Preview("Splash") {
+#Preview("Splash - Light") {
     MrasemSplash()
+        .mrasemTheme(.light)
+        .environment(\.layoutDirection, .rightToLeft)
+}
+
+#Preview("Splash - Dark") {
+    MrasemSplash()
+        .mrasemTheme(.dark)
         .environment(\.layoutDirection, .rightToLeft)
 }

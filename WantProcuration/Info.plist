@@ -10,6 +10,11 @@
 		<string>Cairo-ExtraLight.ttf</string>
 		<string>Cairo-Bold.ttf</string>
 		<string>Cairo-Black.ttf</string>
+		<string>reem_kufi.ttf</string>
+		<string>ibm_plex_sans_arabic_regular.ttf</string>
+		<string>ibm_plex_sans_arabic_medium.ttf</string>
+		<string>ibm_plex_sans_arabic_semibold.ttf</string>
+		<string>ibm_plex_sans_arabic_bold.ttf</string>
 	</array>
 </dict>
 </plist>
