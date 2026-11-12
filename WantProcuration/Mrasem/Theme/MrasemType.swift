@@ -38,9 +38,10 @@ enum MrasemFonts {
     /// فبنستخدم CoreText (محور `wght`).
     static func display(size: CGFloat, weight: CGFloat) -> Font {
         let base = CTFontCreateWithName(displayName as CFString, size, nil)
+        let baseDescriptor = CTFontCopyFontDescriptor(base)
         let variation: [String: Any] = ["wght": weight]
         let attributes = [kCTFontVariationAttribute: variation as NSDictionary] as CFDictionary
-        guard let descriptor = CTFontDescriptorCreateCopyWithAttributes(base, attributes) else {
+        guard let descriptor = CTFontDescriptorCreateCopyWithAttributes(baseDescriptor, attributes) else {
             return .custom(displayName, size: size)
         }
         return Font(CTFontCreateWithFontDescriptor(descriptor, size, nil))
@@ -165,11 +166,26 @@ extension MrasemTypography {
 extension View {
     /// يطبّق نمط نص مراسم (خط + ارتفاع سطر + تباعد حروف).
     func mrasemText(_ style: MrasemTextStyle, tabular: Bool = false) -> some View {
-        self
+        MrasemTextModifier(style: style, tabular: tabular)
+    }
+}
+
+/// `monospacedDigit()` مالهاش نسخة بببارامتر، فبنعملها بـ modifier.
+private struct MrasemTextModifier: ViewModifier {
+    let style: MrasemTextStyle
+    let tabular: Bool
+
+    func body(content: Content) -> some View {
+        let base = content
             .font(style.font)
             .lineSpacing(style.lineSpacing)
             .tracking(style.tracking)
-            .monospacedDigit(tabular)
+
+        if tabular {
+            base.monospacedDigit()
+        } else {
+            base
+        }
     }
 }
 
