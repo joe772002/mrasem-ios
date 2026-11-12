@@ -33,14 +33,26 @@ final class TeamGuestLinkingTests: XCTestCase {
     }
 
     final class Env {
-        let repo = newRepository()
-        let session = MrasemSessionStrategy(repository: repo, preferences: FakePreferences())
-        let team = TeamStrategy(repository: repo)
-        let visit = VisitUpdateStrategy(repository: repo)
-        let program = ProgramStrategy(repository: repo)
-        let explore = ExploreStrategy(repository: repo)
-        let protocolStrategy = ProtocolStrategy(repository: repo)
-        let summary = MissionSummaryStrategy(repository: repo, now: { dateAt("2026-01-01") })
+        let repo: InMemoryMissionRepository
+        let session: MrasemSessionStrategy
+        let team: TeamStrategy
+        let visit: VisitUpdateStrategy
+        let program: ProgramStrategy
+        let explore: ExploreStrategy
+        let protocolStrategy: ProtocolStrategy
+        let summary: MissionSummaryStrategy
+
+        init() {
+            let repo = newRepository()
+            self.repo = repo
+            self.session = MrasemSessionStrategy(repository: repo, preferences: FakePreferences())
+            self.team = TeamStrategy(repository: repo)
+            self.visit = VisitUpdateStrategy(repository: repo)
+            self.program = ProgramStrategy(repository: repo)
+            self.explore = ExploreStrategy(repository: repo)
+            self.protocolStrategy = ProtocolStrategy(repository: repo)
+            self.summary = MissionSummaryStrategy(repository: repo, now: { dateAt("2026-01-01") })
+        }
 
         var mode: MissionMode { repo.state.mode }
     }
