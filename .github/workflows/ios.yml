@@ -140,3 +140,81 @@ jobs:
             grep -E "(error:|XCTAssert|failed|Failure)" .build/test.log | head -100 || true
           fi
           exit $status
+
+  smoke:
+    name: Launch the app
+    runs-on: macos-26
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache Swift Package Manager
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Caches/org.swift.swiftpm
+            .build
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Resolve packages
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -project WantProcuration.xcodeproj \
+            -scheme WantProcuration
+
+      - name: Find a simulator
+        run: |
+          mkdir -p .build
+          cat > .build/find_simulator.py <<'PY'
+          import json
+          import subprocess
+          import sys
+
+          raw = subprocess.check_output(
+              ["xcrun", "simctl", "list", "devices", "available", "--json"]
+          )
+          devices = json.loads(raw)["devices"]
+          for runtime in sorted(devices):
+              for device in devices[runtime]:
+                  if device.get("isAvailable") and device["name"].startswith("iPhone"):
+                      print(device["udid"])
+                      sys.exit(0)
+          sys.exit("no available iPhone simulator")
+          PY
+          UDID=$(python3 .build/find_simulator.py)
+          echo "Using simulator $UDID"
+          echo "SIMULATOR_UDID=$UDID" >> "$GITHUB_ENV"
+
+      - name: Build
+        run: |
+          set -o pipefail
+          xcodebuild build \
+            -project WantProcuration.xcodeproj \
+            -scheme WantProcuration \
+            -destination "generic/platform=iOS Simulator" \
+            -derivedDataPath .build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            2>&1 | tail -20
+
+      # Launch the app on its own (no tests) and keep the console attached, so
+      # a crash shows up in the log instead of only in the simulator.
+      - name: Launch and watch
+        run: |
+          set +e
+          xcrun simctl boot "$SIMULATOR_UDID" 2>/dev/null
+          xcrun simctl bootstatus "$SIMULATOR_UDID" -b
+          xcrun simctl install "$SIMULATOR_UDID" \
+            .build/DerivedData/Build/Products/Debug-iphonesimulator/WantProcuration.app
+          timeout 30 xcrun simctl launch --console-pty "$SIMULATOR_UDID" \
+            com.informatiqueComp.reserveProcuration2 2>&1 | tee .build/launch.log
+          echo "---- launcher output above ----"
+          if grep -qE "(malloc: \*\*\*|Fatal error|Crashed|Terminating app)" .build/launch.log; then
+            echo "::error::the app crashed on launch"
+            exit 1
+          fi
+          echo "the app stayed alive for 30s"

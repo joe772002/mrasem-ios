@@ -44,16 +44,31 @@ struct WantProcurationApp: App {
 
     var body: some Scene {
         WindowGroup {
-            // One router for the whole app (rule A7).
-            // Mrasem is Arabic / RTL only (decision #4).
-            RouterView { _ in
-                MrasemRootView()
-                    .environment(\.locale, Locale(identifier: "ar"))
-                    .environment(\.layoutDirection, .rightToLeft)
-                    .environmentObject(appManager)
-                    .mrasemTheme()
+            if MrasemEnvironment.isRunningUnitTests {
+                // The unit tests only exercise the domain layer, so the UI is not
+                // built while they run. Rendering it made the test host unstable.
+                Color.clear
+            } else {
+                // One router for the whole app (rule A7).
+                // Mrasem is Arabic / RTL only (decision #4).
+                RouterView { _ in
+                    MrasemRootView()
+                        .environment(\.locale, Locale(identifier: "ar"))
+                        .environment(\.layoutDirection, .rightToLeft)
+                        .environmentObject(appManager)
+                        .mrasemTheme()
+                }
             }
         }
+    }
+}
+
+/// حالة العملية — بتعرف لو التطبيق شغال كـ host لاختبارات الوحدة.
+enum MrasemEnvironment {
+    /// `XCTestConfigurationFilePath` بيتحط في بيئة العملية لما XCTest يشغّل اختبارات
+    /// داخل التطبيق (test host).
+    static var isRunningUnitTests: Bool {
+        ProcessInfo.processInfo.environment["XCTestConfigurationFilePath"] != nil
     }
 }
 
