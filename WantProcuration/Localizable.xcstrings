@@ -702,6 +702,28 @@
         }
       }
     },
+    "mrasem_hotel_drive_few" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ دقائق إلى %2$@"
+          }
+        }
+      }
+    },
+    "mrasem_hotel_drive_many" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ دقيقة إلى %2$@"
+          }
+        }
+      }
+    },
     "mrasem_map_description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2194,6 +2216,83 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "موقع الملتقى"
+          }
+        }
+      }
+    },
+    "mrasem_weekday_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأحد"
+          }
+        }
+      }
+    },
+    "mrasem_weekday_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الإثنين"
+          }
+        }
+      }
+    },
+    "mrasem_weekday_3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الثلاثاء"
+          }
+        }
+      }
+    },
+    "mrasem_weekday_4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الأربعاء"
+          }
+        }
+      }
+    },
+    "mrasem_weekday_5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الخميس"
+          }
+        }
+      }
+    },
+    "mrasem_weekday_6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الجمعة"
+          }
+        }
+      }
+    },
+    "mrasem_weekday_7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "السبت"
           }
         }
       }

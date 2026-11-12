@@ -28,7 +28,7 @@
 - ريبو iOS: https://github.com/joe772002/mrasem-ios.git
 - للرجوع عند الشك فقط: الديزاين الأصلي https://claude.ai/artifact/Gg4iccc4Y1qqbwAV7d2d52 وكانفس التحسين https://claude.ai/artifact/PNNaXBfzvj6p29SZwE6dHg
 
-## حالة المشروع الحالي (آخر تحديث 2026-11-12 — Phase 0–9 CI أخضر ✅؛ Phase 10–11 مكتوبين، بانتظار CI)
+## حالة المشروع الحالي (آخر تحديث 2026-11-12 — Phase 0–9 CI أخضر ✅؛ Phase 10–12 مكتوبين ومتعملهم push، بانتظار نتيجة الـ CI)
 
 - SwiftUI، **٧٩ ملف Swift** (كانوا 102)، target واحد اسمه `WantProcuration` + **test target** `WantProcurationTests`.
 - النمط: `View` + `ViewModel: ObservableObject` (MVVM)، و`AppManager` كـ `@StateObject` للغة والثيم.
@@ -72,9 +72,9 @@
 
 ## الخطوة الجاية
 
-Phase 0–9 خلصوا بـ CI أخضر (الإصدار مستني حساب Apple — `07-RELEASE.md`). بدأنا **التطبيق الواحد لكل الأدوار** (`08-ALL-ROLES-PLAN.md`): **Phase 10** (الوثائق والقواعد G) و **Phase 11** (قاعدة البيانات المحلية في `Mrasem/Store/` + ١٥ اختبار) مكتوبين.
+Phase 0–9 خلصوا بـ CI أخضر. Phase 10–11 اتعملهم push (نتيجة الـ CI مش متأكدة). **Phase 12** (منطق الأعمال المشترك في `Mrasem/Domain/Store/` + ٢١ اختبار) مكتوب ومتعمله push.
 
-1. `git push` وشوف الـ CI. لو فيه `error:` ابعته.
-2. **Phase 12 — منطق الأعمال المشترك** (Opus 5.5): الوفود، التعيينات، البرنامج، الطلبات، التعارضات، رحلات السائق، توزيع التنبيهات، و`GuestMissionAdapter`.
+1. شوف الـ CI. لو فيه `error:` ابعته.
+2. **Phase 13 — المستخدمين والتبديل** (Opus 5.5): شاشة البداية (فارغ/عرض) + «اختر المستخدم» + زر التبديل + الـ badges + Shell بتابات حسب الدور + ربط شاشات الضيف والفريق بالقاعدة الجديدة.
 
-قول «ابدا phase 12».
+قول «ابدا phase 13».

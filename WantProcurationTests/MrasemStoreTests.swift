@@ -81,7 +81,7 @@ final class MrasemStoreTests: XCTestCase {
         var received: [Int] = []
         let token = store.publisher.sink { received.append($0.members.count) }
 
-        store.update { $0.deleteMember("m3") }
+        store.update { _ = $0.deleteMember("m3") }
         XCTAssertEqual(received.last, 5)
         token.cancel()
     }
