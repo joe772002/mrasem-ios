@@ -85,7 +85,7 @@ Mrasem/
 
 ## F. ملاحظات على المشروع الحالي
 
-> آخر تحديث: 2026-11-12 — بعد Phase 9 (الكود جاهز، بانتظار CI + حساب Apple).
+> آخر تحديث: 2026-11-12 — بعد Phase 9 (CI أخضر، بانتظار حساب Apple).
 
 - **اتحل في Phase 0:** مفيش git → بقى repo على `joe772002/mrasem-ios`. الـ force-unwrap للخط → بقى `if let`. مفاتيح الـ AI Gateway واسم Siri البديل → اتشالت.
 - `AppManager.isDarkMode` افتراضيه `true` وبيتقرا من `UserDefaults` — هيتوصّل بخيار الثيم (فاتح/داكن/النظام).

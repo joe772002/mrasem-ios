@@ -141,7 +141,7 @@
 
 **القبول:** مطابقة الوضعين؛ دورة الوصول كاملة؛ الروابط بتفتح.
 
-**الحالة: ✅ مكتوب (بانتظار CI أخضر).** `Screens/Mission/{MissionViewModel,MissionScreen,MissionCards}.swift` و`Screens/Plan/{PlanViewModel,PlanScreen}.swift`، متوصلين بالـ Shell. الاختبارات: `MissionPlanStateTests` (toasts الوصول الأربعة، `MissionUiState`/`PlanUiState` مع الـ repository، توجيه chips البرنامج، وجود كل مفاتيح النصوص). `ContactLinks`/`ExternalLinks` اتنقلوا في Phase 2 وبيتنادوا من الشاشات.
+**الحالة: ✅ مكتوب (CI أخضر ✅).** `Screens/Mission/{MissionViewModel,MissionScreen,MissionCards}.swift` و`Screens/Plan/{PlanViewModel,PlanScreen}.swift`، متوصلين بالـ Shell. الاختبارات: `MissionPlanStateTests` (toasts الوصول الأربعة، `MissionUiState`/`PlanUiState` مع الـ repository، توجيه chips البرنامج، وجود كل مفاتيح النصوص). `ContactLinks`/`ExternalLinks` اتنقلوا في Phase 2 وبيتنادوا من الشاشات.
 
 ---
 
@@ -152,7 +152,7 @@
 
 **القبول:** نتائج الفلاتر مطابقة (8 الدوحة / 4 لندن)؛ الطلب بيظهر في الحالة.
 
-**الحالة: ✅ مكتوب (بانتظار CI أخضر).** `Screens/Explore/{ExploreViewModel,ExploreScreen}.swift` و`Screens/Services/{ServicesViewModel,ServicesScreen}.swift`، متوصلين بالـ Shell. `ExploreScreen`: كارت «حول الفندق» + شريط الفلاتر الأفقي، كروت الأماكن بالميتا (دقائق/مدة/VIP) وزر بثلاث حالات، toast الطلب. `ServicesScreen`: كارت لكل فئة، `MrasemServiceRow` بزر «فتح» (`ExternalLinks.open`)، «معلومات سريعة»، سطر الغرفة. الاختبارات: `ExploreServicesStateTests` (٥).
+**الحالة: ✅ مكتوب (CI أخضر ✅).** `Screens/Explore/{ExploreViewModel,ExploreScreen}.swift` و`Screens/Services/{ServicesViewModel,ServicesScreen}.swift`، متوصلين بالـ Shell. `ExploreScreen`: كارت «حول الفندق» + شريط الفلاتر الأفقي، كروت الأماكن بالميتا (دقائق/مدة/VIP) وزر بثلاث حالات، toast الطلب. `ServicesScreen`: كارت لكل فئة، `MrasemServiceRow` بزر «فتح» (`ExternalLinks.open`)، «معلومات سريعة»، سطر الغرفة. الاختبارات: `ExploreServicesStateTests` (٥).
 
 ---
 
@@ -163,7 +163,7 @@
 
 **القبول:** القواعد الـ 8 + التحويل بنفس نصوص المصدر في الوضعين؛ الـ checks لكل وضع.
 
-**الحالة: ✅ مكتوب (بانتظار CI أخضر).** `Screens/Protocol/{ProtocolViewModel,ProtocolScreen}.swift` و`Screens/Assistant/{AssistantViewModel,AssistantScreen}.swift` + `Components/MrasemAssistantText.swift` (`mrasemAssistantReplyText`)، متوصلين بالـ Shell. `ProtocolScreen`: بطاقة الـ ٣٠ ثانية، الزي بالرسمة والعمودين، قائمة الفحص بالعدّاد، الأعراف، chips الدليل + toast. `AssistantScreen`: المحادثة والأسئلة الجاهزة (`MrasemFlowLayout`) وحقل الإدخال، وتمرير لآخر المحادثة عن طريق `MrasemScreenContent(scrollToEndTrigger:)`. الاختبارات: `ProtocolAssistantStateTests` (٧).
+**الحالة: ✅ مكتوب (CI أخضر ✅).** `Screens/Protocol/{ProtocolViewModel,ProtocolScreen}.swift` و`Screens/Assistant/{AssistantViewModel,AssistantScreen}.swift` + `Components/MrasemAssistantText.swift` (`mrasemAssistantReplyText`)، متوصلين بالـ Shell. `ProtocolScreen`: بطاقة الـ ٣٠ ثانية، الزي بالرسمة والعمودين، قائمة الفحص بالعدّاد، الأعراف، chips الدليل + toast. `AssistantScreen`: المحادثة والأسئلة الجاهزة (`MrasemFlowLayout`) وحقل الإدخال، وتمرير لآخر المحادثة عن طريق `MrasemScreenContent(scrollToEndTrigger:)`. الاختبارات: `ProtocolAssistantStateTests` (٧).
 
 ---
 
@@ -175,7 +175,7 @@
 
 **القبول:** السيناريوهات الخمسة ناجحة؛ النصوص مطابقة.
 
-**الحالة: ✅ مكتوب (بانتظار CI أخضر).** `Screens/Team/`: `TeamHeader` (+ `TeamHeaderUi`) و`TeamVisit`/`TeamChanges`/`TeamRequests`/`TeamArchive` (ViewModel + Screen لكل واحدة) و`TeamPreviewData`، متوصلين بالـ Shell. نموذج الزيارة: 7 حقول + زي اليوم في عمودين، الهاتف واللوحة LTR، والمسودة بتتصفّر لما حالة المصدر تتغير. التأجيل والتنبيه العام والترتيب بنفس توستات Android. سيناريوهات الربط الخمسة كانت موجودة في `TeamGuestLinkingTests` (الوضعين) وبقى معاها `TeamStateTests` (٥).
+**الحالة: ✅ مكتوب (CI أخضر ✅).** `Screens/Team/`: `TeamHeader` (+ `TeamHeaderUi`) و`TeamVisit`/`TeamChanges`/`TeamRequests`/`TeamArchive` (ViewModel + Screen لكل واحدة) و`TeamPreviewData`، متوصلين بالـ Shell. نموذج الزيارة: 7 حقول + زي اليوم في عمودين، الهاتف واللوحة LTR، والمسودة بتتصفّر لما حالة المصدر تتغير. التأجيل والتنبيه العام والترتيب بنفس توستات Android. سيناريوهات الربط الخمسة كانت موجودة في `TeamGuestLinkingTests` (الوضعين) وبقى معاها `TeamStateTests` (٥).
 
 ---
 
@@ -190,7 +190,7 @@
 
 **القبول:** release build شغال؛ صفر references للتوثيق؛ checklist المطابقة كاملة.
 
-**الحالة: 🟡 اتعمل اللي ممكن من Windows (بانتظار CI + Mac).**
+**الحالة: 🟡 اتعمل اللي ممكن من Windows (CI أخضر ✅، الباقي محتاج Mac).**
 - ✅ **الأيقونة:** اتولّدت من أيقونة Android (الخلفية + الأمامية، قص الـ safe-zone) كـ RGB بدون alpha، وكل المقاسات الـ 21 في `AppIcon.appiconset` اتبدّلت. الأصل 288px مكبّر لـ 1024 فهي أنعم شوية من المصدر؛ لو فيه نسخة vector/1024 أصلية تتبدّل.
 - ✅ **Launch Screen:** `UILaunchScreen` في `Info.plist` بلون `LaunchBackground` (العنّابي `#8A1538`) بدل الأبيض.
 - ✅ **المراجعة الآلية:** صفر hex/خطوط نظام في `Screens/` و`Shell/` (B2/B3)، وكل ألوان الـ Assets مستخدمة، وكل عناصر اللمس عليها traits/labels. `MrasemKpiTile` بقى عنصر VoiceOver واحد.
@@ -208,7 +208,7 @@
 
 **القبول:** release build شغال على CI؛ مطابقة النصوص كاملة؛ workflow إصدار موقّع جاهز.
 
-**الحالة: 🟡 الكود جاهز (بانتظار CI + حساب Apple).**
+**الحالة: 🟡 الكود جاهز (CI أخضر ✅، بانتظار حساب Apple).**
 - ✅ **مطابقة النصوص آلياً:** كل مفتاح `R.string.mrasem_*` مستخدم في Android مستخدم في iOS، وكل مفتاح بيتنادى في iOS موجود في الـ catalog (صفر ناقص). ٣ مفاتيح مش مستخدمة في الاتنين (`mrasem_explore_title`/`_minutes_to_venue`/`_toast_sent`) — فاضلين زي المصدر.
 - ✅ **VoiceOver:** التوست بيتعلن (`UIAccessibility.post(.announcement)` بديل `liveRegion`)، عنوان الهيدر trait Header، صف الخدمة عنصر واحد بـ trait Button ولوجو الحروف مخفي، الـ KPI عنصر واحد (Phase 8).
 - ✅ **Release build:** step `Build (Release)` اتضاف لـ job الـ Build في `ios.yml`.
