@@ -13,7 +13,7 @@ struct MrasemActionRow<Leading: View>: View {
 
     let title: String
     let subtitle: String
-    @ViewBuilder var leading: () -> Leading
+    var leading: () -> Leading
 
     init(
         title: String,

@@ -238,7 +238,7 @@ struct MrasemGalleryScreen: View {
 
     private func gallerySection<Section: View>(
         _ title: String,
-        @ViewBuilder content: () -> Section
+        @ViewBuilder content: @escaping () -> Section
     ) -> some View {
         MrasemCard(title: title, content: content)
     }

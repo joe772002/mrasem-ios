@@ -12,7 +12,7 @@ import SwiftUI
 struct MrasemScreenContent<Content: View>: View {
     @Environment(\.mrasem) private var theme
 
-    @ViewBuilder var content: () -> Content
+    var content: () -> Content
 
     init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content

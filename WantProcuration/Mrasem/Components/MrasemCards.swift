@@ -13,7 +13,7 @@ struct MrasemCard<Content: View>: View {
 
     let title: String?
     let headerEnd: AnyView?
-    @ViewBuilder var content: () -> Content
+    var content: () -> Content
 
     init(
         title: String? = nil,
@@ -66,7 +66,7 @@ struct MrasemCard<Content: View>: View {
 struct MrasemHeroCard<Content: View>: View {
     @Environment(\.mrasem) private var theme
 
-    @ViewBuilder var content: () -> Content
+    var content: () -> Content
 
     init(@ViewBuilder content: @escaping () -> Content) {
         self.content = content

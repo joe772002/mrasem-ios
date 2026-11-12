@@ -14,7 +14,7 @@ struct MrasemPreview<Content: View>: View {
     let option: MrasemThemeOption
     let padding: CGFloat
     let spacing: CGFloat
-    @ViewBuilder var content: () -> Content
+    var content: () -> Content
 
     init(
         _ option: MrasemThemeOption = .light,
@@ -45,7 +45,7 @@ struct MrasemScreenPreview<Content: View>: View {
     @Environment(\.mrasem) private var theme
 
     let option: MrasemThemeOption
-    @ViewBuilder var content: () -> Content
+    var content: () -> Content
 
     init(
         _ option: MrasemThemeOption = .light,

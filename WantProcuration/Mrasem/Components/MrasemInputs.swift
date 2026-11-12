@@ -41,22 +41,29 @@ struct MrasemTextField: View {
                     .foregroundColor(c.muted)
             }
 
-            TextField(
-                "",
-                text: $value,
-                prompt: Text(placeholder)
-                    .mrasemText(theme.type.body)
-                    .foregroundColor(c.muted),
-                axis: singleLine ? .horizontal : .vertical
-            )
-            .mrasemText(theme.type.body)
-            .foregroundColor(c.ink)
-            .tint(c.maroon)
-            .textFieldStyle(.plain)
-            .lineLimit(singleLine ? 1 : nil)
+            ZStack(alignment: .leading) {
+                if value.isEmpty {
+                    Text(placeholder)
+                        .mrasemText(theme.type.body)
+                        .foregroundColor(c.muted)
+                        .padding(.horizontal, 12)
+                        .allowsHitTesting(false)
+                }
+
+                TextField(
+                    "",
+                    text: $value,
+                    axis: singleLine ? .horizontal : .vertical
+                )
+                .mrasemText(theme.type.body)
+                .foregroundColor(c.ink)
+                .tint(c.maroon)
+                .textFieldStyle(.plain)
+                .lineLimit(singleLine ? 1 : nil)
+                .padding(.horizontal, 12)
+                .padding(.vertical, 10)
+            }
             .frame(minHeight: theme.dimens.minTouch)
-            .padding(.horizontal, 12)
-            .padding(.vertical, 10)
             .background(c.surface, in: RoundedRectangle(cornerRadius: theme.shapes.field))
             .overlay(
                 RoundedRectangle(cornerRadius: theme.shapes.field)
