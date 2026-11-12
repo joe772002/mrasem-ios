@@ -13,7 +13,7 @@ final class SessionStrategyTests: XCTestCase {
 
     func testRestoresSavedGuestTab() {
         let repo = newRepository()
-        let strategy = MrasemSessionStrategy(repository: repo, preferences: FakePreferences(.`protocol`))
+        let strategy = MrasemSessionStrategy(repository: repo, preferences: FakePreferences(initial: .`protocol`))
         strategy.restoreGuestTab()
         XCTAssertEqual(repo.state.guestTab, .`protocol`)
     }
