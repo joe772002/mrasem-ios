@@ -45,7 +45,7 @@ final class ProtocolStrategy {
             dressCode: state.dress,
             dress: MrasemDemoData.dressSets[state.dress]!,
             checklist: checklist,
-            readyCount: checklist.count(\.checked),
+            readyCount: checklist.count { $0.checked },
             customs: state.mission.customs,
             isInbound: state.mode == .inbound,
             guides: MrasemDemoData.guides

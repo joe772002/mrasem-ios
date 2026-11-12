@@ -58,10 +58,10 @@ final class MissionSummaryStrategy {
             officialCount: mission.officialCount,
             arrivalStage: stage,
             button: Self.button(for: stage),
-            changedSections: state.changed.compactMap { key in
+            changedSections: Set(state.changed.compactMap { key in
                 guard case let .section(mode, section) = key, mode == state.mode else { return nil }
                 return section
-            }
+            })
         )
     }
 
