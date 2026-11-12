@@ -30,6 +30,7 @@ Mrasem/
   Shell/        MrasemShell · MrasemDestination · MrasemSessionViewModel · MrasemToastBus · UiText
   Screens/      Mission · Plan · Services · Explore · Protocol · Assistant · Team (+ Gallery)
   Util/         ArabicDigits · ContactLinks · ExternalLinks · MrasemStrings
+  Store/        قاعدة البيانات المحلية (Phase 11+): الكيانات · MrasemDatabase · MrasemStore · MrasemStorage · MrasemSeed
 ```
 
 - **A10.** ممنوع تعديل `project.pbxproj` باليد. المشروع synchronized groups: إضافة/حذف الملفات من الفولدر كفاية. أي حاجة محتاجة Xcode (test target، capabilities، signing) تتكتب كخطوة للمستخدم.
@@ -85,13 +86,24 @@ Mrasem/
 
 ## F. ملاحظات على المشروع الحالي
 
-> آخر تحديث: 2026-11-12 — بعد Phase 9 (CI أخضر، بانتظار حساب Apple).
+> آخر تحديث: 2026-11-12 — بعد Phase 11 (قاعدة البيانات المحلية، بانتظار CI).
 
 - **اتحل في Phase 0:** مفيش git → بقى repo على `joe772002/mrasem-ios`. الـ force-unwrap للخط → بقى `if let`. مفاتيح الـ AI Gateway واسم Siri البديل → اتشالت.
 - `AppManager.isDarkMode` افتراضيه `true` وبيتقرا من `UserDefaults` — هيتوصّل بخيار الثيم (فاتح/داكن/النظام).
 - `DEVELOPMENT_TEAM = 25N3SF9UHQ` ثابت في المشروع — للمراجعة لو الحساب هيتغير.
 - رؤوس الملفات فيها أسماء مشاريع قديمة (MTCIT, mojEgypt) — تجميلي.
 - ✅ **اتحل في Phase 9:** الـ Bundle ID بقى `com.informatiqueComp.mrasem` (كان `com.informatiqueComp.reserveProcuration2` بتاع التوكيل).
+
+## G. التطبيق الواحد لكل الأدوار (Phase 10+، `08-ALL-ROLES-PLAN.md`)
+
+- **G1.** مفيش أي اتصال خارجي: لا شبكة ولا API ولا analytics. `APIClient` يفضل مش مستخدم.
+- **G2.** كل البيانات من `MrasemStore` (ملف JSON محلي). `MrasemDemoData` بقى مصدر لـ «بيانات العرض» الاختيارية (`MrasemSeed`) بس — ممنوع في الشاشات الجديدة، والقديمة بتتنقل منه في Phase 13.
+- **G3.** كل حذف بيتأكد من المستخدم، ومتسلسل (`MrasemDatabase+Delete`)، ومختبر. مفيش عنصر يتيم.
+- **G4.** أي فعل يأثر على مستخدم تاني لازم يطلع `NoticeRecord` لمستخدمين محددين (`recipients: [UserRef]`).
+- **G5.** الشاشات بتتعامل مع الحالة الفاضية دايماً: ممنوع `[0]` أو `!` على بيانات جاية من القاعدة.
+- **G6.** تبديل المستخدم من غير باسورد (نسخة عرض)، ومكتوب ده في شاشة التبديل.
+- **G7.** التعديل على البيانات من `MrasemStore.update { }` بس. الكيانات `Codable` بمعرّف نصي والعلاقات بالمعرّفات. أي تغيير في شكلها = `schemaVersion` + 1 + قراءة الإصدار القديم.
+- **G8.** المواعيد نص `yyyy-MM-dd` / `HH:mm` زي البوابة؛ `Date` للحظات الأحداث بس.
 
 ## سجل القرارات
 
@@ -145,3 +157,11 @@ Mrasem/
 | 2026-11-12 | Phase 9: الإصدار عبر GitHub Actions (`release.yml`) بتوقيع يدوي من الـ secrets | مفيش Mac؛ نفس runner الـ CI. الـ project ما اتعدّلش: التوقيع بيتمرر كـ build settings |
 | 2026-11-12 | Phase 9: الـ workflow بيوقف لو Bundle ID الـ profile ≠ الـ project | حماية من رفع مراسم كتحديث لتطبيق التوكيل بالغلط |
 | 2026-11-12 | Phase 9: **Bundle ID جديد `com.informatiqueComp.mrasem`** (Tests: `…mrasemTests`) | قرار صاحب المشروع: مراسم تطبيق مستقل مش تحديث للتوكيل. اتعدّل في `project.pbxproj` (٤ مواضع) و job الـ smoke في `ios.yml`. بيلغي قرار «سيب زي ما هو» السابق |
+| 2026-11-12 | Phase 10: خطة «التطبيق الواحد لكل الأدوار» (`08`) اتعتمدت بالقرارات الافتراضية: سؤال البداية (فارغ/عرض)، المنسق دور واحد بتابات الفريق، تنبيهات جوّه التطبيق (iOS المحلية اختيارية)، محتوى الوجهة يعدّله الأدمن | طلب صاحب المشروع |
+| 2026-11-12 | Phase 10: قواعد الخطة اسمها **G** (مش F زي ما كانت في `08`) | القسم F مستخدم لملاحظات المشروع |
+| 2026-11-12 | Phase 11: التخزين ملف JSON واحد (`Codable`) مش SwiftData | يتختبر على الـ CI، مفيش migrations مخفية، ويتراجع من غير Xcode |
+| 2026-11-12 | Phase 11: الكيانات اسمها `…Record` في `Mrasem/Store/` | من غير تعارض مع موديلات العرض الحالية (`Mission`, `Place`, `Notice`, `GuestRequest`) لحد Phase 13 |
+| 2026-11-12 | Phase 11: محتوى الوجهة (`DestinationRecord`) كيان مستقل والوفد بيشير له | وفود كتير لنفس الوجهة بتشارك الأعراف والخدمات، ووفود الخارج لبلاد مختلفة |
+| 2026-11-12 | Phase 11: ملف تالف أو `schemaVersion` أحدث ← نسخة احتياطية `database.corrupt-*.json` + قاعدة فاضية | ما نكتبش فوق بيانات ممكن تترجع |
+| 2026-11-12 | Phase 11: القاعدة دايماً فيها أدمن («مدير النظام» لو اتمسح الكل)، وآخر أدمن ما يتحذفش؛ المستخدم الحالي لو اتحذف ← `nil` | تقدر تدخل دايماً |
+| 2026-11-12 | Phase 11: اللحظات (`Date`) بتتخزن بالترميز الافتراضي (رقم كامل) مش ISO | القراءة ترجع نفس القيمة بالظبط (اختبار الحفظ/القراءة) |

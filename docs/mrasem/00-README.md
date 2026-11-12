@@ -13,10 +13,13 @@
 | `00-README.md` | الملف ده: الصورة العامة، حالة المشروع، القرارات المفتوحة |
 | `01-DESIGN-SPEC.md` | مواصفات الديزاين (ألوان، خطوط، مكوّنات، شاشات) — منقول من Android كما هو |
 | `02-RULES.md` | قواعد iOS الملزمة + سجل القرارات |
-| `03-PHASES.md` | خطة التنفيذ (Phase 0 → 8) |
+| `03-PHASES.md` | خطة التنفيذ (Phase 0 → 18) |
 | `04-DEMO-DATA.md` | بيانات الوضعين حرفياً — منقول من Android كما هو |
 | `05-ENHANCED-DESIGN.md` | **تاريخي** — تصميم فرع `enhance` (مش المرجع) + جدول الفرق بين الفرعين |
 | `06-ANDROID-REFERENCE.md` | خريطة: كل ملف Kotlin في Android ← مقابله في Swift |
+| `07-RELEASE.md` | الإصدار (TestFlight) و checklist المراجعة اليدوية |
+| `08-ALL-ROLES-PLAN.md` | خطة التطبيق الواحد لكل الأدوار (البوابة + تبديل المستخدم + بيانات محلية) — Phases 10–18 |
+| `09-DATA-MODEL.md` | نموذج البيانات، الحذف المتسلسل، مين يشوف إيه، خريطة الشاشات |
 | `design-reference/` | مصدر الديزاين الأصلي (CSS + JS) للمراجعة |
 
 ## المراجع
@@ -25,7 +28,7 @@
 - ريبو iOS: https://github.com/joe772002/mrasem-ios.git
 - للرجوع عند الشك فقط: الديزاين الأصلي https://claude.ai/artifact/Gg4iccc4Y1qqbwAV7d2d52 وكانفس التحسين https://claude.ai/artifact/PNNaXBfzvj6p29SZwE6dHg
 
-## حالة المشروع الحالي (آخر تحديث 2026-11-12 — Phase 0–9 CI أخضر ✅ (run 43239471393)، فاضل حساب Apple)
+## حالة المشروع الحالي (آخر تحديث 2026-11-12 — Phase 0–9 CI أخضر ✅؛ Phase 10–11 مكتوبين، بانتظار CI)
 
 - SwiftUI، **٧٩ ملف Swift** (كانوا 102)، target واحد اسمه `WantProcuration` + **test target** `WantProcurationTests`.
 - النمط: `View` + `ViewModel: ObservableObject` (MVVM)، و`AppManager` كـ `@StateObject` للغة والثيم.
@@ -69,9 +72,9 @@
 
 ## الخطوة الجاية
 
-Phase 0 و 1 و 2 خلصوا والـ CI أخضر. **Phase 3 إلى 7 (الهيكل، المهمة + البرنامج، الاستكشاف + الخدمات، البروتوكول + المساعد، فريق المراسم) مكتوبين** وبانتظار run أخضر للـ CI. **Phase 8 و 9** اتعمل منهم الأيقونة وLaunch Screen ومطابقة النصوص وVoiceOver وRelease build وworkflow الإصدار (`release.yml`). الباقي: تسجيل الـ Bundle ID الجديد والـ secrets والمراجعة اليدوية — كله في `07-RELEASE.md`.
+Phase 0–9 خلصوا بـ CI أخضر (الإصدار مستني حساب Apple — `07-RELEASE.md`). بدأنا **التطبيق الواحد لكل الأدوار** (`08-ALL-ROLES-PLAN.md`): **Phase 10** (الوثائق والقواعد G) و **Phase 11** (قاعدة البيانات المحلية في `Mrasem/Store/` + ١٥ اختبار) مكتوبين.
 
-1. ابعت الـ commits (`git push`) وشوف الـ CI: `Build` + `Unit tests` + `Launch the app`. لو فيه أخطاء compile، صلّحها قبل Phase 8 (الـ `error:` بتظهر في Annotations).
-2. **المتبقي:** تسجيل `com.informatiqueComp.mrasem` في Apple Developer + App Store Connect ← الـ secrets ← `Release (TestFlight)` بـ `upload=false` ثم `true`، والـ checklist اليدوي في `07-RELEASE.md`، وتقسيم الملفات >300 سطر بعد CI أخضر.
+1. `git push` وشوف الـ CI. لو فيه `error:` ابعته.
+2. **Phase 12 — منطق الأعمال المشترك** (Opus 5.5): الوفود، التعيينات، البرنامج، الطلبات، التعارضات، رحلات السائق، توزيع التنبيهات، و`GuestMissionAdapter`.
 
-قول «ابدا phase 7» ونمشي.
+قول «ابدا phase 12».
