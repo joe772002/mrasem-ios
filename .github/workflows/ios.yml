@@ -65,6 +65,10 @@ jobs:
           if [ $status -ne 0 ]; then
             echo "---- compiler diagnostics ----"
             grep -E "(error|warning):" .build/build.log | head -100 || true
+            # Surface the errors in the run summary (Annotations) too.
+            grep -E "error:" .build/build.log | sort -u | head -20 | while IFS= read -r line; do
+              echo "::error::${line}"
+            done
           fi
           exit $status
 
@@ -239,7 +243,14 @@ jobs:
             -derivedDataPath .build/DerivedData \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
-            2>&1 | tail -20
+            2>&1 | tee .build/smoke-build.log | tail -20
+          status=${PIPESTATUS[0]}
+          if [ $status -ne 0 ]; then
+            grep -E "error:" .build/smoke-build.log | sort -u | head -20 | while IFS= read -r line; do
+              echo "::error::${line}"
+            done
+          fi
+          exit $status
 
       # Launch the app on its own (no tests) and keep the console attached, so
       # a crash shows up in the log instead of only in the simulator.
