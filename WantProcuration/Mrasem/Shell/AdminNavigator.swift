@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Combine
 
 final class AdminNavigator: ObservableObject {
     /// الوفد المفتوح تفاصيله في تاب «الوفود» (`nil` = القائمة).
