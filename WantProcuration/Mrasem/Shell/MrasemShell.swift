@@ -74,6 +74,10 @@ private struct MrasemDestinationContent: View {
             MissionScreen(context: context)
         case .plan:
             PlanScreen(context: context)
+        case .services:
+            ServicesScreen(context: context)
+        case .explore:
+            ExploreScreen(context: context)
         default:
             MrasemPlaceholderScreen(titleKey: destination.labelKey)
         }

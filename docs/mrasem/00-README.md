@@ -25,7 +25,7 @@
 - ريبو iOS: https://github.com/joe772002/mrasem-ios.git
 - للرجوع عند الشك فقط: الديزاين الأصلي https://claude.ai/artifact/Gg4iccc4Y1qqbwAV7d2d52 وكانفس التحسين https://claude.ai/artifact/PNNaXBfzvj6p29SZwE6dHg
 
-## حالة المشروع الحالي (آخر تحديث 2026-11-12 — Phase 4 مكتوب، محتاج CI أخضر)
+## حالة المشروع الحالي (آخر تحديث 2026-11-12 — Phase 5 مكتوب، محتاج CI أخضر)
 
 - SwiftUI، **٧٩ ملف Swift** (كانوا 102)، target واحد اسمه `WantProcuration` + **test target** `WantProcurationTests`.
 - النمط: `View` + `ViewModel: ObservableObject` (MVVM)، و`AppManager` كـ `@StateObject` للغة والثيم.
@@ -38,10 +38,10 @@
 - الخطوط: Cairo (6 أوزان، قديمين) + **Reem Kufi** + **IBM Plex Sans Arabic** (4 أوزان) — كلهم مسجّلين في `UIAppFonts`.
 - النصوص: `Localizable.xcstrings` — **204 مفتاح** (13 بتوع الكود القديم اللي فضل + 190 `mrasem_*` منقولة حرفياً من Android `main` + `mrasem_placeholder_message` المؤقت)، `sourceLanguage = ar`.
 - الـ Folder **repo على GitHub**: `https://github.com/joe772002/mrasem-ios.git`.
-- **CI شغال بـ ٣ jobs:** `Build` (simulator) · `Unit tests` (٥٠ اختبار + ٨ بتوع الـ Shell + ٥ بتوع Mission/Plan) · `Launch the app` (smoke test). آخر run أخضر كان بعد Phase 2؛ Phase 3 و 4 مستنيين run أخضر.
+- **CI شغال بـ ٣ jobs:** `Build` (simulator) · `Unit tests` (٥٠ اختبار + ٨ بتوع الـ Shell + ٥ بتوع Mission/Plan + ٥ بتوع Explore/Services) · `Launch the app` (smoke test). آخر run أخضر كان بعد Phase 2؛ Phase 3 و 4 و 5 مستنيين run أخضر.
 - كود مراسم كله تحت `WantProcuration/Mrasem/` (قاعدة A9):
-  `Theme/` (4) · `Icons/` (2) · `Components/` (12) · `Data/` (5) · `Domain/` (9) · `Shell/` (7) · `Screens/Gallery/` (1) · `Screens/Mission/` (3) · `Screens/Plan/` (2) · `Util/` (4) · `MrasemContainer.swift` · `MrasemAppContext.swift`
-- الاختبارات في `WantProcurationTests/` (١٢ ملف: ٥٠ اختبار منقولة من Android + ٨ للـ Shell + ٥ لـ Mission/Plan).
+  `Theme/` (4) · `Icons/` (2) · `Components/` (12) · `Data/` (5) · `Domain/` (9) · `Shell/` (7) · `Screens/Gallery/` (1) · `Screens/Mission/` (3) · `Screens/Plan/` (2) · `Screens/Explore/` (2) · `Screens/Services/` (2) · `Util/` (4) · `MrasemContainer.swift` · `MrasemAppContext.swift`
+- الاختبارات في `WantProcurationTests/` (١٣ ملف: ٥٠ اختبار منقولة من Android + ٨ للـ Shell + ٥ لـ Mission/Plan + ٥ لـ Explore/Services).
 
 ## قيد مهم: مفيش Mac
 
@@ -69,9 +69,9 @@
 
 ## الخطوة الجاية
 
-Phase 0 و 1 و 2 خلصوا والـ CI أخضر. **Phase 3 (الهيكل) و Phase 4 (المهمة + البرنامج) مكتوبين** وبانتظار run أخضر للـ CI. الخطوة الجاية: Phase 5 (الاستكشاف + الخدمات).
+Phase 0 و 1 و 2 خلصوا والـ CI أخضر. **Phase 3 (الهيكل) و 4 (المهمة + البرنامج) و 5 (الاستكشاف + الخدمات) مكتوبين** وبانتظار run أخضر للـ CI. الخطوة الجاية: Phase 6 (البروتوكول + المساعد).
 
-1. ابعت الـ commits (`git push`) وشوف الـ CI: `Build` + `Unit tests` + `Launch the app`. لو فيه أخطاء compile، صلّحها قبل Phase 5 (الـ `error:` بتظهر في Annotations).
-2. **Phase 5 — الاستكشاف + الخدمات:** `ExploreScreen` + `ServicesScreen`.
+1. ابعت الـ commits (`git push`) وشوف الـ CI: `Build` + `Unit tests` + `Launch the app`. لو فيه أخطاء compile، صلّحها قبل Phase 6 (الـ `error:` بتظهر في Annotations).
+2. **Phase 6 — البروتوكول + المساعد:** `ProtocolScreen` + `AssistantScreen`.
 
-قول «ابدا phase 5» ونمشي.
+قول «ابدا phase 6» ونمشي.

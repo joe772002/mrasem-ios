@@ -151,6 +151,8 @@
 
 **القبول:** نتائج الفلاتر مطابقة (8 الدوحة / 4 لندن)؛ الطلب بيظهر في الحالة.
 
+**الحالة: ✅ مكتوب (بانتظار CI أخضر).** `Screens/Explore/{ExploreViewModel,ExploreScreen}.swift` و`Screens/Services/{ServicesViewModel,ServicesScreen}.swift`، متوصلين بالـ Shell. `ExploreScreen`: كارت «حول الفندق» + شريط الفلاتر الأفقي، كروت الأماكن بالميتا (دقائق/مدة/VIP) وزر بثلاث حالات، toast الطلب. `ServicesScreen`: كارت لكل فئة، `MrasemServiceRow` بزر «فتح» (`ExternalLinks.open`)، «معلومات سريعة»، سطر الغرفة. الاختبارات: `ExploreServicesStateTests` (٥).
+
 ---
 
 ## Phase 6 — البروتوكول + المساعد
