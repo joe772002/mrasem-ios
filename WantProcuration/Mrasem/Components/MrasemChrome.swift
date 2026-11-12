@@ -59,7 +59,7 @@ struct MrasemHeader: View {
         .padding(.top, 14)
         .padding(.bottom, 12)
         .frame(maxWidth: .infinity)
-        .background(c.headerBg)
+        .background(c.headerBg.ignoresSafeArea(edges: .top))
     }
 }
 
@@ -86,7 +86,8 @@ struct MrasemBottomBar: View {
         let c = theme.colors
 
         HStack(spacing: 0) {
-            ForEach(Array(items.enumerated()), id: \.element.id) { index, item in                let isSelected = index == selectedIndex
+            ForEach(Array(items.enumerated()), id: \.element.id) { index, item in
+                let isSelected = index == selectedIndex
 
                 VStack(spacing: 2) {
                     item.icon
@@ -111,7 +112,7 @@ struct MrasemBottomBar: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .background(c.surface)
+        .background(c.surface.ignoresSafeArea(edges: .bottom))
         .overlay(alignment: .top) {
             Rectangle()
                 .fill(c.line)

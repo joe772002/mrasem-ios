@@ -12,7 +12,7 @@ View (SwiftUI) → ViewModel (ObservableObject, @MainActor) → Strategy (Domain
 
 - **A1.** الـ View ما يعرفش غير الـ ViewModel بتاعه. ممنوع استدعاء Repository من View.
 - **A2.** كل ViewModel `final class … : ObservableObject` عليه `@MainActor`، وبيعرض `@Published private(set) var state` واحد (struct). الشاشة = `XScreen` (بيملك الـ ViewModel) + `XContent(state:, actions)` من غير حالة، عشان الـ Preview.
-- **A3.** منطق الأعمال في `Mrasem/Domain` — **Foundation فقط** (ممنوع `import SwiftUI`/`UIKit`) عشان يتختبر ويتطابق مع Kotlin.
+- **A3.** منطق الأعمال في `Mrasem/Domain` — **Foundation (+ Combine للـ `statePublisher` بس)**، ممنوع `import SwiftUI`/`UIKit` عشان يتختبر ويتطابق مع Kotlin.
 - **A4.** `MissionRepository` protocol + `InMemoryMissionRepository`. الحقن بالـ initializer، والتجميع في مكان واحد: `MrasemContainer`.
 - **A5.** مصدر الحالة واحد لكل الأدوار: الـ Repository بيعرض `CurrentValueSubject<MrasemState, Never>`. ممنوع نسخ الحالة في ViewModel.
 - **A6.** الدوال اللي ممكن تفشل `throws` أو `Result`، زي `APIClient` الحالي.
@@ -27,9 +27,9 @@ Mrasem/
   Icons/        MrasemIcons (مسارات SVG الأصلية)
   Data/         Models · MrasemState · MrasemDemoData · MissionRepository · MrasemPreferences
   Domain/       الـ Strategies + Selectors
-  Shell/        MrasemShell · MrasemDestination · MrasemSessionViewModel · ToastBus
-  Screens/      Setup · Mission · Plan · Services · Explore · Protocol · Assistant · More · Settings · Driver · Team
-  Util/         ArabicDigits · ContactLinks · ExternalLinks
+  Shell/        MrasemShell · MrasemDestination · MrasemSessionViewModel · MrasemToastBus · UiText
+  Screens/      Mission · Plan · Services · Explore · Protocol · Assistant · Team (+ Gallery)
+  Util/         ArabicDigits · ContactLinks · ExternalLinks · MrasemStrings
 ```
 
 - **A10.** ممنوع تعديل `project.pbxproj` باليد. المشروع synchronized groups: إضافة/حذف الملفات من الفولدر كفاية. أي حاجة محتاجة Xcode (test target، capabilities، signing) تتكتب كخطوة للمستخدم.
@@ -85,10 +85,9 @@ Mrasem/
 
 ## F. ملاحظات على المشروع الحالي
 
-> آخر تحديث: 2026-11-12 — بعد Phase 0.
+> آخر تحديث: 2026-11-12 — بعد Phase 3 (مكتوب، بانتظار CI).
 
 - **اتحل في Phase 0:** مفيش git → بقى repo على `joe772002/mrasem-ios`. الـ force-unwrap للخط → بقى `if let`. مفاتيح الـ AI Gateway واسم Siri البديل → اتشالت.
-- مفيش **test target** لسه — بيتضاف في Phase 2 (خطوة على Xcode أو Mac في السحابة).
 - `AppManager.isDarkMode` افتراضيه `true` وبيتقرا من `UserDefaults` — هيتوصّل بخيار الثيم (فاتح/داكن/النظام).
 - `DEVELOPMENT_TEAM = 25N3SF9UHQ` ثابت في المشروع — للمراجعة لو الحساب هيتغير.
 - رؤوس الملفات فيها أسماء مشاريع قديمة (MTCIT, mojEgypt) — تجميلي.
@@ -125,3 +124,7 @@ Mrasem/
 | 2026-11-12 | Phase 2: الـ **test target** اتضاف للـ `project.pbxproj` بإيد (استثناء لقاعدة A10) | محتاجين `xcodebuild test` على الـ CI. الـ تعديل اتعمل بسكربت وكل استبدال بفحص عدد تكرارات — لو مش مطابق بيكسر الملف. لو Xcode رفض المشروع: `git checkout WantProcuration.xcodeproj/project.pbxproj` |
 | 2026-11-12 | Phase 2: `ContactLinks` + `ExternalLinks` اتنقلوا هنا | اختبارات Android (`UtilTest`) بتغطيهم، فنقلناهم مع الـ tests |
 | 2026-11-12 | Phase 2: `MrasemFonts.display` بقت `Font.custom(...).weight(...)` بدل CoreText | بناء نسخة من الخط المتغيّر عبر `kCTFontVariationAttribute` كان بيفضّل الذاكرة. `Font.weight` بتاخد محور `wght` على iOS 16+ |
+| 2026-11-12 | Phase 3: **A3 اتعدّلت — Combine مسموح في Domain/Data** | `statePublisher` هو مقابل `StateFlow` في Android، ومن غير Combine مفيش طريقة نعرض الحالة. الممنوع فعلاً هو SwiftUI/UIKit |
+| 2026-11-12 | Phase 3: **`MrasemAppContext`** بيمرّر الـ container والـ toast bus للشاشات | بديل `hiltViewModel()`. الـ container بيتبني في `@StateObject` جوه الـ root فمش بيتبني في الـ unit-test host |
+| 2026-11-12 | Phase 3: مفاتيح `mrasem_*` اللي مش في Android `main` اتشالت من الـ catalog (٧٣ مفتاح) | كانت جاية من فرع `enhance`؛ مصدر التصميم بقى `main` |
+| 2026-11-12 | Phase 3: **الاختبارات تغطي الأجزاء الصافية للـ Shell بس** (وجهات، `ShellUiState`، `UiText`، نصوص التنبيهات، toast bus) | الـ ViewModel نفسه `MainActor` — تفكيكه من الـ test thread هو نفس سبب كراش الـ test host. المنطق اللي جواه رفيع (ربط بين `statePublisher` والـ strategy) |

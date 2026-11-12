@@ -7,13 +7,19 @@
 
 import SwiftUI
 
-/// Phase 0 start destination. Replaced by MrasemShell in Phase 3.
+/// بديل مؤقت لكل وجهة لحد ما شاشتها الحقيقية تتبني (Phases 4–7).
 struct MrasemPlaceholderScreen: View {
     @Environment(\.mrasem) private var theme
 
+    let titleKey: String
+
+    init(titleKey: String = "mrasem_brand_title") {
+        self.titleKey = titleKey
+    }
+
     var body: some View {
         VStack(spacing: 8) {
-            Text("mrasem_brand_title")
+            Text(mrasemString(titleKey))
                 .mrasemText(theme.type.heroDest)
                 .foregroundColor(theme.colors.maroon)
 
@@ -24,18 +30,14 @@ struct MrasemPlaceholderScreen: View {
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(24)
-        .background(theme.colors.bg.ignoresSafeArea())
+        .background(theme.colors.bg)
     }
 }
 
 #Preview("Placeholder - Light") {
-    MrasemPlaceholderScreen()
-        .mrasemTheme(.light)
-        .environment(\.layoutDirection, .rightToLeft)
+    MrasemScreenPreview(.light) { MrasemPlaceholderScreen(titleKey: "mrasem_tab_mission") }
 }
 
 #Preview("Placeholder - Dark") {
-    MrasemPlaceholderScreen()
-        .mrasemTheme(.dark)
-        .environment(\.layoutDirection, .rightToLeft)
+    MrasemScreenPreview(.dark) { MrasemPlaceholderScreen(titleKey: "mrasem_tab_mission") }
 }

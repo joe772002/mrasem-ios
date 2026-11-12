@@ -5,7 +5,7 @@
 //  Single entry point of the Mrasem app.
 //  Mirrors Android: app/src/main/java/com/informatique/tawsekmisr/ui/activities/LandingActivity.kt
 //
-//  Shows the Mrasem splash, then the Phase 0 placeholder. All data is local;
+//  Shows the Mrasem splash, then the Shell (Phase 3). All data is local;
 //  there is no network or startup work.
 //
 
@@ -80,6 +80,8 @@ enum MrasemEnvironment {
 private struct MrasemRootView: View {
     @Environment(\.mrasem) private var theme
     @State private var isContentVisible = false
+    /// الاعتماديات بتتبني أول ما الـ View يتعرض (مش في الـ unit-test host).
+    @StateObject private var context = MrasemAppContext()
 
     var body: some View {
         ZStack {
@@ -88,7 +90,7 @@ private struct MrasemRootView: View {
                 .ignoresSafeArea()
 
             if isContentVisible {
-                MrasemPlaceholderScreen()
+                MrasemShell(context: context)
                     .transition(.opacity)
             } else {
                 MrasemSplash()

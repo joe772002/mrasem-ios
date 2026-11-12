@@ -100,7 +100,7 @@
 
 **القبول:** كل الاختبارات ناجحة على CI؛ مطابقة البيانات بند بند مع `04-DEMO-DATA.md`.
 
-**الحالة (2026-11-12): خلص، والـ CI أخضر — ٤٧ اختبار ناجح.**
+**الحالة (2026-11-12): خلص، والـ CI أخضر — ٥٠ اختبار ناجح** (مطابقة ١:١ لاختبارات Android الحقيقية؛ الـ ٥١ هناك بتشمل اختبار القالب الفاضي `addition_isCorrect`).
 - **الـ Data:** `MissionModels` (مع `MrasemDate` بدل `LocalDate`) · `MrasemState` (دورين + ٦/٤ تابات) · `MrasemDemoData` (الوضعين حرفياً) · `MissionRepository` + `InMemoryMissionRepository` (فوق `CurrentValueSubject`) · `MrasemPreferences` (UserDefaults).
 - **الـ Domain:** ٨ Strategies + Selectors، كلها Foundation بس. `MrasemContainer` بيجمّع الاعتماديات (بديل Hilt).
 - **الـ Tests:** ٩ ملفات منقولة من Android بنفس الأسماء والحالات — ٤٧ اختبار.
@@ -120,6 +120,15 @@
 - الوجهات placeholders لحد Phases 4–7.
 
 **القبول:** التنقل بين تابات كل دور شغال؛ الهيدر والـ bar مطابقين Light/Dark؛ تبديل الدور بيبدّل الـ bar (٦ ↔ ٤).
+
+**الحالة (2026-11-12): الكود اتكتب ومحتاج CI أخضر (متحقق منه بالقراءة بس — مفيش compiler عندنا).**
+- **`Shell/`:** `MrasemDestination` (١٠ وجهات + `ShellUiState`، كله `nonisolated` وبدون SwiftUI عشان يتختبر) · `MrasemSessionViewModel` (Combine فوق `statePublisher`؛ بيرجّع آخر تاب الأول وبعدين يسمع ويحفظ، زي `restore` ثم `drop(1)` في Android) · `MrasemToastBus` + `UiText`/`ToastMessage` · `MrasemShell` · `MrasemPlaceholderScreen` (بقى بياخد مفتاح العنوان).
+- **`MrasemAppContext`:** بديل Hilt للـ UI — بيمسك الـ container والـ toast bus والـ shell VM، والـ Shell بيمرّره لكل وجهة (كل شاشة هتبني الـ ViewModel بتاعها منه في Phases 4–7).
+- **`Components/MrasemNotices.swift`:** `MrasemNoticesSection` + `mrasemNoticeText` + `mrasemDressOptionLabel`.
+- **`Util/MrasemStrings.swift`:** `mrasemString(key, args)` بديل `stringResource` (ترقيم `%1$@`).
+- **السبلاش ← الـ Shell** في `WantProcurationApp`؛ الـ container بيتبني جوه `@StateObject` فمش بيتبني في الـ unit-test host.
+- **إصلاحات في أساس Phase 0/1 اتلقت وقت المراجعة:** مفتاح `mrasem_role_guest` كان ناقص من الـ catalog · `mrasem_notice_postponed` كان فيه `\"` حرفية بتظهر في النص · اتشال ٧٣ مفتاح من فرع `enhance` (إعدادات/سائق/إعداد/المزيد) مش مستخدمين · الهيدر والـ bottom bar بقوا بيمدّوا خلفيتهم تحت الـ safe area.
+- **`ShellStateTests`:** ٨ اختبارات (وجهات، حالة الـ Shell، كل مفاتيح الـ strings بتتحل، `UiText` بمتغيّرات، نصوص كل التنبيهات، الـ toast bus).
 
 ---
 
