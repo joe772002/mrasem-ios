@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import CoreText
 
 /// أوزان خطوط مراسم.
 enum MrasemFontWeight {
@@ -36,13 +35,15 @@ enum MrasemFonts {
 
     /// خط متغيّر بوزن محدد — SwiftUI مالهاش API مباشر لمحاور الخطوط المتغيّرة،
     /// فبنستخدم CoreText (محور `wght`).
+    /// Reem Kufi is a variable font (wght 400–700).
+    ///
+    /// SwiftUI has no API for the weight axis of a custom font, so the weight
+    /// is applied with `Font.weight(_:)` instead of building the instance by
+    /// hand through CoreText — the manual `kCTFontVariationAttribute` path
+    /// corrupted the heap while the splash was rendering.
     static func display(size: CGFloat, weight: CGFloat) -> Font {
-        let base = CTFontCreateWithName(displayName as CFString, size, nil)
-        let baseDescriptor = CTFontCopyFontDescriptor(base)
-        let variation: [String: Any] = ["wght": weight]
-        let attributes = [kCTFontVariationAttribute: variation as NSDictionary] as CFDictionary
-        let descriptor = CTFontDescriptorCreateCopyWithAttributes(baseDescriptor, attributes)
-        return Font(CTFontCreateWithFontDescriptor(descriptor, size, nil))
+        .custom(displayName, size: size)
+            .weight(weight >= 700 ? .bold : (weight >= 500 ? .medium : .regular))
     }
 
     static func body(size: CGFloat, weight: MrasemFontWeight) -> Font {

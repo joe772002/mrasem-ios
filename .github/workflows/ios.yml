@@ -119,6 +119,11 @@ jobs:
           echo "SIMULATOR_UDID=$UDID" >> "$GITHUB_ENV"
 
       - name: Test
+        env:
+          # Print the allocation stack when the allocator complains — it turns
+          # a "pointer being freed was not allocated" into a usable backtrace.
+          MallocStackLogging: "1"
+          MallocScribble: "1"
         run: |
           set -o pipefail
           xcodebuild test \
