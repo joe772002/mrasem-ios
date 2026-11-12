@@ -8,7 +8,6 @@
 import XCTest
 @testable import WantProcuration
 
-@MainActor
 final class VisitUpdateStrategyTests: XCTestCase {
 
     func testSaveWithoutChanges() {

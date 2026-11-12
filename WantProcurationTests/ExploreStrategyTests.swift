@@ -8,7 +8,6 @@
 import XCTest
 @testable import WantProcuration
 
-@MainActor
 final class ExploreStrategyTests: XCTestCase {
 
     private func names(_ filter: ExploreFilter, _ mode: MissionMode = .inbound) -> [String] {

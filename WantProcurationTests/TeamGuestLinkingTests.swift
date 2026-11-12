@@ -11,7 +11,6 @@
 import XCTest
 @testable import WantProcuration
 
-@MainActor
 final class TeamGuestLinkingTests: XCTestCase {
 
     private let blank = VisitData(

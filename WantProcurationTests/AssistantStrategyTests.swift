@@ -8,7 +8,6 @@
 import XCTest
 @testable import WantProcuration
 
-@MainActor
 final class AssistantStrategyTests: XCTestCase {
 
     private let doha = MrasemDemoData.inbound

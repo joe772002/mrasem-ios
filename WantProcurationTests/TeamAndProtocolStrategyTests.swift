@@ -8,7 +8,6 @@
 import XCTest
 @testable import WantProcuration
 
-@MainActor
 final class TeamAndProtocolStrategyTests: XCTestCase {
 
     func testKpisAndResolve() {
