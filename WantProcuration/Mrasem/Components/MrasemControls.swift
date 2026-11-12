@@ -189,13 +189,8 @@ struct MrasemAvatarInitial: View {
     }
 }
 
-/// نمط لوحة السيارة — لازم يبقى موجود في Data (Phase 2).
-enum PlateStyle {
-    case qatar
-    case unitedKingdom
-}
-
 /// لوحة سيارة (LTR دائمًا — قاعدة B6).
+/// `PlateStyle` معرّف في `Data/MissionModels.swift`.
 struct MrasemPlateBadge: View {
     @Environment(\.mrasem) private var theme
 

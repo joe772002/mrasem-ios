@@ -12,10 +12,29 @@
 		85D7C6B32E93853F008F71F6 /* SwiftfulUI in Frameworks */ = {isa = PBXBuildFile; productRef = 85D7C6B22E93853F008F71F6 /* SwiftfulUI */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		A1B2C3D40000000000000008 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 854425D02E8CF2AA00E577E7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 854425D72E8CF2AA00E577E7;
+			remoteInfo = WantProcuration;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		854425D82E8CF2AA00E577E7 /* WantProcuration.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WantProcuration.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1B2C3D40000000000000001 /* WantProcurationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WantProcurationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F1A0012F00000000C0FFEE /* Config/App.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config/App.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXTargetDependency section */
+		A1B2C3D40000000000000009 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 854425D72E8CF2AA00E577E7 /* WantProcuration */;
+			targetProxy = A1B2C3D40000000000000008 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
 		856BC8B12E96574E006FD2ED /* Exceptions for "WantProcuration" folder in "WantProcuration" target */ = {
@@ -36,6 +55,11 @@
 			path = WantProcuration;
 			sourceTree = "<group>";
 		};
+		A1B2C3D40000000000000002 /* WantProcurationTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WantProcurationTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +73,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A1B2C3D40000000000000006 /* FrameworksBuildPhase */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -57,6 +88,7 @@
 			children = (
 				85F1A0012F00000000C0FFEE /* Config/App.xcconfig */,
 				854425DA2E8CF2AA00E577E7 /* WantProcuration */,
+				A1B2C3D40000000000000002 /* WantProcurationTests */,
 				854425D92E8CF2AA00E577E7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				854425D82E8CF2AA00E577E7 /* WantProcuration.app */,
+				A1B2C3D40000000000000001 /* WantProcurationTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -96,6 +129,29 @@
 			productName = MTCIT;
 			productReference = 854425D82E8CF2AA00E577E7 /* WantProcuration.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A1B2C3D40000000000000004 /* WantProcurationTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A1B2C3D4000000000000000C /* Build configuration list for PBXNativeTarget "WantProcurationTests" */;
+			buildPhases = (
+				A1B2C3D40000000000000005 /* Sources */,
+				A1B2C3D40000000000000006 /* Frameworks */,
+				A1B2C3D40000000000000007 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A1B2C3D40000000000000009 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				A1B2C3D40000000000000002 /* WantProcurationTests */,
+			);
+			name = WantProcurationTests;
+			packageProductDependencies = (
+			);
+			productName = WantProcurationTests;
+			productReference = A1B2C3D40000000000000001 /* WantProcurationTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -133,6 +189,7 @@
 			projectRoot = "";
 			targets = (
 				854425D72E8CF2AA00E577E7 /* WantProcuration */,
+				A1B2C3D40000000000000004 /* WantProcurationTests */,
 			);
 		};
 /* End PBXProject section */
@@ -145,10 +202,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A1B2C3D40000000000000007 /* ResourcesBuildPhase */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		854425D42E8CF2AA00E577E7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A1B2C3D40000000000000005 /* SourcesBuildPhase */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -369,6 +440,45 @@
 			};
 			name = Release;
 		};
+		A1B2C3D4000000000000000A = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.informatiqueComp.reserveProcuration2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WantProcuration.app/WantProcuration";
+			};
+			name = Debug;
+		};
+
+		A1B2C3D4000000000000000B = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.informatiqueComp.reserveProcuration2Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WantProcuration.app/WantProcuration";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -386,6 +496,15 @@
 			buildConfigurations = (
 				854425E42E8CF2AB00E577E7 /* Debug */,
 				854425E52E8CF2AB00E577E7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A1B2C3D4000000000000000C /* Build configuration list for PBXNativeTarget "WantProcurationTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A1B2C3D4000000000000000A /* Debug */,
+				A1B2C3D4000000000000000B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

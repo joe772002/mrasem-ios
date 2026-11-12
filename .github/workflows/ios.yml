@@ -1,11 +1,10 @@
 name: iOS
 
-# Mrasem iOS — build gate.
+# Mrasem iOS — build + test gate.
 #
 # There is no macOS machine in the authoring environment, so this workflow is
-# the only way to know the project still compiles. Every phase must leave CI green.
-#
-# The `test` job is added in Phase 2, when the WantProcurationTests target exists.
+# the only way to know the project still compiles and the domain logic still
+# passes. Every phase must leave CI green.
 
 on:
   push:
@@ -66,5 +65,73 @@ jobs:
           if [ $status -ne 0 ]; then
             echo "---- compiler diagnostics ----"
             grep -E "(error|warning):" .build/build.log | head -100 || true
+          fi
+          exit $status
+
+  test:
+    name: Unit tests
+    runs-on: macos-26
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache Swift Package Manager
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Caches/org.swift.swiftpm
+            .build
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Resolve packages
+        run: |
+          xcodebuild -resolvePackageDependencies \
+            -project WantProcuration.xcodeproj \
+            -scheme WantProcuration
+
+      # Pick an available iPhone simulator so the job does not break when
+      # Apple ships a new device name.
+      - name: Find a simulator
+        run: |
+          mkdir -p .build
+          cat > .build/find_simulator.py <<'PY'
+          import json
+          import subprocess
+          import sys
+
+          raw = subprocess.check_output(
+              ["xcrun", "simctl", "list", "devices", "available", "--json"]
+          )
+          devices = json.loads(raw)["devices"]
+          for runtime in sorted(devices):
+              for device in devices[runtime]:
+                  if device.get("isAvailable") and device["name"].startswith("iPhone"):
+                      print(device["udid"])
+                      sys.exit(0)
+          sys.exit("no available iPhone simulator")
+          PY
+          UDID=$(python3 .build/find_simulator.py)
+          echo "Using simulator $UDID"
+          echo "SIMULATOR_UDID=$UDID" >> "$GITHUB_ENV"
+
+      - name: Test
+        run: |
+          set -o pipefail
+          xcodebuild test \
+            -project WantProcuration.xcodeproj \
+            -scheme WantProcuration \
+            -destination "platform=iOS Simulator,id=$SIMULATOR_UDID" \
+            -derivedDataPath .build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            2>&1 | tee .build/test.log
+          status=${PIPESTATUS[0]}
+          if [ $status -ne 0 ]; then
+            echo "---- failing tests ----"
+            grep -E "(error:|XCTAssert|failed|Failure)" .build/test.log | head -100 || true
           fi
           exit $status
