@@ -180,7 +180,7 @@ struct MrasemGalleryScreen: View {
                     MrasemIcons.plan.foregroundStyle(theme.colors.maroon)
                     MrasemIcons.services.foregroundStyle(theme.colors.maroon)
                     MrasemIcons.explore.foregroundStyle(theme.colors.maroon)
-                    MrasemIcons.protocol.foregroundStyle(theme.colors.maroon)
+                    MrasemIcons.`protocol`.foregroundStyle(theme.colors.maroon)
                     MrasemIcons.assistant.foregroundStyle(theme.colors.maroon)
                 }
             }
@@ -206,7 +206,7 @@ struct MrasemGalleryScreen: View {
                         MrasemBottomBarItem(label: "البرنامج", icon: MrasemIcons.plan),
                         MrasemBottomBarItem(label: "الخدمات", icon: MrasemIcons.services),
                         MrasemBottomBarItem(label: "استكشف", icon: MrasemIcons.explore),
-                        MrasemBottomBarItem(label: "البروتوكول", icon: MrasemIcons.protocol),
+                        MrasemBottomBarItem(label: "البروتوكول", icon: MrasemIcons.`protocol`),
                         MrasemBottomBarItem(label: "المساعد", icon: MrasemIcons.assistant),
                     ],
                     selectedIndex: $segmentIndex

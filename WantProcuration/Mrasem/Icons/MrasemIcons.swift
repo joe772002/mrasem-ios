@@ -93,7 +93,8 @@ enum MrasemIcons {
         ])
     )
 
-    static let protocol = MrasemIcon(
+    /// `protocol` كلمة محجوزة في Swift — بنستخدم backticks عشان نطابق اسم Android.
+    static let `protocol` = MrasemIcon(
         icon([
             "M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6Z",
             "m9 12 2 2 4-4",
