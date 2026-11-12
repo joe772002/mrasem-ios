@@ -1,19 +1,23 @@
 # 03 — خطة التنفيذ iOS (Phases)
 
-كل Phase يتسلّم لوحده ويتراجع قبل اللي بعده. معيار القبول العام في `02-RULES.md` قسم E. الترتيب بيبني **التصميم المحسَّن** مباشرة.
+كل Phase يتسلّم لوحده ويتراجع قبل اللي بعده. معيار القبول العام في `02-RULES.md` قسم E.
+
+> **مصدر التصميم: فرع `main` في مشروع Android** (`D:\private\new project\mrasem`).
+> القرار اتغيّر يوم 2026-11-12 — كانت `enhance`. الفرق اللي بيلفّر الخطة:
+> **مفيش** شاشة إعداد ولا أدوار الأربعة ولا تاب «المزيد» ولا السائق ولا الإعدادات.
+> الهيكل النهائي: **٢ دور** (ضيف / فريق مراسم) · **٦ تابات** للضيف · **٤ تابات** للفريق.
 
 | Phase | العنوان | الناتج |
 |---|---|---|
 | 0 | التنظيف والتجهيز | مشروع نظيف بيبني على CI وبيفتح على شاشة فاضية بهوية مراسم |
 | 1 | Design System | الثيم + الخطوط + الأيقونات + كل المكوّنات بـ previews |
 | 2 | البيانات والمنطق | Models + بيانات الوضعين + Repository + Strategies + tests |
-| 3 | الهيكل والتنقل | Splash ← الإعداد ← Shell (الهيدر، الـ bottom bar العائم، Toast، Notices) |
+| 3 | الهيكل والتنقل | Splash ← Shell (الهيدر، الـ bottom bar، Toast، Notices) |
 | 4 | المهمة + البرنامج | شاشتين |
-| 5 | استكشف + الخدمات + المزيد | 3 شاشات |
+| 5 | استكشف + الخدمات | شاشتين |
 | 6 | البروتوكول + المساعد | شاشتين |
 | 7 | فريق المراسم | 4 تابات + الربط مع عرض الضيف |
-| 8 | السائق + المرافق + الإعدادات | الأدوار الجديدة وصفحة الإعدادات |
-| 9 | المراجعة والإصدار | مطابقة، Accessibility، الأيقونة، TestFlight |
+| 8 | المراجعة والتنظيف | مطابقة شاشة بشاشة + Accessibility + حذف القديم + release build |
 
 ---
 
@@ -64,24 +68,34 @@
 ## Phase 1 — Design System
 
 - **الخطوط:** نسخ `reem_kufi.ttf` و IBM Plex Sans Arabic (4 أوزان) من مشروع Android لـ `Fonts/`، وتسجيلها في `UIAppFonts`. التحقق من أسماء الـ PostScript الفعلية.
-- **الثيم:** `MrasemColors` (Light/Dark بكل الـ tokens + tokens التحسين: `headerAccent`, `headerSoft`, `headerGlass`, `headerPattern`, `navBg`, `navActive`, `navInactive`, `danger`)، `MrasemType` (نفس أسماء Android)، `MrasemShapes`/`MrasemDimens`، و`EnvironmentKey` واحد `\.mrasem`.
-- **الأيقونات:** `MrasemIcons` — محوّل صغير لمسارات SVG (M/L/H/V/A/Z وصغيرها) لـ `Path`، والأيقونات الـ 20 بنفس المسارات.
-- **المكوّنات:** Card, HeroCard, Pill, StatTile, KpiTile, KeyValueList, Button (Primary/Secondary/Ghost/Outline + block), Chip, Segmented (هيدر) و SegmentedLight, AvatarInitial, PlateBadge, StatusSteps, DayTabs, TimelineItem (عادي/changed/وقت حر), ServiceRow, ActionRow, PlaceCard, NoticeBanner, Toast, ChecklistRow, ChatBubble, AskBar, TextField (+LTR), Select, SettingsGroup/Row/SwitchRow, Switch.
-- **الرسومات:** MapPreview, QrPlaceholder (نفس خوارزمية المصدر), DressIllustration, و`QatariPattern` (نجمة ثمانية).
-- **الـ Chrome:** `MrasemHeader` (كامل/مضغوط) و`MrasemBottomBar` العائم.
+- **الثيم:** `MrasemColors` (Light/Dark بكل الـ tokens بتاع `main`)، `MrasemType` (نفس أسماء Android)، `MrasemShapes`/`MrasemDimens`، و`EnvironmentKey` واحد `\.mrasem`.
+- **الأيقونات:** `MrasemIcons` — محوّل صغير لمسارات SVG (M/L/H/V/A/Z وصغيرها) لـ `Path`، والأيقونات الـ 9 بنفس المسارات.
+- **المكوّنات:** Card, HeroCard, Pill, StatTile, KpiTile, KeyValueList, Button (Primary/Secondary/Ghost/Outline + block), Chip, Segmented, AvatarInitial, PlateBadge, StatusSteps, DayTabs, TimelineItem (عادي/changed/وقت حر), FreeTimeItem, ServiceRow, ActionRow, PlaceCard, NoticeBanner, Toast, ChecklistRow, ChatBubble, AskBar, TextField (+LTR), Select.
+- **الرسومات:** MapPreview, QrPlaceholder (نفس خوارزمية المصدر), DressIllustration.
+- **الـ Chrome:** `MrasemHeader` (عنّابي + مفتاح الدور + مفتاح نوع المهمة) و`MrasemBottomBar` (شريط ثابت).
 - `toArabicDigits()` و`toArabicNumber()`.
 
 **القبول:** كل مكوّن له Preview Light/Dark؛ CI أخضر؛ مفيش لون أو خط خارج الثيم.
+
+**الحالة (2026-11-12): خلص، والـ CI أخضر (BUILD SUCCEEDED، صفر warnings في كود مراسم).**
+- **الثيم:** `MrasemColors` (Light/Dark + القيم المحسوبة) · `MrasemType` (٢٢ نمط) · `MrasemShapes` + `MrasemDimens` · `MrasemTheme` + `\.mrasem`.
+- **الخطوط:** `ReemKufi` (خط متغيّر — بنستخدمه عن طريق CoreText ومحور `wght`) + `IBMPlexSansArabic-{Regular,Medium,SemiBold,Bold}`.
+- **الأيقونات:** `SVGPath.swift` (محوّل SVG كامل مع تحويل الأقواس لـ bezier) + ٩ أيقونات.
+- **المكوّنات:** ١٠ ملفات + `MrasemFlowLayout` + `MrasemKeyValueLayout` (قياس حقيقي زي Compose).
+- **الرسومات:** MapPreview و QrPlaceholder و DressIllustration — كلهم بـ `Canvas` زي Android.
+- **Gallery:** `Screens/Gallery/MrasemGalleryScreen.swift` بيعرض كل مكوّن (نسخة فاتح وداكن).
+- **Previews:** `Components/MrasemPreviews.swift` — Light/Dark لكل مجموعة مكوّنات.
+- `MrasemBrand.swift` اتحذف — السبلاش والـ placeholder بقوا على الثيم الحقيقي.
 
 ---
 
 ## Phase 2 — البيانات والمنطق
 
-- **Models:** نفس `MissionModels.kt` و`MrasemState.kt` (structs/enums)، بما فيها `UserRole` بـ 4 قيم، `GuestTab.more`, `DriverTab`, `settingsOpen`, `guestShort`.
+- **Models:** نفس `MissionModels.kt` و`MrasemState.kt` (structs/enums): `UserRole` بـ **قيمةتين** (Guest / Team)، `GuestTab` بـ ٦ تابات، `TeamTab` بـ ٤ تابات.
 - **البيانات:** `MrasemDemoData.swift` — الوضعين حرفياً + الثوابت (الزي، قائمة الفحص، الدليل، أسئلة المساعد).
 - **Repository:** `MissionRepository` protocol + `InMemoryMissionRepository`.
-- **Preferences:** `MrasemPreferences` protocol + تنفيذ `UserDefaults` (setup, lastGuestTab, notifications).
-- **Strategies:** Session, MissionSummary, Program, Explore, Assistant, VisitUpdate, Team, Protocol, Driver + Selectors (`recentNotices`, `displayName`, `officialCount`).
+- **Preferences:** `MrasemPreferences` protocol + تنفيذ `UserDefaults` (lastGuestTab, lastTeamTab, mode).
+- **Strategies:** Session, MissionSummary, Program, Explore, Assistant, VisitUpdate, Team, Protocol + Selectors (`recentNotices`, `displayName`, `officialCount`).
 - **Tests:** test target `WantProcurationTests` (**خطوة عليك في Xcode، أو على الـ cloud Mac**: File › New › Target › Unit Testing Bundle) + نقل الـ 57 اختبار من Kotlin بنفس الأسماء والحالات. الـ CI يشغّل `xcodebuild test`.
 
 **القبول:** كل الاختبارات ناجحة على CI؛ مطابقة البيانات بند بند مع `04-DEMO-DATA.md`.
@@ -91,15 +105,14 @@
 ## Phase 3 — الهيكل والتنقل
 
 - `MrasemContainer` (تجميع الاعتماديات) + ربطه في `WantProcurationApp`.
-- **البداية:** Splash ← لو مفيش اختيار محفوظ `SetupScreen`، غير كده الـ Shell.
-- `SetupScreen`: هيدر عنّابي بالزخرفة، 4 كروت أدوار (2×2)، كارتين لنوع المهمة، «متابعة» بتحفظ.
-- `MrasemShell`: الهيدر (كامل في تاب البداية، مضغوط في الباقي) + محتوى الوجهة + الـ bottom bar العائم + Toast host.
-- `MrasemDestination` + `MrasemNav` (تابات كل دور) + `MrasemSessionViewModel` (التحية، الاسم، نطاق التاريخ، الطقس، الرجوع).
+- **البداية:** Splash ← الـ Shell مباشرة (مفيش شاشة إعداد — تبديل الدور والوضع في الهيدر).
+- `MrasemShell`: الهيدر (عنّابي: العلامة + مفتاح الدور + مفتاح نوع المهمة) + محتوى الوجهة + الـ bottom bar الثابت + Toast host.
+- `MrasemDestination` + `MrasemNav` (٦ تابات للضيف، ٤ للفريق) + `MrasemSessionViewModel` (الدور، الوضع، التبويب، إعادة الضبط).
 - `ToastBus` (PassthroughSubject) + `UiText`. Toast: 3.8 ثانية، الجديد يلغي القديم.
 - `NoticesSection` (آخر تنبيهين). سطر «بيانات توضيحية لنموذج أولي.» آخر كل شاشة.
-- الوجهات placeholders لحد Phases 4–8.
+- الوجهات placeholders لحد Phases 4–7.
 
-**القبول:** الإعداد بيتحفظ وما بيظهرش تاني؛ التنقل بين تابات كل دور شغال؛ الهيدر والـ bar مطابقين Light/Dark.
+**القبول:** التنقل بين تابات كل دور شغال؛ الهيدر والـ bar مطابقين Light/Dark؛ تبديل الدور بيبدّل الـ bar (٦ ↔ ٤).
 
 ---
 
@@ -113,11 +126,10 @@
 
 ---
 
-## Phase 5 — استكشف + الخدمات + المزيد
+## Phase 5 — استكشف + الخدمات
 
 - `ExploreScreen`: كارت «حول {الفندق}» + الفلاتر الخمسة، كروت الأماكن، دورة الطلب + toast.
 - `ServicesScreen`: الفئات، صف الخدمة بزر «فتح»، «معلومات سريعة»، سطر الغرفة.
-- `MoreScreen`: الخدمات والبروتوكول + اختصار الإعدادات. الرجوع منهم يرجّع لـ «المزيد».
 
 **القبول:** نتائج الفلاتر مطابقة (8 الدوحة / 4 لندن)؛ الطلب بيظهر في الحالة.
 
@@ -142,32 +154,22 @@
 
 ---
 
-## Phase 8 — السائق + المرافق + الإعدادات
+## Phase 8 — المراجعة والتنظيف
 
-- `DriverScreen`: الرحلة التالية (استلام ← توصيل)، الركاب، اتصال بالمرافق، «ابدأ الملاحة»، «وصلت»، بقية اليوم. تابات السائق: رحلاتي / الجدول / حسابي.
-- المرافق: نفس عرض الوفد باسم المستقبِل.
-- `SettingsScreen`: الحساب، المهمة (الدور ← الإعداد، نوع المهمة)، الإشعارات (3 مفاتيح محفوظة)، المظهر (فاتح/داكن/النظام — مربوط بـ `AppManager`)، المساعدة، تسجيل الخروج، الإصدار.
-
-**القبول:** تغيير الدور والوضع والثيم بيتحفظ ويتطبق فوراً؛ رحلات السائق مطابقة لاختبارات `DriverStrategy`.
-
----
-
-## Phase 9 — المراجعة والإصدار
-
-- مراجعة شاشة بشاشة مع Android والكانفس (Light/Dark، 375 و 430pt، Dynamic Type كبير).
+- مراجعة شاشة بشاشة مع Android (Light/Dark، 375 و 430pt، Dynamic Type كبير).
 - Accessibility: VoiceOver، مساحات اللمس، التباين.
 - **الأيقونة:** نفس أيقونة Android (1024px في `AppIcon.appiconset`) + Launch Screen نهائي.
-- تنظيف: `Localizable.xcstrings`، ألوان Asset القديمة الغير مستخدمة، رؤوس الملفات.
+- تنظيف: `Localizable.xcstrings`، ألوان Asset القديمة الغير مستخدمة، رؤوس الملفات، كود التوثيق المتبقي.
 - الإصدار: signing (حساب Apple Developer)، Archive، TestFlight — عبر Codemagic أو Mac في السحابة.
 - تحديث الوثائق وسجل القرارات.
 
-**القبول:** build على TestFlight شغال على iPhone فعلي؛ صفر references للتوثيق؛ checklist المطابقة كاملة.
+**القبول:** release build شغال؛ صفر references للتوثيق؛ checklist المطابقة كاملة.
 
 ---
 
 ## الاعتماديات
 
 ```
-ريبو + CI → 0 → 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8 → 9
-               (1 و 2 ممكن يتبدلوا؛ 4–8 ترتيبهم مرن بعد 3؛ 7 قبل اختبار الربط)
+ريبو + CI → 0 → 1 → 2 → 3 → 4 → 5 → 6 → 7 → 8
+               (1 و 2 ممكن يتبدلوا؛ 4–7 ترتيبهم مرن بعد 3؛ 7 قبل اختبار الربط)
 ```

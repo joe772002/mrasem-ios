@@ -36,7 +36,8 @@ Mrasem/
 
 ## B. الـ UI ومطابقة الديزاين
 
-- **B1.** مصدر الديزاين هو **كود Android (branch `enhance`) مباشرة**: كل شاشة ومكوّن بيتنقل من ملف Kotlin المقابل (`06-ANDROID-REFERENCE.md`) بنفس القيم والترتيب والنصوص. `01-DESIGN-SPEC.md` و`05-ENHANCED-DESIGN.md` ملخصات مساعدة؛ عند التعارض كود Android يكسب. ممنوع تغيير لون أو مقاس أو نص أو إضافة عنصر مش موجود في Android.
+- **B1.** مصدر الديزاين هو **كود Android (branch `main`) مباشرة**: كل شاشة ومكوّن بيتنقل من ملف Kotlin المقابل (`06-ANDROID-REFERENCE.md`) بنفس القيم والترتيب والنصوص. `01-DESIGN-SPEC.md` ملخص مساعدة؛ عند التعارض كود Android يكسب. ممنوع تغيير لون أو مقاس أو نص أو إضافة عنصر مش موجود في Android.
+  - **`main` مش `enhance`:** فرع `enhance` فيه تصميم تاني (هيدر بالزخرفة، bottom bar عائم، شاشة إعداد، السائق، الإعدادات) — **مش** المرجع بتاعنا. قرار صاحب المشروع.
 - **B2.** ممنوع `Color(red:…)` أو hex في الشاشات. كله من `MrasemColors` عبر `@Environment(\.mrasem)`. الاستثناءات: لوحة السيارة، شعارات الخدمات (من البيانات)، الرسومات.
 - **B3.** ممنوع `.font(.system(size:))` أو اسم خط مباشر في الشاشات. كله من `MrasemType`.
 - **B4.** ألوان مراسم Light/Dark **في الكود** (struct بقيمتين) مش Asset Catalog، عشان تتطابق مع Android وتتراجع من Windows.
@@ -47,7 +48,10 @@ Mrasem/
 - **B9.** الهيدر العنّابي بيمتد تحت الـ status bar (`ignoresSafeArea(edges: .top)`) والنص أبيض؛ صفحة الإعدادات فاتحة. الـ bottom bar فوق الـ home indicator.
 - **B10.** الأيقونات من مسارات الـ SVG الأصلية (`Shape`)، مش SF Symbols.
 - **B11.** مساحة اللمس ≥ 44pt. `accessibilityLabel` لكل عنصر تفاعلي من غير نص، و`.accessibilityAddTraits(.isHeader)` للعناوين، و`.isSelected` للتاب/الاختيار.
-- **B12.** Dynamic Type: الخطوط `relativeTo:` عشان تكبر مع النظام. ممنوع ارتفاعات ثابتة تقص النص.
+- **B12.** Dynamic Type: الخطوط بتكبر مع النظام. الاستثناء المسجّل: بنطبّق **مقياس موحّد** (`DynamicTypeSize.mrasemScale`) على كل خطوط مراسم بدل `relativeTo:` — لأن Reem Kufi خط متغيّر و SwiftUI مش بيقدر يجمع بين محور `wght` والـ Dynamic Type. ممنوع ارتفاعات ثابتة تقص النص.
+- **B13.** الـ `Layout` المخصص (قائمة المفتاح/القيمة، الـ flow) لازم يقيس العناصر زي ما Compose بيعمل — مش تخمين بأرقام ثابتة.
+- **B14.** نصوص الـ accessibility بتتبني من الـ catalog زي أي نص (قاعدة C1)؛ ممنوع عربي حرفي في الكود.
+- **B15.** الأيقونات من `MrasemIcons` بس — ممنوع SF Symbols في كود مراسم.
 
 ## C. النصوص والبيانات
 
@@ -108,3 +112,8 @@ Mrasem/
 | 2026-11-12 | `Config/Secrets.example.xcconfig` اتحذف و`App.xcconfig` اتمسح منه الـ secret | مراسم مش بيبعت لـ Backend في أي phase؛ القاعدة D5 بتفضل: أي سر جاي يبقى في `Secrets.xcconfig` المتجاهَل |
 | 2026-11-12 | الـ CI على runner `macos-26` | `IPHONEOS_DEPLOYMENT_TARGET = 26.0` محتاج Xcode 26 |
 | 2026-11-12 | الـ splash جوه التطبيق (مش System Launch Screen) | نفس Android: splash عنّابي ١.٥ ثانية جوّه `MrasemRootView`. الـ launch screen بتاع النظام يفضل لحد Phase 9 |
+| 2026-11-12 | **مصدر التصميم بقى فرع `main`** بدل `enhance` | قرار صاحب المشروع. معناه: مفيش شاشة إعداد ولا أدوار ولا screen «المزيد» ولا سائق ولا إعدادات — والـ header والـ bottom bar هما نسخة `main` (segmented، شريط ثابت) |
+| 2026-11-12 | Phase 1: `MrasemRGB` بيحتفظ بـ RGB عشان نعمل `compositeOver` زي Compose | SwiftUI مالهاش `compositeOver`، والألوان محتاجين مزج (زي `noticeBg`) |
+| 2026-11-12 | Phase 1: خط Reem Kufi المتغيّر بنستخدمه عن طريق CoreText (`kCTFontVariationAttribute`) | SwiftUI مالهاش API لمحاور الخطوط المتغيّرة. الـ PostScript name هو `ReemKufi` ومحور `wght` من 400 لـ 700 |
+| 2026-11-12 | Phase 1: Dynamic Type بمقياس موحّد بدل `relativeTo:` | Reem Kufi خط متغيّر، و `Font.custom(..., relativeTo:)` مش بيقبل variation في نفس الوقت. مسجّل كاستثناء لقاعدة B12 |
+| 2026-11-12 | Phase 1: أيقونة `protocol` باسم backticks (`` `protocol` ``) | `protocol` كلمة محجوزة في Swift |
