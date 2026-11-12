@@ -39,25 +39,6 @@ struct MrasemButton: View {
 
     var body: some View {
         let c = theme.colors
-
-        let background: Color
-        let foreground: Color
-
-        switch variant {
-        case .primary:
-            background = c.maroon
-            foreground = c.onMaroon
-        case .secondary:
-            background = c.surface
-            foreground = c.ink
-        case .ghost:
-            background = .clear
-            foreground = c.maroonInk
-        case .outline:
-            background = c.surface
-            foreground = c.maroon
-        }
-
         let hasBorder = variant == .secondary || variant == .outline
 
         return Text(text)
@@ -82,6 +63,23 @@ struct MrasemButton: View {
             .disabled(!enabled)
             .accessibilityAddTraits(.isButton)
             .accessibilityLabel(text)
+    }
+
+    private var background: Color {
+        switch variant {
+        case .primary: return theme.colors.maroon
+        case .secondary, .outline: return theme.colors.surface
+        case .ghost: return .clear
+        }
+    }
+
+    private var foreground: Color {
+        switch variant {
+        case .primary: return theme.colors.onMaroon
+        case .secondary: return theme.colors.ink
+        case .ghost: return theme.colors.maroonInk
+        case .outline: return theme.colors.maroon
+        }
     }
 }
 

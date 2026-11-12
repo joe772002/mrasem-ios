@@ -112,28 +112,28 @@ struct MrasemPill: View {
     }
 
     var body: some View {
-        let c = theme.colors
-        let background: Color
-        let foreground: Color
-
-        switch kind {
-        case .neutral:
-            background = c.tint
-            foreground = c.maroonInk
-        case .ok:
-            background = c.pillOkBg
-            foreground = c.ok
-        case .warn:
-            background = c.pillWarnBg
-            foreground = c.warn
-        }
-
         Text(text)
             .mrasemText(theme.type.pill)
             .foregroundColor(foreground)
             .padding(.horizontal, 8)
             .padding(.vertical, 2)
             .background(background, in: RoundedRectangle(cornerRadius: theme.shapes.pill))
+    }
+
+    private var background: Color {
+        switch kind {
+        case .neutral: return theme.colors.tint
+        case .ok: return theme.colors.pillOkBg
+        case .warn: return theme.colors.pillWarnBg
+        }
+    }
+
+    private var foreground: Color {
+        switch kind {
+        case .neutral: return theme.colors.maroonInk
+        case .ok: return theme.colors.ok
+        case .warn: return theme.colors.warn
+        }
     }
 }
 
