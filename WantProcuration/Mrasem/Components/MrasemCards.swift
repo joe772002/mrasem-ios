@@ -196,6 +196,7 @@ struct MrasemKpiTile: View {
             RoundedRectangle(cornerRadius: theme.shapes.kpi)
                 .stroke(c.line, lineWidth: theme.dimens.borderWidth)
         )
+        .accessibilityElement(children: .combine)
     }
 }
 

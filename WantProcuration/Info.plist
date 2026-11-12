@@ -16,5 +16,10 @@
 		<string>ibm_plex_sans_arabic_semibold.ttf</string>
 		<string>ibm_plex_sans_arabic_bold.ttf</string>
 	</array>
+	<key>UILaunchScreen</key>
+	<dict>
+		<key>UIColorName</key>
+		<string>LaunchBackground</string>
+	</dict>
 </dict>
 </plist>

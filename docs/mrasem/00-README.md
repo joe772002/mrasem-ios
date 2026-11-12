@@ -25,7 +25,7 @@
 - ريبو iOS: https://github.com/joe772002/mrasem-ios.git
 - للرجوع عند الشك فقط: الديزاين الأصلي https://claude.ai/artifact/Gg4iccc4Y1qqbwAV7d2d52 وكانفس التحسين https://claude.ai/artifact/PNNaXBfzvj6p29SZwE6dHg
 
-## حالة المشروع الحالي (آخر تحديث 2026-11-12 — Phase 7 مكتوب، محتاج CI أخضر)
+## حالة المشروع الحالي (آخر تحديث 2026-11-12 — Phase 8 (الجزء الممكن من Windows) مكتوب، محتاج CI أخضر)
 
 - SwiftUI، **٧٩ ملف Swift** (كانوا 102)، target واحد اسمه `WantProcuration` + **test target** `WantProcurationTests`.
 - النمط: `View` + `ViewModel: ObservableObject` (MVVM)، و`AppManager` كـ `@StateObject` للغة والثيم.
@@ -69,9 +69,9 @@
 
 ## الخطوة الجاية
 
-Phase 0 و 1 و 2 خلصوا والـ CI أخضر. **Phase 3 إلى 7 (الهيكل، المهمة + البرنامج، الاستكشاف + الخدمات، البروتوكول + المساعد، فريق المراسم) مكتوبين** وبانتظار run أخضر للـ CI. الخطوة الجاية: Phase 8 (المراجعة والتنظيف).
+Phase 0 و 1 و 2 خلصوا والـ CI أخضر. **Phase 3 إلى 7 (الهيكل، المهمة + البرنامج، الاستكشاف + الخدمات، البروتوكول + المساعد، فريق المراسم) مكتوبين** وبانتظار run أخضر للـ CI. **Phase 8** اتعمل منه الأيقونة وLaunch Screen والمراجعة الآلية. الباقي محتاج Mac وحساب Apple Developer (signing/TestFlight).
 
 1. ابعت الـ commits (`git push`) وشوف الـ CI: `Build` + `Unit tests` + `Launch the app`. لو فيه أخطاء compile، صلّحها قبل Phase 8 (الـ `error:` بتظهر في Annotations).
-2. **Phase 8 — المراجعة والتنظيف:** مراجعة شاشة بشاشة، Accessibility، الأيقونة، TestFlight.
+2. **المتبقي من Phase 8:** مراجعة بصرية على Simulator (Light/Dark، Dynamic Type)، VoiceOver، تقسيم الملفات >300 سطر، signing + TestFlight.
 
 قول «ابدا phase 7» ونمشي.

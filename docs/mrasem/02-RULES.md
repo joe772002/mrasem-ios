@@ -85,7 +85,7 @@ Mrasem/
 
 ## F. ملاحظات على المشروع الحالي
 
-> آخر تحديث: 2026-11-12 — بعد Phase 7 (مكتوب، بانتظار CI).
+> آخر تحديث: 2026-11-12 — بعد Phase 8 (الجزء الممكن من Windows، بانتظار CI).
 
 - **اتحل في Phase 0:** مفيش git → بقى repo على `joe772002/mrasem-ios`. الـ force-unwrap للخط → بقى `if let`. مفاتيح الـ AI Gateway واسم Siri البديل → اتشالت.
 - `AppManager.isDarkMode` افتراضيه `true` وبيتقرا من `UserDefaults` — هيتوصّل بخيار الثيم (فاتح/داكن/النظام).
@@ -138,3 +138,6 @@ Mrasem/
 | 2026-11-12 | Phase 6: نصوص ردود المساعد في `Components/MrasemAssistantText.swift` | زي `mrasemNoticeText`: دالة نقية `nonisolated` بتتختبر من غير View |
 | 2026-11-12 | Phase 7: مسودة نموذج الزيارة `@State` بتتعاد من `state.form` عبر `onChange` | بديل `remember(state.form)` في Android؛ الحفظ أو تغيير الوضع بيصفّر الحقول |
 | 2026-11-12 | Phase 7: إخفاء الكيبورد بعد التنبيه العام بـ `resignFirstResponder` | بديل `keyboardController.hide()` |
+| 2026-11-12 | Phase 8: الأيقونة مولّدة من أيقونة Android (crop الـ safe-zone ثم تكبير) كـ RGB | مفيش مصدر 1024 أصلي؛ App Store بيرفض الـ alpha |
+| 2026-11-12 | Phase 8: Launch Screen بلون عنّابي عبر `UILaunchScreen.UIColorName` | بديل الشاشة البيضا المولّدة؛ من غير storyboard |
+| 2026-11-12 | Phase 8: تقسيم الملفات >300 سطر مؤجّل لبعد CI أخضر | مفيش compiler، والتقسيم بيمس تعريفات مشتركة |

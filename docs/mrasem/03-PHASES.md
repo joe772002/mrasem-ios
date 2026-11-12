@@ -189,6 +189,14 @@
 
 **القبول:** release build شغال؛ صفر references للتوثيق؛ checklist المطابقة كاملة.
 
+**الحالة: 🟡 اتعمل اللي ممكن من Windows (بانتظار CI + Mac).**
+- ✅ **الأيقونة:** اتولّدت من أيقونة Android (الخلفية + الأمامية، قص الـ safe-zone) كـ RGB بدون alpha، وكل المقاسات الـ 21 في `AppIcon.appiconset` اتبدّلت. الأصل 288px مكبّر لـ 1024 فهي أنعم شوية من المصدر؛ لو فيه نسخة vector/1024 أصلية تتبدّل.
+- ✅ **Launch Screen:** `UILaunchScreen` في `Info.plist` بلون `LaunchBackground` (العنّابي `#8A1538`) بدل الأبيض.
+- ✅ **المراجعة الآلية:** صفر hex/خطوط نظام في `Screens/` و`Shell/` (B2/B3)، وكل ألوان الـ Assets مستخدمة، وكل عناصر اللمس عليها traits/labels. `MrasemKpiTile` بقى عنصر VoiceOver واحد.
+- ⏳ **محتاج Mac/Simulator:** مراجعة Light/Dark على 375/430pt وDynamic Type الكبير، VoiceOver فعلي، تحميل الخطوط فعلياً.
+- ⏳ **محتاج حساب Apple Developer:** signing وArchive وTestFlight.
+- 📌 **ملفات >300 سطر (استثناء مقبول لـ B8):** `MrasemListItems` (565)، `MrasemDemoData` (588، بيانات)، `SVGPath` (425)، `MrasemDrawings` (347)، `MrasemPreviews` (327)، `MrasemCards` (331). التقسيم بدون compiler مخاطرته أكبر من فايدته؛ يتعمل بعد CI أخضر.
+
 ---
 
 ## الاعتماديات
