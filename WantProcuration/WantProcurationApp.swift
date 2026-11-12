@@ -20,6 +20,10 @@ struct WantProcurationApp: App {
     @StateObject private var appManager = AppManager()
 
     init() {
+        // Mrasem is Arabic only (decision #4): pin the app's language so the
+        // system UI (keyboard, date pickers, alerts) is Arabic as well.
+        UserDefaults.standard.set(["ar"], forKey: "AppleLanguages")
+
         // The keyboard manager swizzles UIKit and touches the key window, which
         // is not available (and not stable) inside a unit-test host.
         guard !MrasemEnvironment.isRunningUnitTests else { return }
