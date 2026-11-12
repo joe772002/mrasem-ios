@@ -162,6 +162,8 @@
 
 **القبول:** القواعد الـ 8 + التحويل بنفس نصوص المصدر في الوضعين؛ الـ checks لكل وضع.
 
+**الحالة: ✅ مكتوب (بانتظار CI أخضر).** `Screens/Protocol/{ProtocolViewModel,ProtocolScreen}.swift` و`Screens/Assistant/{AssistantViewModel,AssistantScreen}.swift` + `Components/MrasemAssistantText.swift` (`mrasemAssistantReplyText`)، متوصلين بالـ Shell. `ProtocolScreen`: بطاقة الـ ٣٠ ثانية، الزي بالرسمة والعمودين، قائمة الفحص بالعدّاد، الأعراف، chips الدليل + toast. `AssistantScreen`: المحادثة والأسئلة الجاهزة (`MrasemFlowLayout`) وحقل الإدخال، وتمرير لآخر المحادثة عن طريق `MrasemScreenContent(scrollToEndTrigger:)`. الاختبارات: `ProtocolAssistantStateTests` (٧).
+
 ---
 
 ## Phase 7 — فريق المراسم

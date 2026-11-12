@@ -78,6 +78,10 @@ private struct MrasemDestinationContent: View {
             ServicesScreen(context: context)
         case .explore:
             ExploreScreen(context: context)
+        case .protocol:
+            ProtocolScreen(context: context)
+        case .assistant:
+            AssistantScreen(context: context)
         default:
             MrasemPlaceholderScreen(titleKey: destination.labelKey)
         }

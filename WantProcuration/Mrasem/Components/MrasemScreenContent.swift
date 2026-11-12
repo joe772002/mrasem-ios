@@ -12,25 +12,37 @@ import SwiftUI
 struct MrasemScreenContent<Content: View>: View {
     @Environment(\.mrasem) private var theme
 
+    /// لو اتغيّرت القيمة دي الشاشة بتتمرّر لآخرها (زي `animateScrollTo(maxValue)` في Android).
+    let scrollToEndTrigger: Int?
     var content: () -> Content
 
-    init(@ViewBuilder content: @escaping () -> Content) {
+    init(scrollToEndTrigger: Int? = nil, @ViewBuilder content: @escaping () -> Content) {
+        self.scrollToEndTrigger = scrollToEndTrigger
         self.content = content
     }
 
     var body: some View {
-        ScrollView {
+        ScrollViewReader { proxy in
+          ScrollView {
             VStack(alignment: .leading, spacing: theme.dimens.screenGap) {
                 content()
                 MrasemDemoFooter()
+                Color.clear.frame(height: 0).id(Self.endAnchor)
             }
             .padding(.horizontal, theme.dimens.screenHorizontal)
             .padding(.top, theme.dimens.screenTop)
             .padding(.bottom, theme.dimens.screenTop)
             .frame(maxWidth: .infinity, alignment: .leading)
+          }
+          .background(theme.colors.bg)
+          .onChange(of: scrollToEndTrigger) { _, _ in
+              guard scrollToEndTrigger != nil else { return }
+              withAnimation { proxy.scrollTo(Self.endAnchor, anchor: .bottom) }
+          }
         }
-        .background(theme.colors.bg)
     }
+
+    private static var endAnchor: String { "mrasem_screen_end" }
 }
 
 struct MrasemDemoFooter: View {
