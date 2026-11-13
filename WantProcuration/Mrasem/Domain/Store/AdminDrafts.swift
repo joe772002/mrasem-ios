@@ -163,6 +163,7 @@ struct ProgramDraft: Equatable {
     var placeId: String?
     var carId: String?
     var note = ""
+    var dressCode = ""
     var isKey = false
     var notify = true
 
@@ -185,6 +186,7 @@ struct ProgramDraft: Equatable {
         placeId = record.placeId
         carId = record.carId
         note = record.note
+        dressCode = record.dressCode ?? ""
         isKey = record.isKey
         self.notify = notify
         base = record
@@ -196,7 +198,8 @@ struct ProgramDraft: Equatable {
         ProgramItemRecord(
             id: id, delegationId: delegationId, date: date, time: time.storeLatinDigits,
             endTime: kind == .free ? endTime.storeLatinDigits : nil, title: title, kind: kind,
-            placeId: placeId, note: note, carId: carId, isKey: isKey, isChanged: base?.isChanged ?? false
+            placeId: placeId, note: note, carId: carId, isKey: isKey, isChanged: base?.isChanged ?? false,
+            dressCode: dressCode
         )
     }
 }

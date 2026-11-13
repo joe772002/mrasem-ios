@@ -55,6 +55,8 @@ struct MrasemTimelineItem: View {
     let title: String
     let place: String
     let note: String?
+    /// الزي المطلوب (نص حر). nil أو فاضي = مفيش حاجة تتعرض.
+    let dressCode: String?
     let changed: Bool
     let changedLabel: String
     let keyCardLabel: String?
@@ -66,6 +68,7 @@ struct MrasemTimelineItem: View {
         title: String,
         place: String,
         note: String? = nil,
+        dressCode: String? = nil,
         changed: Bool = false,
         changedLabel: String = "",
         keyCardLabel: String? = nil,
@@ -76,6 +79,7 @@ struct MrasemTimelineItem: View {
         self.title = title
         self.place = place
         self.note = note
+        self.dressCode = dressCode
         self.changed = changed
         self.changedLabel = changedLabel
         self.keyCardLabel = keyCardLabel
@@ -115,6 +119,10 @@ struct MrasemTimelineItem: View {
                 }
             }
             .frame(maxWidth: .infinity, alignment: .leading)
+
+            if let dressCode, !dressCode.isEmpty {
+                dressCodeBadge(dressCode)
+            }
         }
         .padding(.horizontal, changed ? 8 : 0)
         .padding(.vertical, 10)
@@ -135,6 +143,25 @@ struct MrasemTimelineItem: View {
         Text(title)
             .mrasemText(theme.type.strong)
             .foregroundColor(theme.colors.ink)
+    }
+
+    /// الزي المطلوب في طرف الصف (الجهة الفاضية)، النص بيلتف لو طويل.
+    private func dressCodeBadge(_ value: String) -> some View {
+        let c = theme.colors
+        return VStack(alignment: .leading, spacing: 2) {
+            Text(mrasemString("mrasem_plan_dress_code"))
+                .mrasemText(theme.type.label)
+                .foregroundColor(c.muted)
+            Text(value)
+                .mrasemText(theme.type.chip)
+                .foregroundColor(c.ink)
+                .fixedSize(horizontal: false, vertical: true)
+        }
+        .frame(maxWidth: 104, alignment: .leading)
+        .padding(.horizontal, 8)
+        .padding(.vertical, 6)
+        .background(c.tint, in: RoundedRectangle(cornerRadius: theme.shapes.pill))
+        .accessibilityElement(children: .combine)
     }
 
     private var changedPill: some View {

@@ -44,6 +44,8 @@ nonisolated final class ProgramService {
         var saved = item
         saved.title = item.title.storeTrimmed
         saved.note = item.note.storeTrimmed
+        let dress = (item.dressCode ?? "").storeTrimmed
+        saved.dressCode = dress.isEmpty ? nil : dress
         if saved.kind != .free { saved.endTime = nil }
         let date = now()
 
@@ -130,6 +132,7 @@ nonisolated final class ProgramService {
     private static func contentChanged(_ a: ProgramItemRecord, _ b: ProgramItemRecord) -> Bool {
         a.date != b.date || a.time != b.time || a.endTime != b.endTime || a.title != b.title
             || a.kind != b.kind || a.placeId != b.placeId || a.note != b.note || a.carId != b.carId
+            || a.dressCode != b.dressCode
     }
 
     /// أعضاء الوفد + مرافقيهم + سائق الفقرة (والسائق القديم لو السيارة اتغيّرت).

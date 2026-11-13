@@ -157,7 +157,7 @@ nonisolated enum MrasemSeed {
         return [
             item("p1", "d1", "2026-11-23", "14:10", "الوصول إلى مطار حمد الدولي", .move, note: "صالة كبار الشخصيات · الاستقبال: سعيد المري", car: "c1"),
             item("p2", "d1", "2026-11-23", "15:00", "التوجه إلى الفندق", .move, place: "h1", car: "c1"),
-            item("p3", "d1", "2026-11-23", "19:30", "عشاء ترحيبي", .meal, place: "f1", note: "زي رسمي"),
+            item("p3", "d1", "2026-11-23", "19:30", "عشاء ترحيبي", .meal, place: "f1", dress: "زي رسمي"),
             item("p4", "d1", "2026-11-24", "09:30", "جلسة المباحثات الرسمية", .official, place: "g1", note: "بحضور سعادة الوزير", car: "c1", key: true),
             item("p5", "d1", "2026-11-24", "11:30", "توقيع مذكرة التفاهم وصورة تذكارية", .official, place: "g1", note: "القاعة ذاتها"),
             item("p6", "d1", "2026-11-24", "12:30", "غداء رسمي", .meal, place: "g1", car: "c1"),
@@ -165,7 +165,7 @@ nonisolated enum MrasemSeed {
             item("p8", "d1", "2026-11-25", "10:00", "زيارة ميدانية لمركز خدمات", .visit, note: "إدارة الخدمات الخارجية", car: "c1"),
             item("p9", "d1", "2026-11-25", "13:00", "الوداع الرسمي والتوجه للمطار", .move, note: "المرافق: سعيد المري", car: "c1"),
             item("q1", "d2", "2026-12-07", "13:40", "الوصول إلى مطار هيثرو", .move, note: "الاستقبال: ممثل السفارة", car: "c2"),
-            item("q2", "d2", "2026-12-07", "19:00", "عشاء عمل مع السفارة", .meal, place: "g3", note: "زي رسمي", car: "c2"),
+            item("q2", "d2", "2026-12-07", "19:00", "عشاء عمل مع السفارة", .meal, place: "g3", car: "c2", dress: "زي رسمي"),
             item("q3", "d2", "2026-12-08", "09:00", "الجلسة الافتتاحية للمؤتمر", .official, place: "g2", note: "القاعة الرئيسية", car: "c2", key: true),
             item("q4", "d2", "2026-12-08", "11:00", "كلمة وفد دولة قطر", .official, place: "g2", note: "الملف التعريفي مرفق"),
             item("q5", "d2", "2026-12-09", "16:00", "حفل الختام", .official, place: "g2", car: "c2"),
@@ -185,9 +185,9 @@ nonisolated enum MrasemSeed {
 
     private static func item(_ id: String, _ delegation: String, _ date: String, _ time: String, _ title: String,
                              _ kind: ProgramItemKind, place: String? = nil, note: String = "", car: String? = nil,
-                             key: Bool = false) -> ProgramItemRecord {
+                             key: Bool = false, dress: String? = nil) -> ProgramItemRecord {
         ProgramItemRecord(id: id, delegationId: delegation, date: date, time: time, endTime: nil, title: title, kind: kind,
-                          placeId: place, note: note, carId: car, isKey: key, isChanged: false)
+                          placeId: place, note: note, carId: car, isKey: key, isChanged: false, dressCode: dress)
     }
 
     private static func request(_ id: String, _ delegation: String, _ member: String, _ kind: RequestKind, _ text: String,

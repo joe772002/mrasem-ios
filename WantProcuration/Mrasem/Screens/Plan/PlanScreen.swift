@@ -73,6 +73,7 @@ struct PlanContent: View {
                 title: item.title,
                 place: item.place,
                 note: item.note,
+                dressCode: item.dressCode,
                 changed: changed,
                 changedLabel: mrasemString("mrasem_plan_changed"),
                 keyCardLabel: item.isKey ? mrasemString("mrasem_plan_key_card") : nil,

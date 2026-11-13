@@ -121,7 +121,8 @@ nonisolated enum GuestMissionAdapter {
             title: item.title,
             place: place.isEmpty ? item.note : place,
             note: place.isEmpty || item.note.isEmpty ? nil : item.note,
-            isKey: item.isKey
+            isKey: item.isKey,
+            dressCode: item.dressCode.flatMap { $0.isEmpty ? nil : $0 }
         ))
     }
 

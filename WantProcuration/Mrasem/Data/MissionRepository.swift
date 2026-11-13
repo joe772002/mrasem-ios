@@ -240,7 +240,8 @@ extension ProgramItem.Official {
             title: title,
             place: place,
             note: note,
-            isKey: isKey
+            isKey: isKey,
+            dressCode: dressCode
         )
     }
 }

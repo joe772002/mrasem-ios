@@ -135,13 +135,17 @@ enum ProgramItem: Equatable, Hashable {
         let place: String
         let note: String?
         let isKey: Bool
+        /// الزي المطلوب للفقرة (نص حر من الإدارة). nil = مش محدد.
+        let dressCode: String?
 
-        init(time: String, title: String, place: String, note: String? = nil, isKey: Bool = false) {
+        init(time: String, title: String, place: String, note: String? = nil, isKey: Bool = false,
+             dressCode: String? = nil) {
             self.time = time
             self.title = title
             self.place = place
             self.note = note
             self.isKey = isKey
+            self.dressCode = dressCode
         }
     }
 

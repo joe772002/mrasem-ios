@@ -211,6 +211,8 @@ struct ProgramItemRecord: Codable, Equatable, Identifiable {
     var isKey: Bool
     /// «محدَّث» عند الضيف.
     var isChanged: Bool
+    /// الزي المطلوب للفقرة (نص حر، فاضي = مش محدد). اختياري عشان البيانات المحفوظة قبل الحقل ده تتفتح عادي.
+    var dressCode: String? = nil
 }
 
 struct RequestRecord: Codable, Equatable, Identifiable {

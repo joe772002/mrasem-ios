@@ -834,6 +834,28 @@
         }
       }
     },
+    "mrasem_admin_field_dress_code" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الزي المطلوب"
+          }
+        }
+      }
+    },
+    "mrasem_admin_field_dress_code_hint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "مثال: زي رسمي · بشت · كاجوال (اختياري)"
+          }
+        }
+      }
+    },
     "mrasem_admin_field_driver" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4812,6 +4834,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "تغيّر الموعد"
+          }
+        }
+      }
+    },
+    "mrasem_plan_dress_code" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "الزي"
           }
         }
       }

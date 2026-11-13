@@ -95,6 +95,8 @@ struct ProgramFormSheet: View {
             }
             IdSelect(label: mrasemString("mrasem_admin_field_place"), options: places, selection: $draft.placeId)
             IdSelect(label: mrasemString("mrasem_admin_field_car"), options: cars, selection: $draft.carId)
+            MrasemTextField(value: $draft.dressCode, label: mrasemString("mrasem_admin_field_dress_code"),
+                            placeholder: mrasemString("mrasem_admin_field_dress_code_hint"))
             MrasemTextField(value: $draft.note, label: mrasemString("mrasem_admin_field_note"), singleLine: false)
             AdminToggleRow(label: mrasemString("mrasem_admin_field_key"), isOn: $draft.isKey)
             AdminToggleRow(label: mrasemString("mrasem_admin_field_notify"), isOn: $draft.notify)
