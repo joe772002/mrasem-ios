@@ -1,0 +1,68 @@
+name: Sideload IPA
+
+# Builds an UNSIGNED .ipa for Sideloadly (Windows, free Apple ID, no Mac).
+# Manual: Actions → Sideload IPA → Run workflow → download the artifact.
+# Sideloadly signs it on the PC with the user's Apple ID and installs it by USB.
+# See docs/mrasem/10-SIDELOAD.md.
+
+on:
+  workflow_dispatch:
+
+jobs:
+  ipa:
+    name: Build unsigned .ipa
+    runs-on: macos-26
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Cache Swift Package Manager
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/Library/Caches/org.swift.swiftpm
+            .build/SourcePackages
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+
+      - name: Build for device (no signing)
+        run: |
+          set -o pipefail
+          mkdir -p .build
+          xcodebuild build \
+            -project WantProcuration.xcodeproj \
+            -scheme WantProcuration \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -derivedDataPath .build/DerivedData \
+            CODE_SIGNING_ALLOWED=NO \
+            CODE_SIGNING_REQUIRED=NO \
+            CODE_SIGN_IDENTITY="" \
+            CURRENT_PROJECT_VERSION=${{ github.run_number }} \
+            2>&1 | tee .build/device-build.log
+          status=${PIPESTATUS[0]}
+          if [ $status -ne 0 ]; then
+            grep -E "error:" .build/device-build.log | sort -u | head -20 | while IFS= read -r line; do
+              echo "::error::${line}"
+            done
+          fi
+          exit $status
+
+      - name: Package .ipa
+        run: |
+          APP=.build/DerivedData/Build/Products/Release-iphoneos/WantProcuration.app
+          test -d "$APP" || { echo "::error::$APP not found"; exit 1; }
+          rm -rf .build/ipa && mkdir -p .build/ipa/Payload
+          cp -R "$APP" .build/ipa/Payload/
+          (cd .build/ipa && zip -qry Mrasem-unsigned.ipa Payload)
+          ls -lh .build/ipa/Mrasem-unsigned.ipa
+
+      - name: Upload .ipa
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mrasem-unsigned-${{ github.run_number }}
+          path: .build/ipa/Mrasem-unsigned.ipa
+          retention-days: 14
