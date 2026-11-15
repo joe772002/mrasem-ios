@@ -2,7 +2,7 @@
 //  Phase15LogicTests.swift
 //  WantProcurationTests
 //
-//  Phase 15 — منطق الأدمن (٢): الموارد والتعارضات، الأماكن، الطلبات والتنبيهات، الإعدادات، والمسوّدات.
+//  Phase 15 — منطق الأدمن (2): الموارد والتعارضات، الأماكن، الطلبات والتنبيهات، الإعدادات، والمسوّدات.
 //
 
 import XCTest
@@ -104,12 +104,12 @@ final class Phase15LogicTests: XCTestCase {
         let env = StoreRepoEnv(user: .team("u1"))
         let baseline = AdminRequestsBuilder.broadcasts(env.db).count
 
-        XCTAssertTrue(env.backend.requests.broadcast("الاجتماع الساعة ١٠", delegationId: "d1", audience: .all))
+        XCTAssertTrue(env.backend.requests.broadcast("الاجتماع الساعة 10", delegationId: "d1", audience: .all))
         XCTAssertFalse(env.backend.requests.broadcast("x", delegationId: "d1", audience: .custom))
 
         let rows = AdminRequestsBuilder.broadcasts(env.db)
         XCTAssertEqual(rows.count, baseline + 1)
-        let row = rows.first { $0.text == "الاجتماع الساعة ١٠" }
+        let row = rows.first { $0.text == "الاجتماع الساعة 10" }
         XCTAssertEqual(row?.audience, .all)
         XCTAssertGreaterThan(row?.recipientCount ?? 0, 0)
         XCTAssertEqual(row?.readCount, 0)
@@ -190,10 +190,10 @@ final class Phase15LogicTests: XCTestCase {
         XCTAssertEqual(draft.record(), record, "من غير تعديل السجل ما يتغيرش")
 
         draft.name = "وجهة معدّلة"
-        draft.customs = "بند ١\nبند ٢"
+        draft.customs = "بند 1\nبند 2"
         let edited = draft.record()
         XCTAssertEqual(edited.name, "وجهة معدّلة")
-        XCTAssertEqual(edited.customs, ["بند ١", "بند ٢"])
+        XCTAssertEqual(edited.customs, ["بند 1", "بند 2"])
         XCTAssertEqual(edited.services, record.services)
         XCTAssertEqual(edited.dressSets, record.dressSets)
         XCTAssertTrue(DestinationDraft().isNew)

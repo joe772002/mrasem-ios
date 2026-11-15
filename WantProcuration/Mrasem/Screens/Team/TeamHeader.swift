@@ -39,11 +39,11 @@ struct TeamHeader: View {
             MrasemKpiTile(
                 value: kpis.arrivalCompleted
                     ? mrasemString("mrasem_team_kpi_arrival_done")
-                    : mrasemString("mrasem_team_kpi_arrival_value", [kpis.arrivalStage.toArabicDigits()]),
+                    : mrasemString("mrasem_team_kpi_arrival_value", [kpis.arrivalStage.toLatinDigits()]),
                 label: mrasemString("mrasem_team_kpi_arrival")
             )
-            MrasemKpiTile(value: kpis.newRequests.toArabicDigits(), label: mrasemString("mrasem_team_kpi_requests"))
-            MrasemKpiTile(value: kpis.sentUpdates.toArabicDigits(), label: mrasemString("mrasem_team_kpi_updates"))
+            MrasemKpiTile(value: kpis.newRequests.toLatinDigits(), label: mrasemString("mrasem_team_kpi_requests"))
+            MrasemKpiTile(value: kpis.sentUpdates.toLatinDigits(), label: mrasemString("mrasem_team_kpi_updates"))
         }
 
         MrasemFlowLayout(spacing: 6) {

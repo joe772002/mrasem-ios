@@ -120,7 +120,7 @@ private struct MrasemTypographySample: View {
             Text("label — IBM Plex 400")
                 .mrasemText(theme.type.label)
                 .foregroundColor(theme.colors.muted)
-            Text("الأرقام: ١٢٣٤٥٦٧٨٩٠")
+            Text("الأرقام: 1234567890")
                 .mrasemText(theme.type.statNumber, tabular: true)
                 .foregroundColor(theme.colors.maroonInk)
             Text("brandSub — تباعد 0.08em")

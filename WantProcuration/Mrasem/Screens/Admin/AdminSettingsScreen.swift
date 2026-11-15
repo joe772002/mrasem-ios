@@ -99,7 +99,7 @@ struct AdminSettingsContent: View {
                 ForEach(state.team) { row in
                     MrasemActionRow(
                         title: row.name,
-                        subtitle: mrasemString("mrasem_admin_team_subtitle", [row.phone.toArabicDigits(), row.email])
+                        subtitle: mrasemString("mrasem_admin_team_subtitle", [row.phone.toLatinDigits(), row.email])
                     ) {
                         MrasemPill(mrasemString(row.role.adminLabelKey), kind: row.role == .admin ? .ok : .neutral)
                     }

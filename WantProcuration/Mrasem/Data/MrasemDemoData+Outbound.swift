@@ -18,9 +18,9 @@ extension MrasemDemoData {
         host: "مؤتمر قانوني دولي (مثال)",
         start: MrasemDate(iso: "2026-12-07")!,
         end: MrasemDate(iso: "2026-12-10")!,
-        timeZone: "لندن UTC+0 (الدوحة أبكر ٣ ساعات)",
+        timeZone: "لندن UTC+0 (الدوحة أبكر 3 ساعات)",
         currency: "الجنيه الإسترليني (GBP)",
-        weather: "٤–٩° غائم، احتمال مطر",
+        weather: "4–9° غائم، احتمال مطر",
         receiver: Receiver(
             name: "ممثل سفارة دولة قطر",
             title: "الملحق الإداري (مثال)",
@@ -50,8 +50,8 @@ extension MrasemDemoData {
             name: "فندق إقامة الوفد",
             area: "وسط لندن",
             room: "512",
-            breakfast: "٧:٠٠ – ١٠:٣٠",
-            drive: "١٥ دقيقة إلى المؤتمر"
+            breakfast: "7:00 – 10:30",
+            drive: "15 دقيقة إلى المؤتمر"
         ),
         emergency: [
             EmergencyContact(label: "الطوارئ في المملكة المتحدة", value: "999"),
@@ -60,7 +60,7 @@ extension MrasemDemoData {
         ],
         days: [
             ProgramDay(
-                label: "الإثنين ٧",
+                label: "الإثنين 7",
                 items: [
                     .official(.init(
                         time: "13:40",
@@ -83,7 +83,7 @@ extension MrasemDemoData {
                 ]
             ),
             ProgramDay(
-                label: "الثلاثاء ٨",
+                label: "الثلاثاء 8",
                 items: [
                     .official(.init(
                         time: "09:00",
@@ -101,12 +101,12 @@ extension MrasemDemoData {
                     .official(.init(
                         time: "15:30",
                         title: "لقاء ثنائي مع وفد شريك",
-                        place: "قاعة الاجتماعات ٣"
+                        place: "قاعة الاجتماعات 3"
                     )),
                 ]
             ),
             ProgramDay(
-                label: "الأربعاء ٩",
+                label: "الأربعاء 9",
                 items: [
                     .official(.init(
                         time: "10:00",
@@ -121,7 +121,7 @@ extension MrasemDemoData {
                 ]
             ),
             ProgramDay(
-                label: "الخميس ١٠",
+                label: "الخميس 10",
                 items: [
                     .official(.init(
                         time: "11:00",
@@ -201,7 +201,7 @@ extension MrasemDemoData {
             QuickInfo(label: "العملة", value: "جنيه إسترليني"),
             QuickInfo(label: "المقابس", value: "نوع G (ثلاثي)"),
             QuickInfo(label: "الطوارئ", value: "999"),
-            QuickInfo(label: "البقشيش", value: "١٠–١٢٫٥٪ في المطاعم"),
+            QuickInfo(label: "البقشيش", value: "10–12.5% في المطاعم"),
             QuickInfo(label: "القيادة", value: "على اليسار"),
             QuickInfo(label: "الطقس", value: "اصطحب معطفاً ومظلة"),
         ],

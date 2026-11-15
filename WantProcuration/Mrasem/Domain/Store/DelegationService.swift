@@ -109,6 +109,10 @@ nonisolated final class DelegationService {
                     saved.isHead = true
                 }
                 db.members.append(saved)
+                // عضو جديد عليه سيارة أو مرافق: السائق والمرافق لازم يعرفوا إن عندهم راكب جديد.
+                let assigned = [db.driverRef(ofCar: saved.carId)].compactMap { $0 }
+                    + [saved.escortId].compactMap { $0 }.filter { db.escort($0) != nil }.map { UserRef.escort($0) }
+                db.post(.assignmentChanged(memberId: saved.id), delegationId: saved.delegationId, to: assigned, at: date)
                 return
             }
             guard let index = db.members.firstIndex(where: { $0.id == saved.id }) else { return }

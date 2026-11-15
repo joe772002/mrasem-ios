@@ -69,7 +69,7 @@ struct UserPickerScreen: View {
                         MrasemPill(mrasemString("mrasem_users_current"), kind: .ok)
                     }
                     if entry.unread > 0 {
-                        MrasemPill(mrasemString("mrasem_users_unread", [entry.unread.toArabicDigits()]), kind: .warn)
+                        MrasemPill(mrasemString("mrasem_users_unread", [entry.unread.toLatinDigits()]), kind: .warn)
                     }
                 }
             }

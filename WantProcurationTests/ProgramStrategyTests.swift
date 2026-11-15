@@ -82,7 +82,7 @@ final class ProgramStrategyTests: XCTestCase {
 
         let key = ProgramStrategy.keyItem(repo.state.mission)
         XCTAssertEqual(key?.item.time, "09:00")
-        XCTAssertEqual(key?.dayLabel, "الثلاثاء ٨")
+        XCTAssertEqual(key?.dayLabel, "الثلاثاء 8")
 
         repo.setDay(1)
         let entries = ProgramStrategy(repository: repo).timeline().entries

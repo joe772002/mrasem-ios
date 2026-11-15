@@ -78,7 +78,7 @@ struct AdminDelegationsContent: View {
                             VStack(alignment: .trailing, spacing: 4) {
                                 MrasemPill(mrasemString(row.status.labelKey), kind: row.status == .active ? .ok : .neutral)
                                 MrasemPill(
-                                    mrasemString("mrasem_admin_readiness", [row.readiness.toArabicDigits()]),
+                                    mrasemString("mrasem_admin_readiness", [row.readiness.toLatinDigits()]),
                                     kind: row.missing == 0 ? .ok : .warn
                                 )
                             }
@@ -94,14 +94,14 @@ struct AdminDelegationsContent: View {
     }
 
     private func chipTitle(_ filter: DelegationFilter) -> String {
-        mrasemString("mrasem_admin_filter_count", [mrasemString(filter.titleKey), (state.counts[filter] ?? 0).toArabicDigits()])
+        mrasemString("mrasem_admin_filter_count", [mrasemString(filter.titleKey), (state.counts[filter] ?? 0).toLatinDigits()])
     }
 
     private func subtitle(_ row: DelegationRow) -> String {
         mrasemString("mrasem_admin_delegation_subtitle", [
             mrasemString(row.mode.adminLabelKey),
-            row.start.toArabicDigits(), row.end.toArabicDigits(),
-            row.memberCount.toArabicDigits()
+            row.start.toLatinDigits(), row.end.toLatinDigits(),
+            row.memberCount.toLatinDigits()
         ])
     }
 }

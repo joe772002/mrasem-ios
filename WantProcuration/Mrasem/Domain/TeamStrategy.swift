@@ -8,7 +8,7 @@
 import Foundation
 
 struct TeamKpis: Equatable {
-    /// 0..4؛ عند ٤ يظهر ✓ بدل «n/٤».
+    /// 0..4؛ عند 4 يظهر ✓ بدل «n/4».
     let arrivalStage: Int
     let newRequests: Int
     let sentUpdates: Int

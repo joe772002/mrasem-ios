@@ -65,7 +65,7 @@ struct AdminRequestsContent: View {
                     ForEach(RequestFilter.allCases, id: \.self) { filter in
                         MrasemChip(
                             mrasemString("mrasem_admin_filter_count", [
-                                mrasemString(filter.titleKey), (state.counts[filter] ?? 0).toArabicDigits()
+                                mrasemString(filter.titleKey), (state.counts[filter] ?? 0).toLatinDigits()
                             ]),
                             selected: filter == state.filter
                         ) { onFilter(filter) }
@@ -140,7 +140,7 @@ struct AdminRequestsContent: View {
                                 .foregroundColor(theme.colors.ink)
                             Text(mrasemString("mrasem_admin_history_meta", [
                                 row.delegationName, mrasemString(row.audience.adminLabelKey),
-                                row.readCount.toArabicDigits(), row.recipientCount.toArabicDigits()
+                                row.readCount.toLatinDigits(), row.recipientCount.toLatinDigits()
                             ]))
                             .mrasemText(theme.type.label)
                             .foregroundColor(theme.colors.muted)

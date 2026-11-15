@@ -84,7 +84,7 @@ struct PlanContent: View {
             MrasemFreeTimeItem(
                 from: item.from,
                 title: mrasemString("mrasem_plan_free_until", [item.to]),
-                description: mrasemString("mrasem_plan_free_hours", [item.hours.toArabicNumber()]),
+                description: mrasemString("mrasem_plan_free_hours", [item.hours.toLatinNumber()]),
                 suggestions: suggestions.map(\.name),
                 onSuggestion: { _ in onFreeTimeSuggestionClick() }
             )

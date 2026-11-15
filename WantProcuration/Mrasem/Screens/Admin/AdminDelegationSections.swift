@@ -22,12 +22,12 @@ struct AdminDelegationHeaderCard: View {
                 KeyValue(mrasemString("mrasem_admin_kv_mode"), mrasemString(d.mode.adminLabelKey)),
                 KeyValue(mrasemString("mrasem_admin_kv_host"), d.host.isEmpty ? none : d.host),
                 KeyValue(mrasemString("mrasem_admin_kv_period"),
-                         mrasemString("mrasem_team_archive_period_value", [d.start.toArabicDigits(), d.end.toArabicDigits()])),
+                         mrasemString("mrasem_team_archive_period_value", [d.start.toLatinDigits(), d.end.toLatinDigits()])),
                 KeyValue(mrasemString("mrasem_admin_kv_hotel"), detail.hotelName ?? none),
                 KeyValue(mrasemString("mrasem_admin_kv_venue"), detail.venueName ?? none),
                 KeyValue(mrasemString("mrasem_admin_kv_dress"), mrasemString(d.dress.adminLabelKey)),
                 KeyValue(mrasemString("mrasem_admin_kv_readiness"),
-                         mrasemString("mrasem_admin_readiness", [detail.readiness.toArabicDigits()]))
+                         mrasemString("mrasem_admin_readiness", [detail.readiness.toLatinDigits()]))
             ])
 
             HStack(spacing: 8) {

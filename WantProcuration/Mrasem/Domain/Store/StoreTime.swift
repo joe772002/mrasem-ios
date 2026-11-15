@@ -35,7 +35,7 @@ nonisolated enum StoreTime {
 
     static func isValidTime(_ time: String) -> Bool { minutes(time) != nil }
 
-    /// `HH:mm` (بيلف على ٢٤ ساعة زي البوابة).
+    /// `HH:mm` (بيلف على 24 ساعة زي البوابة).
     static func format(_ minutes: Int) -> String {
         let m = ((minutes % 1440) + 1440) % 1440
         return String(format: "%02d:%02d", m / 60, m % 60)
@@ -45,7 +45,7 @@ nonisolated enum StoreTime {
         minutes(time).map { format($0 + delta) }
     }
 
-    /// تاريخ حقيقي بصيغة `yyyy-MM-dd` (بيرفض ٣٠ فبراير وشهر ١٣).
+    /// تاريخ حقيقي بصيغة `yyyy-MM-dd` (بيرفض 30 فبراير وشهر 13).
     static func isValidDate(_ iso: String) -> Bool {
         guard let d = MrasemDate(iso: iso), d.iso == iso else { return false }
         var calendar = Calendar(identifier: .gregorian)
@@ -82,10 +82,10 @@ nonisolated enum StoreTime {
         return calendar.component(.weekday, from: date)
     }
 
-    /// «الإثنين ٢٣» زي بيانات مراسم.
+    /// «الإثنين 23» زي بيانات مراسم.
     static func dayLabel(_ iso: String) -> String {
         guard let d = MrasemDate(iso: iso), let w = weekday(iso) else { return iso }
-        return mrasemString("mrasem_weekday_\(w)") + " " + d.day.toArabicDigits()
+        return mrasemString("mrasem_weekday_\(w)") + " " + d.day.toLatinDigits()
     }
 
     /// ترتيب الفقرات: التاريخ ثم الوقت.
@@ -98,8 +98,8 @@ extension String {
     /// النص بعد شيل المسافات من الأطراف.
     var storeTrimmed: String { trimmingCharacters(in: .whitespacesAndNewlines) }
 
-    /// الأرقام العربية (٠–٩) والفارسية (۰–۹) والفاصلة العشرية العربية ← لاتيني، بعد شيل المسافات.
-    /// الكيبورد العربي بيكتب «١٠:٣٠» والقاعدة بتخزّن «10:30» (التواريخ والأوقات والأرقام).
+    /// الأرقام العربية (0–9) والفارسية (0–9) والفاصلة العشرية العربية ← لاتيني، بعد شيل المسافات.
+    /// الكيبورد العربي بيكتب «10:30» والقاعدة بتخزّن «10:30» (التواريخ والأوقات والأرقام).
     var storeLatinDigits: String {
         String(storeTrimmed.unicodeScalars.map { scalar -> Character in
             switch scalar.value {

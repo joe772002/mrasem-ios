@@ -20,7 +20,7 @@ final class AdminModelsTests: XCTestCase {
         let (env, _, _) = make()
         let model = AdminHomeModel(backend: env.backend)
         XCTAssertEqual(model.uiState.summary.newRequests, 3)
-        XCTAssertEqual(model.uiState.movements.count, 5, "تحركات ٢٤ نوفمبر")
+        XCTAssertEqual(model.uiState.movements.count, 5, "تحركات 24 نوفمبر")
 
         XCTAssertTrue(env.backend.requests.resolve("rq1"))
         XCTAssertEqual(model.uiState.summary.newRequests, 2)

@@ -87,7 +87,7 @@ private struct MissionHero: View {
             HStack(spacing: 8) {
                 switch summary.countdown {
                 case let .daysLeft(days):
-                    MrasemStatTile(value: days.toArabicDigits(), label: mrasemString("mrasem_mission_stat_days_left"))
+                    MrasemStatTile(value: days.toLatinDigits(), label: mrasemString("mrasem_mission_stat_days_left"))
                 case .today:
                     MrasemStatTile(
                         value: mrasemString("mrasem_mission_stat_today"),
@@ -95,11 +95,11 @@ private struct MissionHero: View {
                     )
                 }
                 MrasemStatTile(
-                    value: summary.durationDays.toArabicDigits(),
+                    value: summary.durationDays.toLatinDigits(),
                     label: mrasemString("mrasem_mission_stat_duration")
                 )
                 MrasemStatTile(
-                    value: summary.officialCount.toArabicDigits(),
+                    value: summary.officialCount.toLatinDigits(),
                     label: mrasemString("mrasem_mission_stat_official")
                 )
             }

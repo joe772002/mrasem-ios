@@ -20,8 +20,8 @@ private struct MrasemCardsSample: View {
                 .mrasemText(theme.type.heroDest)
                 .foregroundColor(theme.colors.ink)
             HStack(spacing: 8) {
-                MrasemStatTile(value: "١٢", label: "يوم")
-                MrasemStatTile(value: "٣", label: "أيام")
+                MrasemStatTile(value: "12", label: "يوم")
+                MrasemStatTile(value: "3", label: "أيام")
             }
             MrasemKeyValueList([
                 KeyValue("التوقيت", "UTC+3"),
@@ -36,7 +36,7 @@ private struct MrasemCardsSample: View {
             MrasemPill("محدَّث", kind: .warn)
         }
 
-        MrasemKpiTile(value: "٢٤", label: "طلب جديد")
+        MrasemKpiTile(value: "24", label: "طلب جديد")
     }
 }
 
@@ -73,7 +73,7 @@ private struct MrasemControlsSample: View {
             MrasemPlateBadge(plate: "AB12 CDE", country: "UK", style: .unitedKingdom)
         }
 
-        MrasemDayTabs(labels: ["الإثنين ٢٣", "الثلاثاء ٢٤", "الأربعاء ٢٥"], selectedIndex: .constant(1))
+        MrasemDayTabs(labels: ["الإثنين 23", "الثلاثاء 24", "الأربعاء 25"], selectedIndex: .constant(1))
 
         HStack(spacing: 8) {
             MrasemSegmented(options: ["الضيف", "فريق المراسم"], selectedIndex: .constant(0))
@@ -134,7 +134,7 @@ private struct MrasemListItemsSample: View {
                 title: "جلسة المباحثات",
                 place: "قاعة الاجتماعات",
                 note: "بحضور الوزير",
-                keyCardLabel: "بطاقة الـ ٣٠ ثانية"
+                keyCardLabel: "بطاقة الـ 30 ثانية"
             )
             MrasemTimelineItem(
                 time: "11:30",
@@ -146,7 +146,7 @@ private struct MrasemListItemsSample: View {
             MrasemFreeTimeItem(
                 from: "15:30",
                 title: "وقت حر حتى 19:00",
-                description: "٣.٥ ساعات متاحة. اقتراحات قريبة من موقعك:",
+                description: "3.5 ساعات متاحة. اقتراحات قريبة من موقعك:",
                 suggestions: ["متحف", "سوق"]
             )
             MrasemTimelineItem(
@@ -174,7 +174,7 @@ private struct MrasemListItemsSample: View {
             name: "متحف الفن الإسلامي",
             tag: "ثقافة",
             description: "وصف مختصر للمكان.",
-            meta: ["١٠ دقائق · مشي"],
+            meta: ["10 دقائق · مشي"],
             actionLabel: "أرغب في الزيارة"
         ) {}
 

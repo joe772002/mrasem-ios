@@ -46,7 +46,7 @@ final class PlanViewModel: ObservableObject {
         session.selectDay(index)
     }
 
-    /// chip بطاقة الـ ٣٠ ثانية ← تاب البروتوكول.
+    /// chip بطاقة الـ 30 ثانية ← تاب البروتوكول.
     func onKeyCardClick() {
         session.openProtocol()
     }

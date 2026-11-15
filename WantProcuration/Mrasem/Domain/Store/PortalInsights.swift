@@ -101,7 +101,7 @@ nonisolated enum PortalInsights {
         )
     }
 
-    /// ٠–١٠٠ زي البوابة: ٤٠٪ للأساسيات (فندق، برنامج، أعضاء) و٦٠٪ لاكتمال التعيينات.
+    /// 0–100 زي البوابة: 40٪ للأساسيات (فندق، برنامج، أعضاء) و60٪ لاكتمال التعيينات.
     static func readiness(_ db: MrasemDatabase, delegationId: String) -> Int {
         guard let delegation = db.delegation(delegationId) else { return 0 }
         let g = gaps(db, delegationId: delegationId)

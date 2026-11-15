@@ -125,7 +125,7 @@ struct StayCard: View {
         MrasemCard(title: mrasemString("mrasem_stay_title")) {
             MrasemKeyValueList([
                 KeyValue(mrasemString("mrasem_stay_kv_hotel"), mrasemString("mrasem_stay_hotel_value", [h.name, h.area])),
-                KeyValue(mrasemString("mrasem_stay_kv_room"), h.room.toArabicDigits()),
+                KeyValue(mrasemString("mrasem_stay_kv_room"), h.room.toLatinDigits()),
                 KeyValue(mrasemString("mrasem_stay_kv_breakfast"), h.breakfast),
                 KeyValue(mrasemString("mrasem_stay_kv_distance"), h.drive),
             ])

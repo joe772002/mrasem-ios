@@ -15,7 +15,7 @@ final class StoreRepoEnv {
     var db: MrasemDatabase { backend.database }
     var state: MrasemState { repo.state }
 
-    /// النهارده = ٢٤ نوفمبر ٢٠٢٦ (اليوم الثاني من الوفد الأول).
+    /// النهارده = 24 نوفمبر 2026 (اليوم الثاني من الوفد الأول).
     static let today = MrasemDate(year: 2026, month: 11, day: 24)
 
     init(demo: Bool = true, user: UserRef? = .member("m1")) {

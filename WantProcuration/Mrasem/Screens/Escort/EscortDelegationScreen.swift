@@ -53,7 +53,7 @@ struct EscortDelegationContent: View {
         MrasemCard(title: card.name) {
             VStack(alignment: .leading, spacing: 10) {
                 Text(mrasemString("mrasem_escort_dates", [
-                    card.start.toArabicDigits(), card.end.toArabicDigits(), card.hotelName ?? "—"
+                    card.start.toLatinDigits(), card.end.toLatinDigits(), card.hotelName ?? "—"
                 ]))
                 .mrasemText(theme.type.bodySm)
                 .foregroundColor(theme.colors.muted)
@@ -70,7 +70,7 @@ struct EscortDelegationContent: View {
                     MrasemActionRow(
                         title: member.name,
                         subtitle: mrasemString("mrasem_escort_member_subtitle", [
-                            member.room.isEmpty ? "—" : member.room.toArabicDigits(),
+                            member.room.isEmpty ? "—" : member.room.toLatinDigits(),
                             member.carLabel ?? mrasemString("mrasem_admin_res_no_car"),
                             member.driverName ?? mrasemString("mrasem_admin_res_no_driver")
                         ])
@@ -81,7 +81,9 @@ struct EscortDelegationContent: View {
                     }
                 }
 
-                Text("mrasem_escort_today")
+                Text(card.isUpcoming
+                     ? mrasemString("mrasem_escort_upcoming", [StoreTime.dayLabel(card.programDate)])
+                     : mrasemString("mrasem_escort_today"))
                     .mrasemText(theme.type.strong)
                     .foregroundColor(theme.colors.maroon)
                 if card.today.isEmpty {
@@ -91,12 +93,16 @@ struct EscortDelegationContent: View {
                 }
                 ForEach(card.today) { item in
                     MrasemActionRow(
-                        title: mrasemString("mrasem_escort_item_title", [item.time.toArabicDigits(), item.title]),
+                        title: mrasemString("mrasem_escort_item_title", [item.time.toLatinDigits(), item.title]),
                         subtitle: mrasemString("mrasem_escort_item_subtitle", [
                             mrasemString(item.kind.labelKey), item.placeName ?? "—",
                             item.carLabel ?? mrasemString("mrasem_admin_res_no_car")
                         ])
-                    )
+                    ) {
+                        if let status = item.status {
+                            MrasemPill(mrasemString(status.driverLabelKey), kind: status == .completed ? .ok : .neutral)
+                        }
+                    }
                 }
             }
         }

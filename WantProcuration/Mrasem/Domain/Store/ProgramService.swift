@@ -2,7 +2,7 @@
 //  ProgramService.swift
 //  Mrasem
 //
-//  Phase 12 — برنامج الوفد (البوابة: «إضافة فقرة / تعديل / تأجيل ٣٠ دقيقة / حذف»).
+//  Phase 12 — برنامج الوفد (البوابة: «إضافة فقرة / تعديل / تأجيل 30 دقيقة / حذف»).
 //  التعديل بيعلّم الفقرة «محدَّث» وبيبعت تنبيه للوفد والمرافقين والسائق (لو «إشعار الوفد تلقائياً» شغال).
 //
 
@@ -84,7 +84,7 @@ nonisolated final class ProgramService {
         return .success(saved)
     }
 
-    /// «تأجيل ٣٠ دقيقة». بيرجع الوقت الجديد، أو `nil` لو الفقرة مش موجودة.
+    /// «تأجيل 30 دقيقة». بيرجع الوقت الجديد، أو `nil` لو الفقرة مش موجودة.
     @discardableResult
     func postpone(_ itemId: String, minutes: Int = ProgramService.postponeMinutes, notify: Bool = true) -> String? {
         var newTime: String?

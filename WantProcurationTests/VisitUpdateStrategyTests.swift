@@ -38,14 +38,14 @@ final class VisitUpdateStrategyTests: XCTestCase {
 
         var edited = form.data
         edited.receiverPhone = " +974 5555 9999 "
-        edited.hall = "قاعة ٢"
+        edited.hall = "قاعة 2"
 
         let result = visit.save(VisitForm(data: edited, dress: form.dress))
         XCTAssertEqual(result, .saved(sections: [.receiver, .venue], dressChanged: false))
 
         let mission = repo.state.mission
         XCTAssertEqual(mission.receiver.phone, "+974 5555 9999")
-        XCTAssertEqual(mission.venue.hall, "قاعة ٢")
+        XCTAssertEqual(mission.venue.hall, "قاعة 2")
         XCTAssertEqual(repo.state.notices.first?.content, .visitDataUpdated)
         XCTAssertTrue(repo.state.changed.contains(.section(mode: .inbound, section: .receiver)))
         XCTAssertEqual(mission.venue.building, "مبنى وزارة العدل")

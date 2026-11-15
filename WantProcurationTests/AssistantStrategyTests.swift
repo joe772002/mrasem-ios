@@ -39,7 +39,7 @@ final class AssistantStrategyTests: XCTestCase {
             reply("متى موعدي القادم؟"),
             .nextItem(
                 title: "توقيع مذكرة التفاهم وصورة تذكارية",
-                dayLabel: "الثلاثاء ٢٤",
+                dayLabel: "الثلاثاء 24",
                 time: "11:30",
                 place: "القاعة ذاتها"
             )
@@ -63,7 +63,7 @@ final class AssistantStrategyTests: XCTestCase {
                 name: "فندق الإقامة الرسمي",
                 area: "الخليج الغربي",
                 room: "1204",
-                drive: "٨ دقائق إلى الوزارة"
+                drive: "8 دقائق إلى الوزارة"
             )
         )
         XCTAssertEqual(
@@ -74,7 +74,7 @@ final class AssistantStrategyTests: XCTestCase {
             reply("ما برنامج الغد؟", london),
             .nextItem(
                 title: "كلمة وفد دولة قطر",
-                dayLabel: "الثلاثاء ٨",
+                dayLabel: "الثلاثاء 8",
                 time: "11:00",
                 place: "القاعة الرئيسية"
             )

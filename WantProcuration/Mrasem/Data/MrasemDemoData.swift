@@ -25,7 +25,7 @@ nonisolated enum MrasemDemoData {
         end: MrasemDate(iso: "2026-11-25")!,
         timeZone: "توقيت الدوحة UTC+3",
         currency: "الريال القطري (QAR)",
-        weather: "٢٥–٣٠° مشمس",
+        weather: "25–30° مشمس",
         receiver: Receiver(
             name: "سعيد المري",
             title: "منسق المراسم والتشريفات",
@@ -55,8 +55,8 @@ nonisolated enum MrasemDemoData {
             name: "فندق الإقامة الرسمي",
             area: "الخليج الغربي",
             room: "1204",
-            breakfast: "٦:٣٠ – ١٠:٣٠",
-            drive: "٨ دقائق إلى الوزارة"
+            breakfast: "6:30 – 10:30",
+            drive: "8 دقائق إلى الوزارة"
         ),
         emergency: [
             EmergencyContact(label: "الطوارئ (شرطة، إسعاف، إطفاء)", value: "999"),
@@ -65,7 +65,7 @@ nonisolated enum MrasemDemoData {
         ],
         days: [
             ProgramDay(
-                label: "الإثنين ٢٣",
+                label: "الإثنين 23",
                 items: [
                     .official(.init(
                         time: "14:10",
@@ -88,7 +88,7 @@ nonisolated enum MrasemDemoData {
                 ]
             ),
             ProgramDay(
-                label: "الثلاثاء ٢٤",
+                label: "الثلاثاء 24",
                 items: [
                     .official(.init(
                         time: "09:30",
@@ -116,7 +116,7 @@ nonisolated enum MrasemDemoData {
                 ]
             ),
             ProgramDay(
-                label: "الأربعاء ٢٥",
+                label: "الأربعاء 25",
                 items: [
                     .official(.init(
                         time: "10:00",
@@ -192,7 +192,7 @@ nonisolated enum MrasemDemoData {
                         name: "مترو الدوحة",
                         nameEn: "Doha Metro",
                         color: 0xFF8A1538,
-                        description: "أقرب محطة للفندق: الخليج الغربي – ٧ دقائق مشياً",
+                        description: "أقرب محطة للفندق: الخليج الغربي – 7 دقائق مشياً",
                         url: "https://www.qr.com.qa"
                     ),
                 ]
@@ -202,7 +202,7 @@ nonisolated enum MrasemDemoData {
             QuickInfo(label: "العملة", value: "ريال قطري"),
             QuickInfo(label: "المقابس", value: "نوع G (ثلاثي)"),
             QuickInfo(label: "الطوارئ", value: "999"),
-            QuickInfo(label: "البقشيش", value: "١٠٪ اختياري"),
+            QuickInfo(label: "البقشيش", value: "10% اختياري"),
             QuickInfo(label: "عطلة الأسبوع", value: "الجمعة والسبت"),
             QuickInfo(label: "الماء", value: "آمن ومتوفر معبأً"),
         ],

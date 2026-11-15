@@ -2,7 +2,7 @@
 //  Phase15ModelsTests.swift
 //  WantProcurationTests
 //
-//  Phase 15 — ViewModels الأدمن (٢) فوق الـ backend: الموارد، الأماكن، الطلبات، والإعدادات وإدارة البيانات.
+//  Phase 15 — ViewModels الأدمن (2) فوق الـ backend: الموارد، الأماكن، الطلبات، والإعدادات وإدارة البيانات.
 //
 
 import XCTest
@@ -143,11 +143,11 @@ final class Phase15ModelsTests: XCTestCase {
         let baseline = model.uiState.broadcasts.count
 
         XCTAssertEqual(model.send(draft), "mrasem_admin_error_broadcast", "نص فاضي")
-        draft.text = "الحافلة تتحرك ٩ صباحاً"
+        draft.text = "الحافلة تتحرك 9 صباحاً"
         draft.audience = .all
         XCTAssertNil(model.send(draft))
         XCTAssertEqual(model.uiState.broadcasts.count, baseline + 1)
-        XCTAssertEqual(model.uiState.broadcasts.first { $0.text == "الحافلة تتحرك ٩ صباحاً" }?.audience, .all)
+        XCTAssertEqual(model.uiState.broadcasts.first { $0.text == "الحافلة تتحرك 9 صباحاً" }?.audience, .all)
         XCTAssertEqual(model.delegationOptions().count, env.db.delegations.count)
     }
 

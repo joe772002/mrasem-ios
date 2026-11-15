@@ -62,7 +62,7 @@ nonisolated final class MrasemSessionStrategy {
         repository.setGuestTab(.explore)
     }
 
-    /// chip بطاقة الـ ٣٠ ثانية ← البروتوكول.
+    /// chip بطاقة الـ 30 ثانية ← البروتوكول.
     func openProtocol() {
         repository.setGuestTab(.`protocol`)
     }

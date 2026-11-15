@@ -62,7 +62,7 @@ nonisolated final class ProgramStrategy {
         return DayTimeline(dayIndex: dayIndex, entries: entries)
     }
 
-    /// يأجّل الفقرة الرئيسية لليوم الثاني ٣٠ دقيقة، يعلّمها متغيرة، ويضيف Notice.
+    /// يأجّل الفقرة الرئيسية لليوم الثاني 30 دقيقة، يعلّمها متغيرة، ويضيف Notice.
     func postponeKeyItem(minutes: Int = ProgramStrategy.postponeMinutes) -> PostponeResult? {
         let state = repository.state
         guard let ref = Self.keyItem(state.mission) else { return nil }
@@ -80,7 +80,7 @@ nonisolated final class ProgramStrategy {
     private static let changesDayIndex = 1
     private static let minutesPerDay = 24 * 60
 
-    /// الأماكن اللي تحقق `dur + min/30 ≤ hours`، بترتيب البيانات، لحد ٣.
+    /// الأماكن اللي تحقق `dur + min/30 ≤ hours`، بترتيب البيانات، لحد 3.
     static func suggestions(_ places: [Place], hours: Double) -> [Place] {
         places
             .filter { $0.durationHours + Double($0.minutes) / 30.0 <= hours }

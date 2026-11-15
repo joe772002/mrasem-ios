@@ -36,7 +36,7 @@ struct NoticeInboxCard: View {
 
     var body: some View {
         MrasemCard(
-            title: mrasemString("mrasem_notices_title", [state.unread.toArabicDigits()]),
+            title: mrasemString("mrasem_notices_title", [state.unread.toLatinDigits()]),
             headerEnd: AnyView(
                 state.unread > 0
                     ? AnyView(MrasemButton(mrasemString("mrasem_notices_mark_read"), variant: .ghost, action: onMarkRead))

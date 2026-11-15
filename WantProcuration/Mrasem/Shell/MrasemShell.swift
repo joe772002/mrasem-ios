@@ -92,7 +92,7 @@ struct MrasemShell: View {
     }
 }
 
-/// محتوى الوجهة: الشاشات العشرة (٦ للضيف + ٤ للفريق). كل شاشة بتاخد `context` وتبني منه الـ ViewModel بتاعها.
+/// محتوى الوجهة: الشاشات العشرة (6 للضيف + 4 للفريق). كل شاشة بتاخد `context` وتبني منه الـ ViewModel بتاعها.
 private struct MrasemDestinationContent: View {
     let destination: MrasemDestination
     let context: MrasemAppContext

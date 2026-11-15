@@ -20,11 +20,14 @@ nonisolated final class MrasemBackend {
     let repository: StoreMissionRepository
     /// تاريخ اليوم (بيتحقن في الاختبارات).
     let today: () -> MrasemDate
+    /// التطبيق الحقيقي: بيانات العرض بتبدأ من النهارده. الاختبارات: التواريخ الثابتة.
+    private let demoStartsToday: Bool
 
     init(
         storage: MrasemStorage = FileMrasemStorage(),
         now: @escaping () -> Date = { Date() },
-        today: @escaping () -> MrasemDate = { MrasemDate.today() }
+        today: @escaping () -> MrasemDate = { MrasemDate.today() },
+        demoStartsToday: Bool = false
     ) {
         let store = MrasemStore(storage: storage)
         let program = ProgramService(store: store, now: now)
@@ -33,6 +36,7 @@ nonisolated final class MrasemBackend {
 
         self.store = store
         self.today = today
+        self.demoStartsToday = demoStartsToday
         self.program = program
         self.requests = requests
         self.trips = trips
@@ -44,9 +48,11 @@ nonisolated final class MrasemBackend {
 
     var database: MrasemDatabase { store.database }
 
+    private var demoStart: String? { demoStartsToday ? today().iso : nil }
+
     /// أول تشغيل: «ابدأ فارغ» أو «حمّل بيانات العرض». بعدها يظهر «اختر المستخدم».
     func chooseStart(demo: Bool) {
-        if demo { store.loadDemo() } else { store.startEmpty() }
+        if demo { store.loadDemo(start: demoStart) } else { store.startEmpty() }
         store.update { $0.currentUser = nil }
         repository.resetForNewUser()
     }
@@ -66,7 +72,7 @@ nonisolated final class MrasemBackend {
     /// «إعادة تحميل بيانات العرض»: يستبدل كل البيانات ببيانات العرض ويفضل المستخدم الحالي لو لسه موجود.
     func reloadDemo() {
         let user = store.database.currentUser
-        store.loadDemo()
+        store.loadDemo(start: demoStart)
         store.update { db in
             db.currentUser = user.flatMap { db.exists($0) ? $0 : nil }
         }

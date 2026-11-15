@@ -117,7 +117,7 @@ final class TeamAndProtocolStrategyTests: XCTestCase {
         }
         // «الفقرة الرسمية رقم 5 في الترتيب العام» = توقيع مذكرة التفاهم (01-DESIGN-SPEC §7.6).
         XCTAssertEqual(title, "توقيع مذكرة التفاهم وصورة تذكارية")
-        XCTAssertEqual(dayLabel, "الثلاثاء ٢٤")
+        XCTAssertEqual(dayLabel, "الثلاثاء 24")
         XCTAssertEqual(time, "11:30")
         XCTAssertEqual(place, "القاعة ذاتها")
 

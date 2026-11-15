@@ -19,7 +19,7 @@ struct GuestContext: Equatable {
     let checklist: [String]
     let checked: Set<Int>
     let guides: [String]
-    /// ٠…٤ من حالة رحلة أول فقرة (الوصول).
+    /// 0…4 من حالة رحلة أول فقرة (الوصول).
     let arrivalStage: Int
     /// معرّف الفقرة المقابلة لكل (يوم، ترتيب) في `mission.days` — للتأجيل و«محدَّث».
     let itemIds: [[String]]
@@ -138,11 +138,11 @@ nonisolated enum GuestMissionAdapter {
         }
     }
 
-    /// «٨ دقائق إلى الوزارة».
+    /// «8 دقائق إلى الوزارة».
     static func driveText(hotel: PlaceRecord?, venue: PlaceRecord?) -> String {
         guard let hotel, hotel.minutes > 0 else { return "" }
         let target = venue.map { $0.mapLabel.isEmpty ? $0.name : $0.mapLabel } ?? ""
         let key = (3...10).contains(hotel.minutes) ? "mrasem_hotel_drive_few" : "mrasem_hotel_drive_many"
-        return mrasemString(key, [hotel.minutes.toArabicDigits(), target])
+        return mrasemString(key, [hotel.minutes.toLatinDigits(), target])
     }
 }

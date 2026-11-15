@@ -73,17 +73,17 @@ struct AdminHomeContent: View {
     private var kpis: some View {
         let s = state.summary
         return LazyVGrid(columns: columns, spacing: 8) {
-            MrasemKpiTile(value: s.activeDelegations.toArabicDigits(), label: mrasemString("mrasem_admin_kpi_delegations"))
+            MrasemKpiTile(value: s.activeDelegations.toLatinDigits(), label: mrasemString("mrasem_admin_kpi_delegations"))
             MrasemKpiTile(value: pair(s.activatedMembers, s.members), label: mrasemString("mrasem_admin_kpi_members"))
             MrasemKpiTile(value: pair(s.availableDrivers, s.totalDrivers), label: mrasemString("mrasem_admin_kpi_drivers"))
             MrasemKpiTile(value: pair(s.inbound, s.outbound), label: mrasemString("mrasem_admin_kpi_modes"))
-            MrasemKpiTile(value: s.conflicts.toArabicDigits(), label: mrasemString("mrasem_admin_kpi_conflicts"))
-            MrasemKpiTile(value: s.newRequests.toArabicDigits(), label: mrasemString("mrasem_admin_kpi_requests"))
+            MrasemKpiTile(value: s.conflicts.toLatinDigits(), label: mrasemString("mrasem_admin_kpi_conflicts"))
+            MrasemKpiTile(value: s.newRequests.toLatinDigits(), label: mrasemString("mrasem_admin_kpi_requests"))
         }
     }
 
     private func pair(_ a: Int, _ b: Int) -> String {
-        a.toArabicDigits() + "/" + b.toArabicDigits()
+        a.toLatinDigits() + "/" + b.toLatinDigits()
     }
 
     private var actions: some View {
@@ -96,7 +96,7 @@ struct AdminHomeContent: View {
                 VStack(spacing: 8) {
                     ForEach(state.actions) { item in
                         MrasemActionRow(title: title(item), subtitle: subtitle(item)) {
-                            MrasemPill(item.count.toArabicDigits(), kind: .warn)
+                            MrasemPill(item.count.toLatinDigits(), kind: .warn)
                         }
                         .contentShape(Rectangle())
                         .onTapGesture { onAction(item) }
@@ -117,7 +117,7 @@ struct AdminHomeContent: View {
     }
 
     private func subtitle(_ item: AdminActionItem) -> String {
-        let count = item.count.toArabicDigits()
+        let count = item.count.toLatinDigits()
         switch item.kind {
         case .conflicts: return mrasemString("mrasem_admin_action_conflicts_subtitle", [count])
         case .requests: return mrasemString("mrasem_admin_action_requests_subtitle", [count])

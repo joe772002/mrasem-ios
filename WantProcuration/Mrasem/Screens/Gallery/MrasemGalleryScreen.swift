@@ -44,7 +44,7 @@ struct MrasemGalleryScreen: View {
                     Text("عنوان كارت — IBM Plex 700").mrasemText(theme.type.cardTitle).foregroundColor(theme.colors.ink)
                     Text("نص أساسي — IBM Plex 400").mrasemText(theme.type.body).foregroundColor(theme.colors.ink)
                     Text("نص صغير — IBM Plex 400").mrasemText(theme.type.label).foregroundColor(theme.colors.muted)
-                    Text("الأرقام: ١٢٣٤٥٦٧٨٩٠").mrasemText(theme.type.statNumber, tabular: true).foregroundColor(theme.colors.maroonInk)
+                    Text("الأرقام: 1234567890").mrasemText(theme.type.statNumber, tabular: true).foregroundColor(theme.colors.maroonInk)
                 }
             }
 
@@ -81,8 +81,8 @@ struct MrasemGalleryScreen: View {
                         .mrasemText(theme.type.heroDest)
                         .foregroundColor(theme.colors.ink)
                     HStack(spacing: 8) {
-                        MrasemStatTile(value: "١٢", label: "يوم")
-                        MrasemStatTile(value: "٣", label: "أيام")
+                        MrasemStatTile(value: "12", label: "يوم")
+                        MrasemStatTile(value: "3", label: "أيام")
                     }
                     MrasemKeyValueList([
                         KeyValue("التوقيت", "UTC+3"),
@@ -97,7 +97,7 @@ struct MrasemGalleryScreen: View {
                     MrasemPill("محدَّث", kind: .warn)
                 }
 
-                MrasemKpiTile(value: "٢٤", label: "طلب جديد")
+                MrasemKpiTile(value: "24", label: "طلب جديد")
             }
 
             gallerySection("القوائم") {
@@ -112,7 +112,7 @@ struct MrasemGalleryScreen: View {
                         title: "جلسة المباحثات",
                         place: "قاعة الاجتماعات",
                         note: "بحضور الوزير",
-                        keyCardLabel: "بطاقة الـ ٣٠ ثانية"
+                        keyCardLabel: "بطاقة الـ 30 ثانية"
                     )
                     MrasemTimelineItem(
                         time: "11:30",
@@ -124,7 +124,7 @@ struct MrasemGalleryScreen: View {
                     MrasemFreeTimeItem(
                         from: "15:30",
                         title: "وقت حر حتى 19:00",
-                        description: "٣.٥ ساعات متاحة. اقتراحات قريبة من موقعك:",
+                        description: "3.5 ساعات متاحة. اقتراحات قريبة من موقعك:",
                         suggestions: ["متحف", "سوق"]
                     )
                     MrasemTimelineItem(
@@ -150,7 +150,7 @@ struct MrasemGalleryScreen: View {
                         name: "متحف الفن الإسلامي",
                         tag: "ثقافة",
                         description: "وصف مختصر للمكان.",
-                        meta: ["١٠ دقائق · مشي"],
+                        meta: ["10 دقائق · مشي"],
                         actionLabel: "أرغب في الزيارة"
                     ) {}
                 }
@@ -196,7 +196,7 @@ struct MrasemGalleryScreen: View {
                 )
 
                 MrasemDayTabs(
-                    labels: ["الإثنين ٢٣", "الثلاثاء ٢٤", "الأربعاء ٢٥"],
+                    labels: ["الإثنين 23", "الثلاثاء 24", "الأربعاء 25"],
                     selectedIndex: $dayIndex
                 )
 

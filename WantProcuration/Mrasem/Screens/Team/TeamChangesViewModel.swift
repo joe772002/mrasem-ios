@@ -57,7 +57,7 @@ final class TeamChangesViewModel: ObservableObject {
         session.selectTeamTab(tab)
     }
 
-    /// «تأجيل ٣٠ دقيقة».
+    /// «تأجيل 30 دقيقة».
     func onPostpone() {
         guard program.postponeKeyItem() != nil else { return }
         toastBus.show(ToastMessage(

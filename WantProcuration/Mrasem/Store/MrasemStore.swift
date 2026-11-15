@@ -68,8 +68,9 @@ nonisolated final class MrasemStore {
     }
 
     /// «حمّل بيانات العرض» / «إعادة تحميل بيانات العرض».
-    func loadDemo() {
-        replace(with: MrasemSeed.demo())
+    /// `start` = تاريخ أول يوم للوفد الأول (التطبيق بيبعت النهارده)؛ nil = التواريخ الثابتة.
+    func loadDemo(start: String? = nil) {
+        replace(with: start.map { MrasemSeed.demo(start: $0) } ?? MrasemSeed.demo())
     }
 
     /// «مسح كل البيانات»: يرجع لأول تشغيل (أدمن بس، وسؤال البداية يظهر تاني).

@@ -98,13 +98,13 @@ struct MrasemUserHeader: View {
         .accessibilityAddTraits(.isButton)
         .accessibilityLabel(userName + "، " + roleLabel)
         .accessibilityHint(mrasemString("mrasem_header_switch"))
-        .accessibilityValue(unread > 0 ? mrasemString("mrasem_users_unread_a11y", [unread.toArabicDigits()]) : "")
+        .accessibilityValue(unread > 0 ? mrasemString("mrasem_users_unread_a11y", [unread.toLatinDigits()]) : "")
     }
 
     @ViewBuilder
     private var unreadBadge: some View {
         if unread > 0 {
-            Text(unread.toArabicDigits())
+            Text(unread.toLatinDigits())
                 .mrasemText(theme.type.caption)
                 .foregroundColor(theme.colors.ink)
                 .padding(.horizontal, 5)

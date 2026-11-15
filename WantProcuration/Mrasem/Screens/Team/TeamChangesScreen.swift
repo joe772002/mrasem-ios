@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// تاب «التغييرات» للفريق: تأجيل ٣٠ دقيقة + تنبيه عام (01-DESIGN-SPEC §8).
+/// تاب «التغييرات» للفريق: تأجيل 30 دقيقة + تنبيه عام (01-DESIGN-SPEC §8).
 struct TeamChangesScreen: View {
     @StateObject private var viewModel: TeamChangesViewModel
 

@@ -85,7 +85,7 @@ final class ProtocolAssistantStateTests: XCTestCase {
             .dress(.formal), .dress(.bisht),
             .nextItem(title: "عنوان", dayLabel: "يوم", time: "09:30", place: "مكان"),
             .carInfo(type: "نوع", plate: "123", driver: "سائق"),
-            .hotelInfo(name: "فندق", area: "منطقة", room: "غرفة", drive: "١٠ دقائق"),
+            .hotelInfo(name: "فندق", area: "منطقة", room: "غرفة", drive: "10 دقائق"),
             .food(["أ", "ب"]), .taxi(["ج"]), .nearbyPlaces(["د", "هـ"]),
             .emergency(number: "999", coordinatorName: "منسق", coordinatorPhone: "+974"),
             .forwarded,
@@ -112,6 +112,6 @@ final class ProtocolAssistantStateTests: XCTestCase {
         for key in keys {
             XCTAssertNotEqual(mrasemString(key), key, "missing string: \(key)")
         }
-        XCTAssertTrue(mrasemString("mrasem_protocol_checklist_ready", ["٢", "٥"]).contains("٢"))
+        XCTAssertTrue(mrasemString("mrasem_protocol_checklist_ready", ["2", "5"]).contains("2"))
     }
 }

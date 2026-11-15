@@ -39,7 +39,7 @@ struct ProtocolContentView: View {
         let content = state.content
 
         MrasemScreenContent {
-            // 1) بطاقة الـ ٣٠ ثانية (Hero).
+            // 1) بطاقة الـ 30 ثانية (Hero).
             MrasemHeroCard {
                 HStack(alignment: .center, spacing: 12) {
                     MrasemPill(mrasemString("mrasem_protocol_card_label"))
@@ -124,8 +124,8 @@ struct ProtocolContentView: View {
                 MrasemChecklistRow(text: item.label, checked: item.checked) { onCheckToggle(item.index) }
             }
             Text(mrasemString("mrasem_protocol_checklist_ready", [
-                content.readyCount.toArabicDigits(),
-                content.checklist.count.toArabicDigits(),
+                content.readyCount.toLatinDigits(),
+                content.checklist.count.toLatinDigits(),
             ]))
             .mrasemText(theme.type.label)
             .foregroundColor(theme.colors.muted)

@@ -123,7 +123,7 @@ struct EmergencyContact: Equatable, Hashable {
 
 /// فقرة في البرنامج اليومي.
 enum ProgramItem: Equatable, Hashable {
-    /// فقرة رسمية. `time` بصيغة HH:mm. `isKey` = الفقرة الرئيسية (عليها بطاقة الـ ٣٠ ثانية).
+    /// فقرة رسمية. `time` بصيغة HH:mm. `isKey` = الفقرة الرئيسية (عليها بطاقة الـ 30 ثانية).
     case official(Official)
     /// وقت حر من `from` إلى `to` مدته `hours` ساعة.
     case freeTime(FreeTime)
@@ -200,7 +200,7 @@ struct Place: Equatable, Hashable {
     let tag: String
 }
 
-/// بيانات بطاقة الـ ٣٠ ثانية.
+/// بيانات بطاقة الـ 30 ثانية.
 struct NextMeeting: Equatable, Hashable {
     let who: String
     let address: String

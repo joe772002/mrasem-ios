@@ -3,7 +3,7 @@
 //  Mrasem
 //
 //  Phase 12 — «رحلاتي» للسائق وحالة الرحلة (08 §2، تصميم `enhance` §7):
-//  الرحلات = فقرات البرنامج اللي على سيارة السائق. الاستلام قبل الفقرة بـ ٢٥ دقيقة والوصول قبلها بـ ١٥.
+//  الرحلات = فقرات البرنامج اللي على سيارة السائق. الاستلام قبل الفقرة بـ 25 دقيقة والوصول قبلها بـ 15.
 //  تغيير الحالة («في الطريق» / «وصلت» …) بيوصل للركّاب ومرافقيهم والمنسقين والأدمن.
 //
 
@@ -14,7 +14,7 @@ struct DriverTrip: Equatable, Identifiable {
     let delegationName: String
     let pickupTime: String
     let arrivalTime: String
-    /// من: الوجهة السابقة في نفس اليوم، أو الفندق.
+    /// من: الوجهة السابقة في نفس اليوم، أو الفندق. فاضي لأول فقرة للوفد (الاستقبال).
     let from: String
     /// إلى: المكان، أو الملاحظة، أو عنوان الفقرة.
     let to: String
@@ -46,12 +46,20 @@ nonisolated final class DriverTripService {
             .filter { db.car($0.carId)?.driverId == driverId && (date == nil || $0.date == date) }
             .sorted { StoreTime.sortKey($0) < StoreTime.sortKey($1) }
 
+        // أول فقرة في برنامج كل وفد = الاستقبال (المطار): مفيش «من» قبلها.
+        var firstOfDelegation: [String: ProgramItemRecord] = [:]
+        for candidate in db.program {
+            if let current = firstOfDelegation[candidate.delegationId],
+               StoreTime.sortKey(current) <= StoreTime.sortKey(candidate) { continue }
+            firstOfDelegation[candidate.delegationId] = candidate
+        }
+
         var lastPlace: [String: String] = [:]
         return items.map { item in
             let delegation = db.delegation(item.delegationId)
             let key = item.date + "|" + item.delegationId
             let hotel = db.place(delegation?.hotelId)?.name ?? ""
-            let from = lastPlace[key] ?? hotel
+            let from = lastPlace[key] ?? (firstOfDelegation[item.delegationId]?.id == item.id ? "" : hotel)
             let to = db.place(item.placeId)?.name ?? (item.note.isEmpty ? item.title : item.note)
             lastPlace[key] = to
 
@@ -103,6 +111,8 @@ nonisolated final class DriverTripService {
                 + db.escortRefs(of: passengers)
                 + db.coordinatorRefs(of: item.delegationId)
                 + db.adminRefs()
+                // سائق الفقرة: لو الضيف أو المرافق هو اللي غيّر الحالة (وصلنا المطار) السائق لازم يعرف. صاحب الفعل مستثنى.
+                + [db.driverRef(ofCar: item.carId)].compactMap { $0 }
             db.post(.tripStatus(itemId: itemId, status: status), delegationId: item.delegationId, to: recipients, at: date)
         }
         return changed

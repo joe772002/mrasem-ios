@@ -17,6 +17,34 @@ nonisolated enum MrasemSeed {
     /// لحظة ثابتة للبيانات (عشان المقارنة في الاختبارات).
     private static let seedDate = Date(timeIntervalSince1970: 1_794_000_000)
 
+    /// أول يوم للوفد الأول في البيانات الثابتة.
+    static let baseStart = "2026-11-23"
+
+    /// بيانات العرض وأول يوم للوفد الأول = `start`. التطبيق بيبعت تاريخ النهارده عشان الوفد يبقى «واصل اليوم»
+    /// والسائق والمرافق يلاقوا رحلات النهارده؛ الاختبارات بتستخدم التاريخ الثابت (`demo()`).
+    static func demo(start: String) -> MrasemDatabase {
+        var db = demo()
+        let formatter = DateFormatter()
+        formatter.calendar = Calendar(identifier: .gregorian)
+        formatter.locale = Locale(identifier: "en_US_POSIX")
+        formatter.timeZone = TimeZone(secondsFromGMT: 0)
+        formatter.dateFormat = "yyyy-MM-dd"
+        guard start != baseStart, let from = formatter.date(from: baseStart), let to = formatter.date(from: start) else { return db }
+        let shift = to.timeIntervalSince(from)
+        func move(_ iso: String) -> String {
+            guard let date = formatter.date(from: iso) else { return iso }
+            return formatter.string(from: date.addingTimeInterval(shift))
+        }
+        for i in db.delegations.indices {
+            db.delegations[i].start = move(db.delegations[i].start)
+            db.delegations[i].end = move(db.delegations[i].end)
+        }
+        for i in db.program.indices {
+            db.program[i].date = move(db.program[i].date)
+        }
+        return db
+    }
+
     static func demo() -> MrasemDatabase {
         var db = MrasemDatabase()
         db.didChooseStart = true
@@ -36,8 +64,8 @@ nonisolated enum MrasemSeed {
         db.drivers = [
             DriverRecord(id: "r1", name: "أحمد", phone: "+974 5555 0789", status: .available),
             DriverRecord(id: "r2", name: "جيمس", phone: "+44 20 0000 0000", status: .available),
-            DriverRecord(id: "r3", name: "سائق احتياطي ١", phone: "", status: .available),
-            DriverRecord(id: "r4", name: "سائق احتياطي ٢", phone: "", status: .onLeave),
+            DriverRecord(id: "r3", name: "سائق احتياطي 1", phone: "", status: .available),
+            DriverRecord(id: "r4", name: "سائق احتياطي 2", phone: "", status: .onLeave),
         ]
         db.cars = [
             CarRecord(id: "c1", type: "لكزس LS – أسود", plate: "123456", plateStyle: .qatar, driverId: "r1"),
@@ -47,10 +75,10 @@ nonisolated enum MrasemSeed {
         db.delegations = delegations()
         db.members = [
             member("m1", "d1", "معالي وزير العدل", "رئيس الوفد", escort: "e1", car: "c1", room: "1204", head: true),
-            member("m2", "d1", "عضو الوفد ٢", "مدير المكتب", escort: "e1", car: "c1", room: "1206"),
-            member("m3", "d1", "عضو الوفد ٣", "مستشار قانوني", escort: nil, car: nil, room: "", app: .invited),
+            member("m2", "d1", "عضو الوفد 2", "مدير المكتب", escort: "e1", car: "c1", room: "1206"),
+            member("m3", "d1", "عضو الوفد 3", "مستشار قانوني", escort: nil, car: nil, room: "", app: .invited),
             member("m4", "d2", "رئيس الوفد", "رئيس الوفد", escort: "e2", car: "c2", room: "512", head: true),
-            member("m5", "d2", "عضو الوفد ٢", "باحث قانوني", escort: "e2", car: "c2", room: "", app: .invited),
+            member("m5", "d2", "عضو الوفد 2", "باحث قانوني", escort: "e2", car: "c2", room: "", app: .invited),
             member("m6", "d3", "رئيس الوفد", "رئيس الوفد", escort: nil, car: "c1", room: "", app: .invited, head: true),
         ]
         db.program = program()
@@ -100,9 +128,9 @@ nonisolated enum MrasemSeed {
         let inbound = MrasemDemoData.inbound
         let outbound = MrasemDemoData.outbound
         var list: [PlaceRecord] = [
-            place("h1", .hotel, .inbound, inbound.hotel.name, "الخليج الغربي · الفطور ٦:٣٠ – ١٠:٣٠", minutes: 8,
+            place("h1", .hotel, .inbound, inbound.hotel.name, "الخليج الغربي · الفطور 6:30 – 10:30", minutes: 8,
                   area: inbound.hotel.area, breakfast: inbound.hotel.breakfast),
-            place("h2", .hotel, .outbound, outbound.hotel.name, "وسط لندن · الفطور ٧:٠٠ – ١٠:٣٠", minutes: 15,
+            place("h2", .hotel, .outbound, outbound.hotel.name, "وسط لندن · الفطور 7:00 – 10:30", minutes: 15,
                   area: outbound.hotel.area, breakfast: outbound.hotel.breakfast),
             place("f1", .restaurant, .inbound, "مطعم الفندق", "العشاء الترحيبي · زي رسمي", durationHours: 2),
             venue("g1", .inbound, "وزارة العدل – قاعة الاجتماعات الكبرى", "الدفنة · المدخل (ب) · الطابق الرابع",

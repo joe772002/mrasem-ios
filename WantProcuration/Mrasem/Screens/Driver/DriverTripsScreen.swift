@@ -38,7 +38,7 @@ struct DriverTripsContent: View {
                     .foregroundColor(theme.colors.maroon)
                     .accessibilityAddTraits(.isHeader)
                 Text(mrasemString("mrasem_driver_summary", [
-                    StoreTime.dayLabel(state.date), state.done.toArabicDigits(), state.rows.count.toArabicDigits(),
+                    StoreTime.dayLabel(state.date), state.done.toLatinDigits(), state.rows.count.toLatinDigits(),
                     state.carLabel ?? mrasemString("mrasem_admin_res_no_car")
                 ]))
                 .mrasemText(theme.type.bodySm)
@@ -49,9 +49,31 @@ struct DriverTripsContent: View {
                 Text("mrasem_driver_empty_today")
                     .mrasemText(theme.type.body)
                     .foregroundColor(theme.colors.muted)
+            } else if state.isUpcoming {
+                Text(mrasemString("mrasem_driver_upcoming", [StoreTime.dayLabel(state.date)]))
+                    .mrasemText(theme.type.body)
+                    .foregroundColor(theme.colors.muted)
             }
             ForEach(state.rows) { row in
                 DriverTripCard(row: row, onAdvance: { onAdvance(row.id) })
+            }
+
+            if !state.assignments.isEmpty {
+                MrasemCard(title: mrasemString("mrasem_driver_assignments")) {
+                    VStack(alignment: .leading, spacing: 8) {
+                        ForEach(state.assignments) { row in
+                            MrasemActionRow(
+                                title: row.name,
+                                subtitle: mrasemString("mrasem_driver_assignment_subtitle", [
+                                    row.start, row.end, row.hotelName ?? "—"
+                                ]) + "\n" + mrasemString("mrasem_driver_assignment_people", [
+                                    row.passengers.isEmpty ? "—" : row.passengers.joined(separator: "، "),
+                                    row.escorts.isEmpty ? "—" : row.escorts.joined(separator: "، ")
+                                ])
+                            )
+                        }
+                    }
+                }
             }
 
             NoticeInboxCard(state: notices, onMarkRead: onMarkRead)
@@ -68,7 +90,7 @@ struct DriverTripCard: View {
 
     var body: some View {
         MrasemCard(
-            title: mrasemString("mrasem_driver_trip_title", [row.time.toArabicDigits(), row.title]),
+            title: mrasemString("mrasem_driver_trip_title", [row.time.toLatinDigits(), row.title]),
             headerEnd: AnyView(MrasemPill(
                 mrasemString(row.status.driverLabelKey),
                 kind: row.status == .completed ? .ok : (row.status == .scheduled ? .neutral : .warn)
@@ -79,8 +101,8 @@ struct DriverTripCard: View {
                     .mrasemText(theme.type.strong)
                     .foregroundColor(theme.colors.ink)
                 MrasemKeyValueList([
-                    KeyValue(mrasemString("mrasem_driver_kv_pickup"), row.pickupTime.toArabicDigits()),
-                    KeyValue(mrasemString("mrasem_driver_kv_arrival"), row.arrivalTime.toArabicDigits()),
+                    KeyValue(mrasemString("mrasem_driver_kv_pickup"), row.pickupTime.toLatinDigits()),
+                    KeyValue(mrasemString("mrasem_driver_kv_arrival"), row.arrivalTime.toLatinDigits()),
                     KeyValue(mrasemString("mrasem_driver_kv_from"), row.from.isEmpty ? "—" : row.from),
                     KeyValue(mrasemString("mrasem_driver_kv_to"), row.to),
                     KeyValue(mrasemString("mrasem_driver_kv_passengers"), row.passengers.joined(separator: "، ")),

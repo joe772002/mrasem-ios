@@ -29,7 +29,7 @@ final class Phase18Tests: XCTestCase {
         return out
     }
 
-    /// قاعدة كبيرة: ٤٠ وفد × ٤٠ فقرة على ١٠ سيارات، بأوقات متقاربة فيها تعارضات كتير.
+    /// قاعدة كبيرة: 40 وفد × 40 فقرة على 10 سيارات، بأوقات متقاربة فيها تعارضات كتير.
     private func bigDatabase() -> MrasemDatabase {
         var db = MrasemSeed.demo()
         for d in 0..<10 {

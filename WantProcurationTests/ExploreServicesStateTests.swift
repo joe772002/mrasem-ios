@@ -76,9 +76,9 @@ final class ExploreServicesStateTests: XCTestCase {
         for key in keys {
             XCTAssertNotEqual(mrasemString(key), key, "missing string: \(key)")
         }
-        XCTAssertTrue(mrasemString("mrasem_explore_meta_minutes", ["٥"]).contains("٥"))
+        XCTAssertTrue(mrasemString("mrasem_explore_meta_minutes", ["5"]).contains("5"))
         XCTAssertTrue(mrasemString("mrasem_explore_about_hotel", ["الفندق"]).contains("الفندق"))
-        XCTAssertTrue(mrasemString("mrasem_services_hotel_delivery", ["١٢٠٤"]).contains("١٢٠٤"))
+        XCTAssertTrue(mrasemString("mrasem_services_hotel_delivery", ["1204"]).contains("1204"))
     }
 
     func testServicesStateMapsBothModes() {

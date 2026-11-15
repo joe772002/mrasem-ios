@@ -30,16 +30,16 @@ final class ContactLinksTests: XCTestCase {
 final class ArabicNumberTests: XCTestCase {
 
     func testDecimalHoursKeepPoint() {
-        XCTAssertEqual(3.5.toArabicNumber(), "٣.٥")
-        XCTAssertEqual(2.5.toArabicNumber(), "٢.٥")
+        XCTAssertEqual(3.5.toLatinNumber(), "3.5")
+        XCTAssertEqual(2.5.toLatinNumber(), "2.5")
     }
 
     func testWholeHoursHaveNoFraction() {
-        XCTAssertEqual(3.0.toArabicNumber(), "٣")
-        XCTAssertEqual(12.toArabicDigits(), "١٢")
+        XCTAssertEqual(3.0.toLatinNumber(), "3")
+        XCTAssertEqual(12.toLatinDigits(), "12")
     }
 
     func testRoomNumberConverts() {
-        XCTAssertEqual("1204".toArabicDigits(), "١٢٠٤")
+        XCTAssertEqual("1204".toLatinDigits(), "1204")
     }
 }

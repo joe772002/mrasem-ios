@@ -21,7 +21,7 @@ final class AllRolesServicesTests: XCTestCase {
         XCTAssertEqual(StoreTime.days(from: "2026-11-30", to: "2026-12-02"), ["2026-11-30", "2026-12-01", "2026-12-02"])
         XCTAssertEqual(StoreTime.days(from: "2026-12-02", to: "2026-11-30"), [])
         XCTAssertFalse(StoreTime.isValidDate("2026-02-30"))
-        XCTAssertEqual(StoreTime.dayLabel("2026-11-23"), "الإثنين ٢٣")
+        XCTAssertEqual(StoreTime.dayLabel("2026-11-23"), "الإثنين 23")
     }
 
     // MARK: - حسابات البوابة
@@ -30,7 +30,7 @@ final class AllRolesServicesTests: XCTestCase {
         let db = AllRolesTestEnv().db
 
         let conflicts = PortalInsights.conflicts(db)
-        XCTAssertEqual(conflicts.count, 1, "s1 (d3) و p6 (d1) نفس السائق بفرق ١٥ دقيقة")
+        XCTAssertEqual(conflicts.count, 1, "s1 (d3) و p6 (d1) نفس السائق بفرق 15 دقيقة")
         XCTAssertEqual(conflicts.first?.driver.id, "r1")
         XCTAssertEqual(PortalInsights.conflictItemIds(db), ["p6", "s1"])
 

@@ -127,13 +127,13 @@ final class StoreMissionRepositoryTests: XCTestCase {
         data.receiverName = "مرافق جديد"
         data.carPlate = "999"
         data.driver = "سائق جديد"
-        data.hall = "قاعة ٢"
+        data.hall = "قاعة 2"
 
         XCTAssertEqual(visit.save(VisitForm(data: data, dress: .bisht)), .saved(sections: [.receiver, .car, .venue], dressChanged: true))
         XCTAssertEqual(env.db.escort("e1")?.name, "مرافق جديد")
         XCTAssertEqual(env.db.car("c1")?.plate, "999")
         XCTAssertEqual(env.db.driver("r1")?.name, "سائق جديد")
-        XCTAssertEqual(env.db.place("g1")?.hall, "قاعة ٢")
+        XCTAssertEqual(env.db.place("g1")?.hall, "قاعة 2")
         XCTAssertEqual(env.db.delegation("d1")?.dress, .bisht)
 
         let sent = env.notices { $0 == .dressApproved(.bisht) }
@@ -208,6 +208,7 @@ final class StoreMissionRepositoryTests: XCTestCase {
         // اللي بيتابع بيستلم التنبيه، والعضو نفسه لأ.
         XCTAssertGreaterThan(env.db.unreadCount(for: .team("u2")), 0)
         XCTAssertEqual(env.db.unreadCount(for: .member("m2")), 3)
+        XCTAssertGreaterThan(env.db.unreadCount(for: .driver("r1")), 0, "السائق بيعرف إن الوفد وصل المطار")
         XCTAssertEqual(env.db.notices(for: .member("m1")).count, 1)
 
         env.act(as: .member("m2"))

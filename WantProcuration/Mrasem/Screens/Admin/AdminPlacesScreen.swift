@@ -50,7 +50,7 @@ struct AdminPlacesContent: View {
                     ForEach(PlaceFilter.allCases, id: \.self) { filter in
                         MrasemChip(
                             mrasemString("mrasem_admin_filter_count", [
-                                mrasemString(filter.titleKey), (state.counts[filter] ?? 0).toArabicDigits()
+                                mrasemString(filter.titleKey), (state.counts[filter] ?? 0).toLatinDigits()
                             ]),
                             selected: filter == state.filter
                         ) { onFilter(filter) }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// الوجهات العشرة داخل الـ Shell (٦ للضيف + ٤ للفريق).
+/// الوجهات العشرة داخل الـ Shell (6 للضيف + 4 للفريق).
 nonisolated enum MrasemDestination: CaseIterable, Hashable {
     case mission
     case plan

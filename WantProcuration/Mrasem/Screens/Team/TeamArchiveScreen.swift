@@ -45,7 +45,7 @@ struct TeamArchiveContent: View {
                         mrasemString("mrasem_team_archive_period"),
                         mrasemString("mrasem_team_archive_period_value", [archive.start.iso, archive.end.iso])
                     ),
-                    KeyValue(mrasemString("mrasem_team_archive_items"), archive.officialCount.toArabicDigits()),
+                    KeyValue(mrasemString("mrasem_team_archive_items"), archive.officialCount.toLatinDigits()),
                     KeyValue(mrasemString("mrasem_team_archive_gifts"), mrasemString("mrasem_team_archive_gifts_value")),
                 ])
                 Text(mrasemString("mrasem_team_archive_hint"))

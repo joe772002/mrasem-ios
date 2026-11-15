@@ -17,7 +17,7 @@ enum PlaceRequestState: Equatable {
 struct PlaceItem: Equatable {
     let place: Place
     let requestState: PlaceRequestState
-    /// «ساعات» لو المدة > ٢، غير كده «ساعة».
+    /// «ساعات» لو المدة > 2، غير كده «ساعة».
     let pluralHours: Bool
 }
 

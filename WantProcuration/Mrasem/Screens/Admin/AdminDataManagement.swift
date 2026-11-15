@@ -29,8 +29,8 @@ struct AdminDataManagementCard: View {
         MrasemCard(title: mrasemString("mrasem_admin_data_title")) {
             VStack(alignment: .leading, spacing: 10) {
                 Text(mrasemString("mrasem_admin_data_counts", [
-                    state.counts.delegations.toArabicDigits(), state.counts.members.toArabicDigits(),
-                    state.counts.places.toArabicDigits(), state.counts.requests.toArabicDigits()
+                    state.counts.delegations.toLatinDigits(), state.counts.members.toLatinDigits(),
+                    state.counts.places.toLatinDigits(), state.counts.requests.toLatinDigits()
                 ]))
                 .mrasemText(theme.type.body)
                 .foregroundColor(theme.colors.ink)

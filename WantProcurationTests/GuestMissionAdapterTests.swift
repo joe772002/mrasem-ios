@@ -25,7 +25,7 @@ final class GuestMissionAdapterTests: XCTestCase {
         XCTAssertEqual(mission.receiver, original.receiver)
         XCTAssertEqual(mission.car, original.car)
         XCTAssertEqual(mission.venue, original.venue)
-        XCTAssertEqual(mission.hotel, original.hotel, "بما فيها «٨ دقائق إلى الوزارة»")
+        XCTAssertEqual(mission.hotel, original.hotel, "بما فيها «8 دقائق إلى الوزارة»")
         XCTAssertEqual(mission.emergency, original.emergency)
         XCTAssertEqual(mission.services, original.services)
         XCTAssertEqual(mission.quickInfo, original.quickInfo)
@@ -33,7 +33,7 @@ final class GuestMissionAdapterTests: XCTestCase {
         XCTAssertEqual(mission.customs, original.customs)
         XCTAssertEqual(mission.nextMeeting, original.nextMeeting)
 
-        XCTAssertEqual(mission.days.map(\.label), ["الإثنين ٢٣", "الثلاثاء ٢٤", "الأربعاء ٢٥"])
+        XCTAssertEqual(mission.days.map(\.label), ["الإثنين 23", "الثلاثاء 24", "الأربعاء 25"])
         XCTAssertEqual(mission.days[1].items.count, 4)
         XCTAssertEqual(mission.days[1].items.first?.official?.isKey, true)
         XCTAssertEqual(context.itemIds[1], ["p4", "p5", "p6", "p7"])

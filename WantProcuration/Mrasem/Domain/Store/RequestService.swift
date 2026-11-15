@@ -81,8 +81,19 @@ nonisolated final class RequestService {
             isChanged: false
         )
         let result = program.save(item, notify: false)
-        if case .success = result {
+        if case .success(let saved) = result {
             resolve(id)
+            // صاحب الطلب بيوصله «تم الترتيب»؛ باقي الوفد ومرافقيهم وسائق الفقرة بيوصلهم إن البرنامج اتغيّر.
+            let date = now()
+            store.update { db in
+                let requester = request.memberId.map { UserRef.member($0) }
+                let others = db.memberRefs(of: saved.delegationId).filter { $0 != requester }
+                db.post(
+                    .programChanged(itemId: saved.id), delegationId: saved.delegationId,
+                    to: others + db.escortRefs(of: saved.delegationId) + [db.driverRef(ofCar: saved.carId)].compactMap { $0 },
+                    at: date
+                )
+            }
         }
         return result
     }

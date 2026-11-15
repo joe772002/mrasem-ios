@@ -21,7 +21,7 @@ nonisolated final class MrasemAppContext: ObservableObject {
 
     /// `confirmed: true` للـ Previews عشان تفتح على الـ Shell مباشرة بالمستخدم الحالي.
     init(
-        backend: MrasemBackend = MrasemBackend(),
+        backend: MrasemBackend = MrasemBackend(demoStartsToday: true),
         preferences: MrasemPreferences = UserDefaultsMrasemPreferences(),
         toastBus: MrasemToastBus = MrasemToastBus(),
         confirmed: Bool = false

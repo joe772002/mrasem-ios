@@ -24,6 +24,8 @@ struct EscortProgramRow: Equatable, Identifiable {
     let kind: ProgramItemKind
     let placeName: String?
     let carLabel: String?
+    /// حالة رحلة الفقرة (للفقرات اللي عليها سيارة)، عشان المرافق يتابع السائق.
+    var status: TripStatus? = nil
 }
 
 struct EscortDelegationCard: Equatable, Identifiable {
@@ -33,7 +35,10 @@ struct EscortDelegationCard: Equatable, Identifiable {
     let end: String
     let hotelName: String?
     let members: [EscortMemberRow]
+    /// برنامج النهارده، أو أقرب يوم جاي فيه فقرات لو النهارده فاضي (`programDate`).
     let today: [EscortProgramRow]
+    var programDate: String = ""
+    var isUpcoming: Bool = false
 }
 
 struct EscortHomeState: Equatable {
@@ -47,8 +52,10 @@ struct EscortHomeState: Equatable {
     static func make(_ db: MrasemDatabase, escortId: String, today: String) -> EscortHomeState {
         guard let escort = db.escort(escortId) else { return .empty }
 
-        let cards = ResourceService.delegations(ofEscort: escortId, in: db).map { delegation in
-            EscortDelegationCard(
+        let cards = ResourceService.delegations(ofEscort: escortId, in: db).map { delegation -> EscortDelegationCard in
+            let dates = Array(Set(db.program.filter { $0.delegationId == delegation.id }.map(\.date))).sorted()
+            let date = dates.contains(today) ? today : (dates.first { $0 > today } ?? today)
+            return EscortDelegationCard(
                 id: delegation.id, name: delegation.name, start: delegation.start, end: delegation.end,
                 hotelName: db.place(delegation.hotelId)?.name,
                 members: db.members
@@ -61,15 +68,18 @@ struct EscortHomeState: Equatable {
                         )
                     },
                 today: db.program
-                    .filter { $0.delegationId == delegation.id && $0.date == today }
+                    .filter { $0.delegationId == delegation.id && $0.date == date }
                     .sorted { StoreTime.sortKey($0) < StoreTime.sortKey($1) }
                     .map { item in
                         EscortProgramRow(
                             id: item.id, time: item.time, title: item.title, kind: item.kind,
                             placeName: db.place(item.placeId)?.name,
-                            carLabel: AdminDelegationDetailBuilder.carLabel(db.car(item.carId))
+                            carLabel: AdminDelegationDetailBuilder.carLabel(db.car(item.carId)),
+                            status: item.carId == nil ? nil : DriverTripService.status(of: item.id, in: db)
                         )
-                    }
+                    },
+                programDate: date,
+                isUpcoming: date != today
             )
         }
         return EscortHomeState(name: escort.name, phone: escort.phone, meetingSpot: escort.meetingSpot, delegations: cards)

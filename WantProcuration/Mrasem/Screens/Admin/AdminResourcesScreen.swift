@@ -104,15 +104,15 @@ struct AdminResourcesContent: View {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(mrasemString("mrasem_admin_conflict_text", [
                             conflict.driverName,
-                            conflict.first.time.toArabicDigits(), conflict.first.delegationName,
-                            conflict.second.time.toArabicDigits(), conflict.second.delegationName
+                            conflict.first.time.toLatinDigits(), conflict.first.delegationName,
+                            conflict.second.time.toLatinDigits(), conflict.second.delegationName
                         ]))
                         .mrasemText(theme.type.body)
                         .foregroundColor(theme.colors.ink)
 
                         ForEach([conflict.first, conflict.second]) { side in
                             MrasemButton(
-                                mrasemString("mrasem_admin_conflict_change", [side.time.toArabicDigits(), side.title]),
+                                mrasemString("mrasem_admin_conflict_change", [side.time.toLatinDigits(), side.title]),
                                 variant: .outline, block: true
                             ) { onResolve(side) }
                         }
@@ -134,9 +134,9 @@ struct AdminResourcesContent: View {
             MrasemActionRow(
                 title: row.name,
                 subtitle: mrasemString("mrasem_admin_res_driver_subtitle", [
-                    row.phone.toArabicDigits(),
+                    row.phone.toLatinDigits(),
                     row.carLabel ?? mrasemString("mrasem_admin_res_no_car"),
-                    row.tripsToday.toArabicDigits()
+                    row.tripsToday.toLatinDigits()
                 ])
             ) {
                 MrasemButton(mrasemString(row.status.adminLabelKey), variant: .outline) { onToggleDriver(row.id) }
@@ -158,10 +158,10 @@ struct AdminResourcesContent: View {
             MrasemActionRow(
                 title: row.type,
                 subtitle: mrasemString("mrasem_admin_res_car_subtitle", [
-                    row.plate.toArabicDigits(), row.driverName ?? mrasemString("mrasem_admin_res_no_driver")
+                    row.plate.toLatinDigits(), row.driverName ?? mrasemString("mrasem_admin_res_no_driver")
                 ])
             ) {
-                MrasemPill(mrasemString("mrasem_admin_res_trips", [row.tripCount.toArabicDigits()]), kind: .neutral)
+                MrasemPill(mrasemString("mrasem_admin_res_trips", [row.tripCount.toLatinDigits()]), kind: .neutral)
             }
             .contentShape(Rectangle())
             .onTapGesture { onEditCar(row.id) }
@@ -179,9 +179,9 @@ struct AdminResourcesContent: View {
         ForEach(state.escorts) { row in
             MrasemActionRow(
                 title: row.name,
-                subtitle: mrasemString("mrasem_admin_res_escort_subtitle", [row.title, row.phone.toArabicDigits()])
+                subtitle: mrasemString("mrasem_admin_res_escort_subtitle", [row.title, row.phone.toLatinDigits()])
             ) {
-                MrasemPill(mrasemString("mrasem_admin_res_escort_count", [row.delegationNames.count.toArabicDigits()]), kind: .neutral)
+                MrasemPill(mrasemString("mrasem_admin_res_escort_count", [row.delegationNames.count.toLatinDigits()]), kind: .neutral)
             }
             .contentShape(Rectangle())
             .onTapGesture { onEditEscort(row.id) }
@@ -199,7 +199,7 @@ struct AdminResourcesContent: View {
         }
         ForEach(state.assignments) { row in
             MrasemActionRow(
-                title: mrasemString("mrasem_admin_res_assign_title", [StoreTime.dayLabel(row.date), row.time.toArabicDigits(), row.title]),
+                title: mrasemString("mrasem_admin_res_assign_title", [StoreTime.dayLabel(row.date), row.time.toLatinDigits(), row.title]),
                 subtitle: mrasemString("mrasem_admin_res_assign_subtitle", [
                     row.delegationName,
                     row.carLabel ?? mrasemString("mrasem_admin_res_no_car"),

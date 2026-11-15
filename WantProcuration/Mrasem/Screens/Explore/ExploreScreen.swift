@@ -107,8 +107,8 @@ private struct ExplorePlaceCard: View {
     let onRequestVisit: (String) -> Void
 
     var body: some View {
-        let minutesText = item.minutes.toArabicDigits()
-        let durationText = String(item.durationHours).toArabicDigits()
+        let minutesText = item.minutes.toLatinDigits()
+        let durationText = String(item.durationHours).toLatinDigits()
         let plural = item.durationHours > 2
 
         MrasemPlaceCard(
