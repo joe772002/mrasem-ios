@@ -15,6 +15,10 @@
 		<string>ibm_plex_sans_arabic_medium.ttf</string>
 		<string>ibm_plex_sans_arabic_semibold.ttf</string>
 		<string>ibm_plex_sans_arabic_bold.ttf</string>
+		<string>Lusail-Light.ttf</string>
+		<string>Lusail-Regular.ttf</string>
+		<string>Lusail-Medium.ttf</string>
+		<string>Lusail-Bold.ttf</string>
 	</array>
 	<key>UILaunchScreen</key>
 	<dict>

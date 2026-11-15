@@ -36,8 +36,8 @@
 
 | الدور | الخط | الأوزان |
 |---|---|---|
-| Display | **Reem Kufi** | 500, 700 |
-| Body | **IBM Plex Sans Arabic** | 400, 500, 600, 700 |
+| Display | **Lusail** (كان Reem Kufi) | 500, 700 |
+| Body | **Lusail** (كان IBM Plex Sans Arabic) | 400, 500, 600, 700 |
 
 (الاتنين OFL من Google Fonts — يتضافوا كـ TTF في `res/font`. خطوط Cairo و GE SS الحالية ما تتستخدمش في شاشات مراسم.)
 

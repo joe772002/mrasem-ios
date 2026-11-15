@@ -16,13 +16,14 @@ enum MrasemFontWeight {
 }
 
 /// أسماء الـ PostScript الفعلية (من جدول `name` في ملفات TTF).
+/// خط لوسيل (الخط الرسمي لدولة قطر، © State of Qatar) للتطبيق كله: العناوين والنصوص.
+/// الأوزان المتاحة: Light / Regular / Medium / Bold؛ SemiBold بيستخدم Bold.
 enum MrasemFonts {
-    /// Reem Kufi — خط متغيّر (variable)، محور `wght` من 400 لـ 700.
-    static let displayName = "ReemKufi"
-    static let bodyRegular = "IBMPlexSansArabic-Regular"
-    static let bodyMedium = "IBMPlexSansArabic-Medium"
-    static let bodySemiBold = "IBMPlexSansArabic-SemiBold"
-    static let bodyBold = "IBMPlexSansArabic-Bold"
+    static let lusailLight = "Lusail-Light"
+    static let bodyRegular = "Lusail-Regular"
+    static let bodyMedium = "Lusail-Medium"
+    static let bodySemiBold = "Lusail-Bold"
+    static let bodyBold = "Lusail-Bold"
 
     static func bodyPostScript(_ weight: MrasemFontWeight) -> String {
         switch weight {
@@ -33,17 +34,9 @@ enum MrasemFonts {
         }
     }
 
-    /// خط متغيّر بوزن محدد — SwiftUI مالهاش API مباشر لمحاور الخطوط المتغيّرة،
-    /// فبنستخدم CoreText (محور `wght`).
-    /// Reem Kufi is a variable font (wght 400–700).
-    ///
-    /// SwiftUI has no API for the weight axis of a custom font, so the weight
-    /// is applied with `Font.weight(_:)` instead of building the instance by
-    /// hand through CoreText — the manual `kCTFontVariationAttribute` path
-    /// corrupted the heap while the splash was rendering.
+    /// العناوين (كانت Reem Kufi): نفس خط لوسيل بالوزن الأقرب.
     static func display(size: CGFloat, weight: CGFloat) -> Font {
-        .custom(displayName, size: size)
-            .weight(weight >= 700 ? .bold : (weight >= 500 ? .medium : .regular))
+        .custom(weight >= 600 ? bodyBold : (weight >= 500 ? bodyMedium : bodyRegular), size: size)
     }
 
     static func body(size: CGFloat, weight: MrasemFontWeight) -> Font {

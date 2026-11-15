@@ -32,15 +32,15 @@ struct WantProcurationApp: App {
         IQKeyboardManager.shared.resignOnTouchOutside = true
         IQKeyboardToolbarManager.shared.isEnabled = true
 
-        // No force-unwrap on the font: a missing Cairo file must not crash the app.
+        // No force-unwrap on the font: a missing font file must not crash the app.
         let appearance = UINavigationBarAppearance()
-        if let titleFont = UIFont(name: "Cairo-SemiBold", size: 18) {
+        if let titleFont = UIFont(name: "Lusail-Bold", size: 18) {
             appearance.titleTextAttributes = [
                 .font: titleFont,
                 .foregroundColor: UIColor(named: "gray0") ?? .label
             ]
         }
-        if let largeTitleFont = UIFont(name: "Cairo-SemiBold", size: 26) {
+        if let largeTitleFont = UIFont(name: "Lusail-Bold", size: 26) {
             appearance.largeTitleTextAttributes = [
                 .font: largeTitleFont,
                 .foregroundColor: UIColor(named: "gray0") ?? .label
