@@ -199,7 +199,8 @@ struct ProgramDraft: Equatable {
             id: id, delegationId: delegationId, date: date, time: time.storeLatinDigits,
             endTime: kind == .free ? endTime.storeLatinDigits : nil, title: title, kind: kind,
             placeId: placeId, note: note, carId: carId, isKey: isKey, isChanged: base?.isChanged ?? false,
-            dressCode: dressCode
+            // فاضي = «مش محدد» (nil) زي ما الـ service بيحفظه، عشان التعديل من غير تغيير يرجّع نفس السجل.
+            dressCode: dressCode.storeTrimmed.isEmpty ? nil : dressCode.storeTrimmed
         )
     }
 }
